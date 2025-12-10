@@ -1,0 +1,177 @@
+.miniMap {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  width: 280px;
+  background-color: var(--ifm-color-emphasis-0);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all var(--ifm-transition-fast) ease;
+}
+
+.miniMapVisible {
+  transform: translateX(0);
+}
+
+@media (max-width: 996px) {
+  .miniMap {
+    display: none;
+  }
+}
+
+.miniMapHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.miniMapTitle {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.miniMapToggle {
+  background: none;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.miniMapToggle:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+.miniMapNav {
+  padding: 0.5rem 0;
+}
+
+.miniMapList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.miniMapItem {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.miniMapLink {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--ifm-color-emphasis-700);
+  transition: all var(--ifm-transition-fast) ease;
+  border-left: 2px solid transparent;
+}
+
+.miniMapLink:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-900);
+}
+
+.miniMapLinkActive {
+  background-color: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darker);
+  border-left-color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+.miniMapBullet {
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.miniMapLinkLevel3 .miniMapBullet {
+  margin-left: 1rem;
+}
+
+.miniMapLinkLevel4 .miniMapBullet {
+  margin-left: 2rem;
+}
+
+.miniMapText {
+  flex: 1;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.miniMapLinkActive .miniMapText {
+  color: var(--ifm-color-primary-darker);
+}
+
+/* Scrollbar styling */
+.miniMapList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.miniMapList::-webkit-scrollbar-track {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 3px;
+}
+
+.miniMapList::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300);
+  border-radius: 3px;
+}
+
+.miniMapList::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-emphasis-400);
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .miniMap {
+  background-color: color-mix(in srgb, var(--ifm-background-surface-color), black 10%);
+  border-color: var(--ifm-color-emphasis-500);
+}
+
+html[data-theme='dark'] .miniMapHeader {
+  border-bottom-color: var(--ifm-color-emphasis-500);
+}
+
+html[data-theme='dark'] .miniMapLink {
+  color: var(--ifm-color-emphasis-600);
+}
+
+html[data-theme='dark'] .miniMapLink:hover {
+  background-color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-0);
+}
+
+html[data-theme='dark'] .miniMapLinkActive {
+  background-color: color-mix(in srgb, var(--ifm-color-primary), transparent 85%);
+  color: var(--ifm-color-primary-lighter);
+  border-left-color: var(--ifm-color-primary);
+}
+
+html[data-theme='dark'] .miniMapToggle {
+  color: var(--ifm-color-emphasis-300);
+  border-color: var(--ifm-color-emphasis-500);
+}
+
+html[data-theme='dark'] .miniMapToggle:hover {
+  background-color: var(--ifm-color-emphasis-700);
+  border-color: var(--ifm-color-emphasis-400);
+}

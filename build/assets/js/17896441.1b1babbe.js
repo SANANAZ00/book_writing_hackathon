@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkai_book=globalThis.webpackChunkai_book||[]).push([[401],{4878:(n,a,i)=>{i.d(a,{A:()=>e});i(6540);var r=i(4848);function e({children:n}){return(0,r.jsx)("div",{className:"container container--fluid",children:n})}},9955:(n,a,i)=>{i.r(a),i.d(a,{default:()=>c});i(6540);var r=i(488),e=i(4848);function c(n){return(0,e.jsx)(r.A,{...n})}}}]);

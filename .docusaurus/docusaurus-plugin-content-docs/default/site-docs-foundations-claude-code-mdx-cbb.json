@@ -1,0 +1,27 @@
+{
+  "id": "foundations/claude-code",
+  "title": "Claude Code Overview",
+  "description": "Hero Insight",
+  "source": "@site/docs/foundations/claude-code.mdx",
+  "sourceDirName": "foundations",
+  "slug": "/foundations/claude-code",
+  "permalink": "/book_writing_hackathon/docs/foundations/claude-code",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/claude-code.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Understanding Spec-Driven Development",
+    "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development"
+  },
+  "next": {
+    "title": "Docusaurus Fundamentals",
+    "permalink": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals"
+  }
+}

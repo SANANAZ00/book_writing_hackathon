@@ -1,0 +1,428 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/book_writing_hackathon/docs",
+          "tagsPath": "/book_writing_hackathon/docs/tags",
+          "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs",
+          "editUrlLocalized": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/i18n/en/docusaurus-plugin-content-docs/current",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "D:\\hackathon_book\\book-writing\\sidebars.js",
+          "contentPath": "D:\\hackathon_book\\book-writing\\docs",
+          "contentPathLocalized": "D:\\hackathon_book\\book-writing\\i18n\\en\\docusaurus-plugin-content-docs\\current",
+          "docs": [
+            {
+              "id": "foundations/ai-powered-documentation",
+              "title": "Understanding AI-Powered Documentation",
+              "description": "Hero Insight",
+              "source": "@site/docs/foundations/ai-powered-documentation.mdx",
+              "sourceDirName": "foundations",
+              "slug": "/foundations/ai-powered-documentation",
+              "permalink": "/book_writing_hackathon/docs/foundations/ai-powered-documentation",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/ai-powered-documentation.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "next": {
+                "title": "Understanding Spec-Driven Development",
+                "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development"
+              }
+            },
+            {
+              "id": "foundations/claude-code",
+              "title": "Claude Code Overview",
+              "description": "Hero Insight",
+              "source": "@site/docs/foundations/claude-code.mdx",
+              "sourceDirName": "foundations",
+              "slug": "/foundations/claude-code",
+              "permalink": "/book_writing_hackathon/docs/foundations/claude-code",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/claude-code.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Understanding Spec-Driven Development",
+                "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development"
+              },
+              "next": {
+                "title": "Docusaurus Fundamentals",
+                "permalink": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals"
+              }
+            },
+            {
+              "id": "foundations/docusaurus-fundamentals",
+              "title": "Docusaurus Fundamentals",
+              "description": "Hero Insight",
+              "source": "@site/docs/foundations/docusaurus-fundamentals.mdx",
+              "sourceDirName": "foundations",
+              "slug": "/foundations/docusaurus-fundamentals",
+              "permalink": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/docusaurus-fundamentals.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "sidebar_position": 4
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Claude Code Overview",
+                "permalink": "/book_writing_hackathon/docs/foundations/claude-code"
+              },
+              "next": {
+                "title": "Introduction to RAG Systems",
+                "permalink": "/book_writing_hackathon/docs/foundations/rag-systems"
+              }
+            },
+            {
+              "id": "foundations/openai-integration",
+              "title": "OpenAI Integration Basics",
+              "description": "Hero Insight",
+              "source": "@site/docs/foundations/openai-integration.mdx",
+              "sourceDirName": "foundations",
+              "slug": "/foundations/openai-integration",
+              "permalink": "/book_writing_hackathon/docs/foundations/openai-integration",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/openai-integration.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 6,
+              "frontMatter": {
+                "sidebar_position": 6
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Introduction to RAG Systems",
+                "permalink": "/book_writing_hackathon/docs/foundations/rag-systems"
+              },
+              "next": {
+                "title": "Qdrant Cloud Vector Database Fundamentals",
+                "permalink": "/book_writing_hackathon/docs/foundations/qdrant-cloud"
+              }
+            },
+            {
+              "id": "foundations/qdrant-cloud",
+              "title": "Qdrant Cloud Vector Database Fundamentals",
+              "description": "Hero Insight",
+              "source": "@site/docs/foundations/qdrant-cloud.mdx",
+              "sourceDirName": "foundations",
+              "slug": "/foundations/qdrant-cloud",
+              "permalink": "/book_writing_hackathon/docs/foundations/qdrant-cloud",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/qdrant-cloud.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 7,
+              "frontMatter": {
+                "sidebar_position": 7
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "OpenAI Integration Basics",
+                "permalink": "/book_writing_hackathon/docs/foundations/openai-integration"
+              },
+              "next": {
+                "title": "The AI-Powered Learning Journey",
+                "permalink": "/book_writing_hackathon/docs/intro"
+              }
+            },
+            {
+              "id": "foundations/rag-systems",
+              "title": "Introduction to RAG Systems",
+              "description": "Hero Insight",
+              "source": "@site/docs/foundations/rag-systems.mdx",
+              "sourceDirName": "foundations",
+              "slug": "/foundations/rag-systems",
+              "permalink": "/book_writing_hackathon/docs/foundations/rag-systems",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/rag-systems.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "sidebar_position": 5
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Docusaurus Fundamentals",
+                "permalink": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals"
+              },
+              "next": {
+                "title": "OpenAI Integration Basics",
+                "permalink": "/book_writing_hackathon/docs/foundations/openai-integration"
+              }
+            },
+            {
+              "id": "foundations/spec-driven-development",
+              "title": "Understanding Spec-Driven Development",
+              "description": "Hero Insight",
+              "source": "@site/docs/foundations/spec-driven-development.mdx",
+              "sourceDirName": "foundations",
+              "slug": "/foundations/spec-driven-development",
+              "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/spec-driven-development.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Understanding AI-Powered Documentation",
+                "permalink": "/book_writing_hackathon/docs/foundations/ai-powered-documentation"
+              },
+              "next": {
+                "title": "Claude Code Overview",
+                "permalink": "/book_writing_hackathon/docs/foundations/claude-code"
+              }
+            },
+            {
+              "id": "intro",
+              "title": "The AI-Powered Learning Journey",
+              "description": "Hero Insight",
+              "source": "@site/docs/intro.md",
+              "sourceDirName": ".",
+              "slug": "/intro",
+              "permalink": "/book_writing_hackathon/docs/intro",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/intro.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {
+                "slug": "/intro"
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Qdrant Cloud Vector Database Fundamentals",
+                "permalink": "/book_writing_hackathon/docs/foundations/qdrant-cloud"
+              },
+              "next": {
+                "title": "Setting Up the Development Environment",
+                "permalink": "/book_writing_hackathon/docs/systems/environment-setup"
+              }
+            },
+            {
+              "id": "systems/building-rag-chatbot",
+              "title": "Building the RAG Chatbot Foundation",
+              "description": "Hero Insight",
+              "source": "@site/docs/systems/building-rag-chatbot.mdx",
+              "sourceDirName": "systems",
+              "slug": "/systems/building-rag-chatbot",
+              "permalink": "/book_writing_hackathon/docs/systems/building-rag-chatbot",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/systems/building-rag-chatbot.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Creating AI-Generated Content Systems",
+                "permalink": "/book_writing_hackathon/docs/systems/content-generation"
+              },
+              "next": {
+                "title": "FastAPI Backend Setup and Architecture",
+                "permalink": "/book_writing_hackathon/docs/systems/fastapi-backend"
+              }
+            },
+            {
+              "id": "systems/content-generation",
+              "title": "Creating AI-Generated Content Systems",
+              "description": "Hero Insight",
+              "source": "@site/docs/systems/content-generation.mdx",
+              "sourceDirName": "systems",
+              "slug": "/systems/content-generation",
+              "permalink": "/book_writing_hackathon/docs/systems/content-generation",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/systems/content-generation.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Setting Up the Development Environment",
+                "permalink": "/book_writing_hackathon/docs/systems/environment-setup"
+              },
+              "next": {
+                "title": "Building the RAG Chatbot Foundation",
+                "permalink": "/book_writing_hackathon/docs/systems/building-rag-chatbot"
+              }
+            },
+            {
+              "id": "systems/environment-setup",
+              "title": "Setting Up the Development Environment",
+              "description": "Hero Insight",
+              "source": "@site/docs/systems/environment-setup.mdx",
+              "sourceDirName": "systems",
+              "slug": "/systems/environment-setup",
+              "permalink": "/book_writing_hackathon/docs/systems/environment-setup",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/systems/environment-setup.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "The AI-Powered Learning Journey",
+                "permalink": "/book_writing_hackathon/docs/intro"
+              },
+              "next": {
+                "title": "Creating AI-Generated Content Systems",
+                "permalink": "/book_writing_hackathon/docs/systems/content-generation"
+              }
+            },
+            {
+              "id": "systems/fastapi-backend",
+              "title": "FastAPI Backend Setup and Architecture",
+              "description": "Hero Insight",
+              "source": "@site/docs/systems/fastapi-backend.mdx",
+              "sourceDirName": "systems",
+              "slug": "/systems/fastapi-backend",
+              "permalink": "/book_writing_hackathon/docs/systems/fastapi-backend",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/systems/fastapi-backend.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "sidebar_position": 4
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Building the RAG Chatbot Foundation",
+                "permalink": "/book_writing_hackathon/docs/systems/building-rag-chatbot"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "tutorialSidebar": [
+              {
+                "type": "category",
+                "label": "foundations",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "foundations/ai-powered-documentation"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "foundations/spec-driven-development"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "foundations/claude-code"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "foundations/docusaurus-fundamentals"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "foundations/rag-systems"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "foundations/openai-integration"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "foundations/qdrant-cloud"
+                  }
+                ]
+              },
+              {
+                "type": "doc",
+                "id": "intro"
+              },
+              {
+                "type": "category",
+                "label": "systems",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "systems/environment-setup"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "systems/content-generation"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "systems/building-rag-chatbot"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "systems/fastapi-backend"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogSidebarTitle": "Recent posts",
+      "blogPosts": [],
+      "blogListPaginated": [],
+      "blogTags": {},
+      "blogTagsListPath": "/book_writing_hackathon/blog/tags",
+      "blogTagsPaginated": []
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": null
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}

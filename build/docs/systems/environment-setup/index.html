@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-systems/environment-setup" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.1.0">
+<title data-rh="true">Setting Up the Development Environment | AI-Powered Book with RAG Chatbot</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sananaz00.github.io/book_writing_hackathon/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://sananaz00.github.io/book_writing_hackathon/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://sananaz00.github.io/book_writing_hackathon/docs/systems/environment-setup"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Setting Up the Development Environment | AI-Powered Book with RAG Chatbot"><meta data-rh="true" name="description" content="Hero Insight"><meta data-rh="true" property="og:description" content="Hero Insight"><link data-rh="true" rel="icon" href="/book_writing_hackathon/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://sananaz00.github.io/book_writing_hackathon/docs/systems/environment-setup"><link data-rh="true" rel="alternate" href="https://sananaz00.github.io/book_writing_hackathon/docs/systems/environment-setup" hreflang="en"><link data-rh="true" rel="alternate" href="https://sananaz00.github.io/book_writing_hackathon/docs/systems/environment-setup" hreflang="x-default"><link rel="stylesheet" href="/book_writing_hackathon/assets/css/styles.0a51bcce.css">
+<script src="/book_writing_hackathon/assets/js/runtime~main.60b905dd.js" defer="defer"></script>
+<script src="/book_writing_hackathon/assets/js/main.09d01659.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/book_writing_hackathon/"><div class="navbar__logo"><img src="/book_writing_hackathon/img/logo.svg" alt="AI Book Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/book_writing_hackathon/img/logo.svg" alt="AI Book Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">AI Book</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/book_writing_hackathon/docs/foundations/ai-powered-documentation">Book</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/SANANAZ00/book_writing_hackathon" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/book_writing_hackathon/docs/foundations/ai-powered-documentation">foundations</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/book_writing_hackathon/docs/intro">The AI-Powered Learning Journey</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" aria-expanded="true" href="/book_writing_hackathon/docs/systems/environment-setup">systems</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/book_writing_hackathon/docs/systems/environment-setup">Setting Up the Development Environment</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/book_writing_hackathon/docs/systems/content-generation">Creating AI-Generated Content Systems</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/book_writing_hackathon/docs/systems/building-rag-chatbot">Building the RAG Chatbot Foundation</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/book_writing_hackathon/docs/systems/fastapi-backend">FastAPI Backend Setup and Architecture</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><span class="breadcrumbs__link">systems</span><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Setting Up the Development Environment</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="container container--fluid"><h1 id="setting-up-the-development-environment">Setting Up the Development Environment</h1>
+<h2 id="hero-insight">Hero Insight</h2>
+<p>Transform your development workflow with a properly configured environment that enables efficient AI-powered documentation development.</p>
+<h2 id="purpose-of-this-chapter">Purpose of This Chapter</h2>
+<p>You will set up a complete development environment for building AI-powered documentation systems, including Docusaurus, FastAPI, Qdrant integration, and all necessary tools for the project.</p>
+<h2 id="deep-breakdown">Deep Breakdown</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Before starting, ensure you have:</p>
+<h4 id="system-requirements">System Requirements</h4>
+<ul>
+<li><strong>Operating System</strong>: Windows, macOS, or Linux</li>
+<li><strong>Node.js</strong>: Version 18.x or higher for Docusaurus</li>
+<li><strong>Python</strong>: Version 3.9 or higher for FastAPI backend</li>
+<li><strong>Git</strong>: For version control and repository management</li>
+<li><strong>Package Managers</strong>: npm/yarn for frontend, pip for backend</li>
+</ul>
+<h4 id="development-tools">Development Tools</h4>
+<ul>
+<li><strong>Code Editor</strong>: VS Code with Python and JavaScript extensions</li>
+<li><strong>Terminal</strong>: Command line interface for project management</li>
+<li><strong>Browser</strong>: Modern browser for testing and development</li>
+<li><strong>API Client</strong>: Postman or similar for API testing</li>
+</ul>
+<h3 id="installing-nodejs-and-npm">Installing Node.js and npm</h3>
+<p>For Docusaurus development:</p>
+<pre><code class="language-bash"># Check current versions
+node --version
+npm --version
+
+# Install Node.js (includes npm)
+# Visit nodejs.org and download LTS version
+# Or use a version manager like nvm
+</code></pre>
+<h3 id="installing-python-and-pip">Installing Python and pip</h3>
+<p>For FastAPI backend development:</p>
+<pre><code class="language-bash"># Check current versions
+python --version
+pip --version
+
+# Install Python 3.9+ from python.org
+# Or use a version manager like pyenv
+</code></pre>
+<h3 id="project-directory-structure">Project Directory Structure</h3>
+<p>Create the project with proper organization:</p>
+<pre><code>ai-book-project/
+├── frontend/           # Docusaurus documentation site
+│   ├── docs/          # Documentation content
+│   ├── src/           # Custom React components
+│   ├── static/        # Static assets
+│   └── package.json   # Frontend dependencies
+├── backend/           # FastAPI backend services
+│   ├── app/          # Application code
+│   ├── models/       # Data models
+│   ├── routes/       # API routes
+│   └── requirements.txt # Backend dependencies
+├── .gitignore        # Git ignore file
+├── README.md         # Project documentation
+└── package.json      # Root package file (optional)
+</code></pre>
+<h3 id="setting-up-docusaurus-frontend">Setting Up Docusaurus Frontend</h3>
+<p>Create the Docusaurus documentation site:</p>
+<pre><code class="language-bash"># Navigate to project directory
+cd ai-book-project
+
+# Create frontend directory
+mkdir frontend &amp;&amp; cd frontend
+
+# Initialize Docusaurus project
+npx create-docusaurus@latest website classic
+
+# Install additional dependencies
+npm install @docusaurus/module-type-aliases @docusaurus/types
+</code></pre>
+<h3 id="setting-up-fastapi-backend">Setting Up FastAPI Backend</h3>
+<p>Create the FastAPI backend services:</p>
+<pre><code class="language-bash"># Navigate back and create backend directory
+cd ..
+mkdir backend &amp;&amp; cd backend
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+# Create requirements.txt
+echo &quot;fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+python-dotenv==1.0.0
+qdrant-client==1.7.0
+openai==1.3.5
+tiktoken==0.5.2&quot; &gt; requirements.txt
+
+# Install dependencies
+pip install -r requirements.txt
+</code></pre>
+<h3 id="environment-configuration">Environment Configuration</h3>
+<p>Set up environment variables for API keys and configuration:</p>
+<pre><code class="language-bash"># Create .env file in backend directory
+echo &quot;OPENAI_API_KEY=your_openai_api_key_here
+QDRANT_URL=your_qdrant_cluster_url
+QDRANT_API_KEY=your_qdrant_api_key
+ENVIRONMENT=development&quot; &gt; .env
+</code></pre>
+<h3 id="creating-basic-backend-structure">Creating Basic Backend Structure</h3>
+<p>Set up the basic FastAPI application:</p>
+<pre><code class="language-bash"># Create the basic app structure
+mkdir -p app/{models,routes,services,utils}
+touch app/main.py app/config.py app/schemas.py
+</code></pre>
+<h3 id="docusaurus-configuration">Docusaurus Configuration</h3>
+<p>Update the Docusaurus configuration for your project:</p>
+<p><strong>frontend/docusaurus.config.js:</strong></p>
+<pre><code class="language-javascript">// @ts-check
+const lightCodeTheme = require(&#x27;prism-react-renderer/themes/github&#x27;);
+const darkCodeTheme = require(&#x27;prism-react-renderer/themes/dracula&#x27;);
+
+/** @type {import(&#x27;@docusaurus/types&#x27;).Config} */
+const config = {
+  title: &#x27;AI-Powered Documentation&#x27;,
+  tagline: &#x27;Learn with intelligent, context-aware documentation&#x27;,
+  favicon: &#x27;img/favicon.ico&#x27;,
+
+  url: &#x27;https://your-username.github.io&#x27;,
+  baseUrl: &#x27;/ai-book/&#x27;,
+
+  organizationName: &#x27;your-organization&#x27;,
+  projectName: &#x27;ai-book&#x27;,
+
+  onBrokenLinks: &#x27;throw&#x27;,
+  onBrokenMarkdownLinks: &#x27;warn&#x27;,
+
+  i18n: {
+    defaultLocale: &#x27;en&#x27;,
+    locales: [&#x27;en&#x27;],
+  },
+
+  presets: [
+    [
+      &#x27;classic&#x27;,
+      /** @type {import(&#x27;@docusaurus/preset-classic&#x27;).Options} */
+      ({
+        docs: {
+          sidebarPath: require.resolve(&#x27;./sidebars.js&#x27;),
+          editUrl: &#x27;https://github.com/your-repo/ai-book/&#x27;,
+        },
+        blog: false, // Disable blog for now
+        theme: {
+          customCss: require.resolve(&#x27;./src/css/custom.css&#x27;),
+        },
+      }),
+    ],
+  ],
+
+  themeConfig:
+    /** @type {import(&#x27;@docusaurus/preset-classic&#x27;).ThemeConfig} */
+    ({
+      image: &#x27;img/docusaurus-social-card.jpg&#x27;,
+      navbar: {
+        title: &#x27;AI Book&#x27;,
+        logo: {
+          alt: &#x27;AI Book Logo&#x27;,
+          src: &#x27;img/logo.svg&#x27;,
+        },
+        items: [
+          {
+            type: &#x27;docSidebar&#x27;,
+            sidebarId: &#x27;tutorialSidebar&#x27;,
+            position: &#x27;left&#x27;,
+            label: &#x27;Documentation&#x27;,
+          },
+          {
+            href: &#x27;https://github.com/your-repo/ai-book&#x27;,
+            label: &#x27;GitHub&#x27;,
+            position: &#x27;right&#x27;,
+          },
+        ],
+      },
+      footer: {
+        style: &#x27;dark&#x27;,
+        links: [
+          {
+            title: &#x27;Docs&#x27;,
+            items: [
+              {
+                label: &#x27;Documentation&#x27;,
+                to: &#x27;/docs/intro&#x27;,
+              },
+            ],
+          },
+          {
+            title: &#x27;More&#x27;,
+            items: [
+              {
+                label: &#x27;GitHub&#x27;,
+                href: &#x27;https://github.com/your-repo/ai-book&#x27;,
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} AI-Powered Documentation Project`,
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+      },
+    }),
+};
+
+module.exports = config;
+</code></pre>
+<h3 id="basic-fastapi-application">Basic FastAPI Application</h3>
+<p>Create the main FastAPI application:</p>
+<p><strong>backend/app/main.py:</strong></p>
+<pre><code class="language-python">from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+
+app = FastAPI(
+    title=&quot;AI Documentation Backend&quot;,
+    description=&quot;Backend services for AI-powered documentation system&quot;,
+    version=&quot;1.0.0&quot;
+)
+
+# Configure CORS for local development
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[&quot;*&quot;],  # In production, specify exact origins
+    allow_credentials=True,
+    allow_methods=[&quot;*&quot;],
+    allow_headers=[&quot;*&quot;],
+)
+
+@app.get(&quot;/&quot;)
+async def root():
+    return {&quot;message&quot;: &quot;AI Documentation Backend API&quot;}
+
+@app.get(&quot;/health&quot;)
+async def health_check():
+    return {&quot;status&quot;: &quot;healthy&quot;}
+
+if __name__ == &quot;__main__&quot;:
+    import uvicorn
+    uvicorn.run(app, host=&quot;0.0.0.0&quot;, port=8000)
+</code></pre>
+<h3 id="development-workflow-setup">Development Workflow Setup</h3>
+<p>Configure your development workflow:</p>
+<h4 id="git-configuration">Git Configuration</h4>
+<pre><code class="language-bash"># Initialize git repository
+git init
+
+# Create .gitignore
+echo &quot;node_modules/
+venv/
+.env
+__pycache__/
+*.pyc
+.DS_Store
+dist/
+build/&quot; &gt; .gitignore
+
+# Add and commit initial files
+git add .
+git commit -m &quot;Initial project setup&quot;
+</code></pre>
+<h4 id="packagejson-for-root">Package.json for Root</h4>
+<p>Create a root package.json for easier management:</p>
+<p><strong>package.json:</strong></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;ai-book-project&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;AI-powered documentation system&quot;,
+  &quot;scripts&quot;: {
+    &quot;frontend:dev&quot;: &quot;cd frontend &amp;&amp; npm run start&quot;,
+    &quot;frontend:build&quot;: &quot;cd frontend &amp;&amp; npm run build&quot;,
+    &quot;backend:dev&quot;: &quot;cd backend &amp;&amp; python -m uvicorn app.main:app --reload --port 8000&quot;,
+    &quot;backend:prod&quot;: &quot;cd backend &amp;&amp; python -m uvicorn app.main:app --host 0.0.0.0 --port 8000&quot;,
+    &quot;setup&quot;: &quot;npm install &amp;&amp; cd frontend &amp;&amp; npm install &amp;&amp; cd ../backend &amp;&amp; pip install -r requirements.txt&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;concurrently&quot;: &quot;^8.2.0&quot;
+  }
+}
+</code></pre>
+<h3 id="testing-the-setup">Testing the Setup</h3>
+<p>Verify that your environment is properly configured:</p>
+<pre><code class="language-bash"># Test frontend setup
+cd frontend
+npm run build
+
+# Test backend setup
+cd ../backend
+python -c &quot;import fastapi; print(&#x27;FastAPI imported successfully&#x27;)&quot;
+</code></pre>
+<h2 id="-uiux-angle">🎨 UI/UX Angle</h2>
+<p>A well-structured development environment enables rapid iteration on UI components and seamless integration between frontend and backend services, leading to better user experiences.</p>
+<h2 id="-real-world-example">📘 Real-World Example</h2>
+<p>A properly configured environment allows you to:</p>
+<ul>
+<li>Develop frontend components that interact with backend APIs</li>
+<li>Test RAG functionality with real data</li>
+<li>Iterate quickly on user interface improvements</li>
+<li>Deploy changes efficiently to production</li>
+</ul>
+<h2 id="️-common-mistakes--fixes">⚠️ Common Mistakes &amp; Fixes</h2>
+<h3 id="mistake-not-using-virtual-environments-for-python">Mistake: Not using virtual environments for Python</h3>
+<p><strong>Fix</strong>: Always create and activate a virtual environment before installing Python packages.</p>
+<h3 id="mistake-exposing-api-keys-in-version-control">Mistake: Exposing API keys in version control</h3>
+<p><strong>Fix</strong>: Use .env files and ensure they&#x27;re included in .gitignore.</p>
+<h3 id="mistake-inconsistent-port-configurations">Mistake: Inconsistent port configurations</h3>
+<p><strong>Fix</strong>: Document and standardize port assignments for different services.</p>
+<h2 id="-micro-exercises">🧪 Micro-Exercises</h2>
+<ol>
+<li><strong>Exercise</strong>: Set up the complete development environment following the steps above.</li>
+<li><strong>Exercise</strong>: Verify that both frontend and backend can run independently.</li>
+</ol>
+<h2 id="-reflection-prompts">🧭 Reflection Prompts</h2>
+<ul>
+<li>How does your current development environment compare to this setup?</li>
+<li>What improvements could you make to your development workflow?</li>
+<li>How might a well-structured environment impact your productivity?</li>
+</ul>
+<h2 id="end-of-chapter-summary">End-of-Chapter Summary</h2>
+<ul>
+<li>Proper development environment setup is crucial for project success</li>
+<li>Both frontend and backend need specific configurations</li>
+<li>Environment variables should be properly secured</li>
+<li>Version control should be configured from the start</li>
+<li>The setup enables efficient development of AI-powered systems</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/systems/environment-setup.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/book_writing_hackathon/docs/intro"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">The AI-Powered Learning Journey</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/book_writing_hackathon/docs/systems/content-generation"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Creating AI-Generated Content Systems</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#hero-insight" class="table-of-contents__link toc-highlight">Hero Insight</a></li><li><a href="#purpose-of-this-chapter" class="table-of-contents__link toc-highlight">Purpose of This Chapter</a></li><li><a href="#deep-breakdown" class="table-of-contents__link toc-highlight">Deep Breakdown</a><ul><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#installing-nodejs-and-npm" class="table-of-contents__link toc-highlight">Installing Node.js and npm</a></li><li><a href="#installing-python-and-pip" class="table-of-contents__link toc-highlight">Installing Python and pip</a></li><li><a href="#project-directory-structure" class="table-of-contents__link toc-highlight">Project Directory Structure</a></li><li><a href="#setting-up-docusaurus-frontend" class="table-of-contents__link toc-highlight">Setting Up Docusaurus Frontend</a></li><li><a href="#setting-up-fastapi-backend" class="table-of-contents__link toc-highlight">Setting Up FastAPI Backend</a></li><li><a href="#environment-configuration" class="table-of-contents__link toc-highlight">Environment Configuration</a></li><li><a href="#creating-basic-backend-structure" class="table-of-contents__link toc-highlight">Creating Basic Backend Structure</a></li><li><a href="#docusaurus-configuration" class="table-of-contents__link toc-highlight">Docusaurus Configuration</a></li><li><a href="#basic-fastapi-application" class="table-of-contents__link toc-highlight">Basic FastAPI Application</a></li><li><a href="#development-workflow-setup" class="table-of-contents__link toc-highlight">Development Workflow Setup</a></li><li><a href="#testing-the-setup" class="table-of-contents__link toc-highlight">Testing the Setup</a></li></ul></li><li><a href="#-uiux-angle" class="table-of-contents__link toc-highlight">🎨 UI/UX Angle</a></li><li><a href="#-real-world-example" class="table-of-contents__link toc-highlight">📘 Real-World Example</a></li><li><a href="#️-common-mistakes--fixes" class="table-of-contents__link toc-highlight">⚠️ Common Mistakes &amp; Fixes</a><ul><li><a href="#mistake-not-using-virtual-environments-for-python" class="table-of-contents__link toc-highlight">Mistake: Not using virtual environments for Python</a></li><li><a href="#mistake-exposing-api-keys-in-version-control" class="table-of-contents__link toc-highlight">Mistake: Exposing API keys in version control</a></li><li><a href="#mistake-inconsistent-port-configurations" class="table-of-contents__link toc-highlight">Mistake: Inconsistent port configurations</a></li></ul></li><li><a href="#-micro-exercises" class="table-of-contents__link toc-highlight">🧪 Micro-Exercises</a></li><li><a href="#-reflection-prompts" class="table-of-contents__link toc-highlight">🧭 Reflection Prompts</a></li><li><a href="#end-of-chapter-summary" class="table-of-contents__link toc-highlight">End-of-Chapter Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/book_writing_hackathon/docs/intro">Tutorial</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/tagged/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://discordapp.com/invite/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://twitter.com/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/book_writing_hackathon/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/SANANAZ00/book_writing_hackathon" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 AI-Powered Book Project. Built with Docusaurus.</div></div></div></footer><div class="chatbotWidget_q_OK"><button class="chatToggle_zvSz" aria-label="Open chat">💬 AI Assistant</button></div></div>
+</body>
+</html>

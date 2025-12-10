@@ -1,0 +1,27 @@
+{
+  "id": "systems/environment-setup",
+  "title": "Setting Up the Development Environment",
+  "description": "Hero Insight",
+  "source": "@site/docs/systems/environment-setup.mdx",
+  "sourceDirName": "systems",
+  "slug": "/systems/environment-setup",
+  "permalink": "/book_writing_hackathon/docs/systems/environment-setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/systems/environment-setup.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "The AI-Powered Learning Journey",
+    "permalink": "/book_writing_hackathon/docs/intro"
+  },
+  "next": {
+    "title": "Creating AI-Generated Content Systems",
+    "permalink": "/book_writing_hackathon/docs/systems/content-generation"
+  }
+}

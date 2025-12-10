@@ -1,0 +1,103 @@
+.callout {
+  border-left: 4px solid;
+  border-radius: 0 var(--ifm-global-radius) var(--ifm-global-radius) 0;
+  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
+  margin: var(--ifm-spacing-vertical) 0;
+  background-color: var(--ifm-alert-background-color);
+}
+
+.callout--info {
+  border-left-color: var(--ifm-color-info);
+  background-color: var(--ifm-color-info-background);
+}
+
+.callout--tip {
+  border-left-color: var(--ifm-color-success);
+  background-color: var(--ifm-color-success-background);
+}
+
+.callout--warning {
+  border-left-color: var(--ifm-color-warning);
+  background-color: var(--ifm-color-warning-background);
+}
+
+.callout--danger {
+  border-left-color: var(--ifm-color-danger);
+  background-color: var(--ifm-color-danger-background);
+}
+
+.callout--example {
+  border-left-color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-primary-background);
+}
+
+.callout--exercise {
+  border-left-color: var(--ifm-color-secondary);
+  background-color: var(--ifm-color-secondary-background);
+}
+
+.callout--strategy {
+  border-left-color: var(--ifm-color-info-dark);
+  background-color: var(--ifm-color-info-background);
+}
+
+.callout--concept {
+  border-left-color: var(--ifm-color-success-dark);
+  background-color: var(--ifm-color-success-background);
+}
+
+.calloutHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.calloutIcon {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.calloutTitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.calloutBody {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.calloutBody p {
+  margin-bottom: 0.5rem;
+}
+
+.calloutBody p:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .callout--info {
+  background-color: color-mix(in srgb, var(--ifm-color-info), transparent 85%);
+}
+
+html[data-theme='dark'] .callout--tip {
+  background-color: color-mix(in srgb, var(--ifm-color-success), transparent 85%);
+}
+
+html[data-theme='dark'] .callout--warning {
+  background-color: color-mix(in srgb, var(--ifm-color-warning), transparent 85%);
+}
+
+html[data-theme='dark'] .callout--danger {
+  background-color: color-mix(in srgb, var(--ifm-color-danger), transparent 85%);
+}
+
+html[data-theme='dark'] .callout--example {
+  background-color: color-mix(in srgb, var(--ifm-color-primary), transparent 85%);
+}
+
+html[data-theme='dark'] .callout--exercise {
+  background-color: color-mix(in srgb, var(--ifm-color-secondary), transparent 85%);
+}

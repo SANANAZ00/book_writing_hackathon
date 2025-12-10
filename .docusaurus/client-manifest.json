@@ -1,0 +1,299 @@
+{
+  "entrypoints": [
+    "main"
+  ],
+  "origins": {
+    "237": [
+      237
+    ],
+    "488": [
+      401,
+      869,
+      488
+    ],
+    "17896441": [
+      488,
+      869,
+      401
+    ],
+    "main": [
+      354,
+      869,
+      792
+    ],
+    "runtime~main": [
+      792,
+      869,
+      354
+    ],
+    "0e384e19": [
+      976
+    ],
+    "2107c3a3": [
+      969
+    ],
+    "25c1cdcc": [
+      383
+    ],
+    "406f4bb8": [
+      447
+    ],
+    "441212e4": [
+      272
+    ],
+    "4d3680d9": [
+      609
+    ],
+    "5e95c892": [
+      647
+    ],
+    "62dc3757": [
+      166
+    ],
+    "8be95b44": [
+      226
+    ],
+    "935f2afb": [
+      581
+    ],
+    "997f9356": [
+      855
+    ],
+    "a7bd4aaa": [
+      98
+    ],
+    "a94703ab": [
+      869,
+      48
+    ],
+    "acfbd888": [
+      39
+    ],
+    "b6de04f0": [
+      236
+    ],
+    "cbb80509": [
+      922
+    ],
+    "e4b7c299": [
+      72
+    ],
+    "styles": [
+      48,
+      354,
+      401,
+      488,
+      792,
+      869
+    ]
+  },
+  "assets": {
+    "39": {
+      "js": [
+        {
+          "file": "assets/js/acfbd888.affdc3bf.js",
+          "hash": "5f73b2d2975c8751",
+          "publicPath": "/book_writing_hackathon/assets/js/acfbd888.affdc3bf.js"
+        }
+      ]
+    },
+    "48": {
+      "js": [
+        {
+          "file": "assets/js/a94703ab.a9066783.js",
+          "hash": "7ddf7ad06d6c0886",
+          "publicPath": "/book_writing_hackathon/assets/js/a94703ab.a9066783.js"
+        }
+      ]
+    },
+    "72": {
+      "js": [
+        {
+          "file": "assets/js/e4b7c299.03e4d020.js",
+          "hash": "9e789eb83905d6e5",
+          "publicPath": "/book_writing_hackathon/assets/js/e4b7c299.03e4d020.js"
+        }
+      ]
+    },
+    "98": {
+      "js": [
+        {
+          "file": "assets/js/a7bd4aaa.02597ed7.js",
+          "hash": "7f6aea1dc18c7c24",
+          "publicPath": "/book_writing_hackathon/assets/js/a7bd4aaa.02597ed7.js"
+        }
+      ]
+    },
+    "166": {
+      "js": [
+        {
+          "file": "assets/js/62dc3757.78fe7fad.js",
+          "hash": "be79144f92c6e234",
+          "publicPath": "/book_writing_hackathon/assets/js/62dc3757.78fe7fad.js"
+        }
+      ]
+    },
+    "226": {
+      "js": [
+        {
+          "file": "assets/js/8be95b44.12eecd5b.js",
+          "hash": "da349b1aa9d9930c",
+          "publicPath": "/book_writing_hackathon/assets/js/8be95b44.12eecd5b.js"
+        }
+      ]
+    },
+    "236": {
+      "js": [
+        {
+          "file": "assets/js/b6de04f0.8240ed5c.js",
+          "hash": "3a5fcc0bc91ee923",
+          "publicPath": "/book_writing_hackathon/assets/js/b6de04f0.8240ed5c.js"
+        }
+      ]
+    },
+    "237": {
+      "js": [
+        {
+          "file": "assets/js/237.56952ebf.js",
+          "hash": "d32d13bcaf35f5d6",
+          "publicPath": "/book_writing_hackathon/assets/js/237.56952ebf.js"
+        }
+      ]
+    },
+    "272": {
+      "js": [
+        {
+          "file": "assets/js/441212e4.cfae48f1.js",
+          "hash": "c03527fd3f549b40",
+          "publicPath": "/book_writing_hackathon/assets/js/441212e4.cfae48f1.js"
+        }
+      ]
+    },
+    "354": {
+      "js": [
+        {
+          "file": "assets/js/runtime~main.60b905dd.js",
+          "hash": "d4ebb765b8ded6c1",
+          "publicPath": "/book_writing_hackathon/assets/js/runtime~main.60b905dd.js"
+        }
+      ]
+    },
+    "383": {
+      "js": [
+        {
+          "file": "assets/js/25c1cdcc.2d66fb51.js",
+          "hash": "72663b333f69e903",
+          "publicPath": "/book_writing_hackathon/assets/js/25c1cdcc.2d66fb51.js"
+        }
+      ]
+    },
+    "401": {
+      "js": [
+        {
+          "file": "assets/js/17896441.1b1babbe.js",
+          "hash": "9de45a532c786b9f",
+          "publicPath": "/book_writing_hackathon/assets/js/17896441.1b1babbe.js"
+        }
+      ]
+    },
+    "447": {
+      "js": [
+        {
+          "file": "assets/js/406f4bb8.500ca481.js",
+          "hash": "275855ede4224ba9",
+          "publicPath": "/book_writing_hackathon/assets/js/406f4bb8.500ca481.js"
+        }
+      ]
+    },
+    "488": {
+      "js": [
+        {
+          "file": "assets/js/488.522f04b8.js",
+          "hash": "9f0c60e90ea9f3b8",
+          "publicPath": "/book_writing_hackathon/assets/js/488.522f04b8.js"
+        }
+      ]
+    },
+    "581": {
+      "js": [
+        {
+          "file": "assets/js/935f2afb.68142a68.js",
+          "hash": "9e0e5324506984ad",
+          "publicPath": "/book_writing_hackathon/assets/js/935f2afb.68142a68.js"
+        }
+      ]
+    },
+    "609": {
+      "js": [
+        {
+          "file": "assets/js/4d3680d9.f954e6eb.js",
+          "hash": "43dc88ff0dae0917",
+          "publicPath": "/book_writing_hackathon/assets/js/4d3680d9.f954e6eb.js"
+        }
+      ]
+    },
+    "647": {
+      "js": [
+        {
+          "file": "assets/js/5e95c892.611b8cb0.js",
+          "hash": "2c10050737ff7a2c",
+          "publicPath": "/book_writing_hackathon/assets/js/5e95c892.611b8cb0.js"
+        }
+      ]
+    },
+    "792": {
+      "js": [
+        {
+          "file": "assets/js/main.09d01659.js",
+          "hash": "58e481b9bd56c8ee",
+          "publicPath": "/book_writing_hackathon/assets/js/main.09d01659.js"
+        }
+      ]
+    },
+    "855": {
+      "js": [
+        {
+          "file": "assets/js/997f9356.47e22a16.js",
+          "hash": "30b5e94a277d9ade",
+          "publicPath": "/book_writing_hackathon/assets/js/997f9356.47e22a16.js"
+        }
+      ]
+    },
+    "869": {
+      "css": [
+        {
+          "file": "assets/css/styles.0a51bcce.css",
+          "hash": "2dc1be6b0d0d8740",
+          "publicPath": "/book_writing_hackathon/assets/css/styles.0a51bcce.css"
+        }
+      ]
+    },
+    "922": {
+      "js": [
+        {
+          "file": "assets/js/cbb80509.49abe20d.js",
+          "hash": "97b9a739712167dd",
+          "publicPath": "/book_writing_hackathon/assets/js/cbb80509.49abe20d.js"
+        }
+      ]
+    },
+    "969": {
+      "js": [
+        {
+          "file": "assets/js/2107c3a3.f72017c6.js",
+          "hash": "64c3b33efafbc37f",
+          "publicPath": "/book_writing_hackathon/assets/js/2107c3a3.f72017c6.js"
+        }
+      ]
+    },
+    "976": {
+      "js": [
+        {
+          "file": "assets/js/0e384e19.b79cf5e7.js",
+          "hash": "78be406ca138fecc",
+          "publicPath": "/book_writing_hackathon/assets/js/0e384e19.b79cf5e7.js"
+        }
+      ]
+    }
+  }
+}

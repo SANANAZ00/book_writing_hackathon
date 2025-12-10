@@ -1,0 +1,528 @@
+---
+sidebar_position: 3
+---
+
+# Building the RAG Chatbot Foundation
+
+## Hero Insight
+Transform static documentation into an intelligent, conversational assistant that understands and responds to complex queries with contextual precision.
+
+## Purpose of This Chapter
+You will build the foundational RAG (Retrieval-Augmented Generation) chatbot system that can answer questions about your documentation content with accuracy and contextual awareness.
+
+## Deep Breakdown
+
+### RAG Chatbot Architecture
+A complete RAG chatbot system consists of several interconnected components:
+
+#### 1. Frontend Interface
+- **Chat Widget**: Floating or integrated chat interface
+- **Message Display**: Proper formatting for user and AI messages
+- **Input Handling**: Text input with send functionality
+- **Loading States**: Visual feedback during processing
+- **Citation Display**: Showing sources for AI responses
+
+#### 2. Backend API Layer
+- **Message Processing**: Handling user queries and context
+- **Content Retrieval**: Fetching relevant documentation
+- **Response Generation**: Creating contextual responses
+- **Conversation Management**: Maintaining dialogue history
+- **Error Handling**: Graceful degradation for failures
+
+#### 3. RAG Pipeline
+- **Query Processing**: Understanding user questions
+- **Vector Search**: Finding relevant documentation chunks
+- **Context Assembly**: Combining retrieved content
+- **Response Generation**: Creating final answers
+- **Source Attribution**: Providing citations
+
+### Implementing the RAG Backend
+
+#### Core RAG Service
+```python
+import openai
+from typing import List, Dict, Optional, Tuple
+from qdrant_client import QdrantClient
+from qdrant_client.http import models
+import tiktoken
+
+class RAGService:
+    def __init__(self, qdrant_url: str, qdrant_api_key: str, openai_api_key: str):
+        self.qdrant_client = QdrantClient(
+            url=qdrant_url,
+            api_key=qdrant_api_key,
+            prefer_grpc=True
+        )
+        openai.api_key = openai_api_key
+        self.encoder = tiktoken.encoding_for_model("gpt-3.5-turbo")
+
+    def retrieve_relevant_content(
+        self,
+        query: str,
+        limit: int = 5,
+        score_threshold: float = 0.3
+    ) -> List[Dict]:
+        """
+        Retrieve relevant content from vector database
+        """
+        # Generate embedding for query
+        response = openai.Embedding.create(
+            input=query,
+            model="text-embedding-ada-002"
+        )
+        query_embedding = response['data'][0]['embedding']
+
+        # Search in Qdrant
+        search_results = self.qdrant_client.search(
+            collection_name="documentation",
+            query_vector=query_embedding,
+            limit=limit,
+            score_threshold=score_threshold,
+            with_payload=True
+        )
+
+        return [
+            {
+                'content': result.payload['content'],
+                'metadata': result.payload.get('metadata', {}),
+                'score': result.score
+            }
+            for result in search_results
+        ]
+
+    def generate_response(
+        self,
+        query: str,
+        context_chunks: List[Dict],
+        conversation_history: Optional[List[Dict]] = None
+    ) -> str:
+        """
+        Generate contextual response using retrieved content
+        """
+        # Limit context to fit within token limits
+        context = self._assemble_context(context_chunks)
+
+        # Build conversation messages
+        messages = [
+            {
+                "role": "system",
+                "content": f"You are an AI assistant for documentation. Use the following context to answer questions: {context}"
+            }
+        ]
+
+        if conversation_history:
+            messages.extend(conversation_history)
+
+        messages.append({"role": "user", "content": query})
+
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages,
+            temperature=0.7,
+            max_tokens=500
+        )
+
+        return response.choices[0].message.content
+
+    def _assemble_context(self, chunks: List[Dict]) -> str:
+        """
+        Assemble context from retrieved chunks, respecting token limits
+        """
+        context_parts = []
+        total_tokens = 0
+        max_tokens = 3000  # Leave room for conversation and response
+
+        for chunk in chunks:
+            chunk_text = f"Source: {chunk.get('metadata', {}).get('source', 'Unknown')}\nContent: {chunk['content']}\n\n"
+            chunk_tokens = len(self.encoder.encode(chunk_text))
+
+            if total_tokens + chunk_tokens > max_tokens:
+                break
+
+            context_parts.append(chunk_text)
+            total_tokens += chunk_tokens
+
+        return "".join(context_parts)
+```
+
+#### FastAPI RAG Endpoints
+```python
+from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel
+from typing import List, Optional
+
+router = APIRouter()
+
+class ChatRequest(BaseModel):
+    message: str
+    selected_text: Optional[str] = None
+    conversation_history: Optional[List[Dict]] = []
+
+class ChatResponse(BaseModel):
+    response: str
+    sources: List[Dict]
+    query: str
+
+@router.post("/chat", response_model=ChatResponse)
+async def chat_endpoint(request: ChatRequest):
+    try:
+        rag_service = RAGService(
+            qdrant_url=os.getenv("QDRANT_URL"),
+            qdrant_api_key=os.getenv("QDRANT_API_KEY"),
+            openai_api_key=os.getenv("OPENAI_API_KEY")
+        )
+
+        # If selected_text is provided, only search within that content
+        if request.selected_text:
+            # For selected text only, we'll use a different approach
+            # This would involve creating a temporary embedding of the selected text
+            context_chunks = [{
+                'content': request.selected_text,
+                'metadata': {'source': 'user_selected_text'},
+                'score': 1.0
+            }]
+        else:
+            # Normal RAG search
+            context_chunks = rag_service.retrieve_relevant_content(request.message)
+
+        response = rag_service.generate_response(
+            query=request.message,
+            context_chunks=context_chunks,
+            conversation_history=request.conversation_history
+        )
+
+        sources = [chunk['metadata'] for chunk in context_chunks]
+
+        return ChatResponse(
+            response=response,
+            sources=sources,
+            query=request.message
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+```
+
+### Frontend Chat Widget Implementation
+
+#### React Chat Widget Component
+```jsx
+import React, { useState, useRef, useEffect } from 'react';
+
+const ChatWidget = ({ selectedText }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSendMessage = async () => {
+    if (!inputValue.trim() || isLoading) return;
+
+    const userMessage = { role: 'user', content: inputValue, timestamp: new Date() };
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue('');
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: inputValue,
+          selected_text: selectedText,
+          conversation_history: messages.map(msg => ({
+            role: msg.role,
+            content: msg.content
+          }))
+        })
+      });
+
+      const data = await response.json();
+
+      const aiMessage = {
+        role: 'assistant',
+        content: data.response,
+        sources: data.sources,
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, aiMessage]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: 'Sorry, I encountered an error. Please try again.',
+        timestamp: new Date()
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  return (
+    <div className={`chat-widget ${isOpen ? 'open' : 'closed'}`}>
+      <button
+        className="chat-toggle"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        💬 AI Assistant
+      </button>
+
+      {isOpen && (
+        <div className="chat-container">
+          <div className="chat-header">
+            <h3>Documentation Assistant</h3>
+            <button
+              className="close-button"
+              onClick={() => setIsOpen(false)}
+            >
+              ×
+            </button>
+          </div>
+
+          <div className="chat-messages">
+            {messages.map((msg, index) => (
+              <div key={index} className={`message ${msg.role}`}>
+                <div className="message-content">
+                  {msg.content}
+                  {msg.sources && msg.sources.length > 0 && (
+                    <div className="sources">
+                      <small>Sources: {msg.sources.map(s => s.source).join(', ')}</small>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+            {isLoading && (
+              <div className="message assistant">
+                <div className="message-content">
+                  <div className="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          <div className="chat-input">
+            <textarea
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Ask about the documentation..."
+              rows="3"
+            />
+            <button
+              onClick={handleSendMessage}
+              disabled={isLoading || !inputValue.trim()}
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ChatWidget;
+```
+
+### Advanced RAG Features
+
+#### Selected Text Only Mode
+Implement the "answer only from selected text" functionality:
+
+```python
+def generate_response_from_selection(
+    self,
+    query: str,
+    selected_text: str,
+    conversation_history: Optional[List[Dict]] = None
+) -> str:
+    """
+    Generate response based only on user-selected text
+    """
+    # Create a system message that restricts the AI to only use the selected text
+    system_message = f"""
+    You are an AI assistant that can only answer questions based on the following text:
+    {selected_text}
+
+    Do not use any other knowledge or information.
+    If the answer cannot be found in the provided text, say so explicitly.
+    """
+
+    messages = [{"role": "system", "content": system_message}]
+
+    if conversation_history:
+        messages.extend(conversation_history)
+
+    messages.append({"role": "user", "content": query})
+
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+        temperature=0.3,  # Lower temperature for more consistent responses
+        max_tokens=500
+    )
+
+    return response.choices[0].message.content
+```
+
+#### Context-Aware Response Generation
+Enhance responses with better context awareness:
+
+```python
+def generate_context_aware_response(
+    self,
+    query: str,
+    context_chunks: List[Dict],
+    conversation_history: Optional[List[Dict]] = None,
+    user_intent: Optional[str] = None
+) -> Dict:
+    """
+    Generate response with enhanced context awareness
+    """
+    # Analyze user intent if not provided
+    if not user_intent:
+        intent_prompt = f"Analyze the user's question '{query}' and identify the intent. Possible intents: explanation, example, troubleshooting, comparison, definition."
+
+        intent_response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": intent_prompt}],
+            temperature=0.1
+        )
+        user_intent = intent_response.choices[0].message.content.strip()
+
+    # Build context based on intent
+    context = self._build_intentional_context(context_chunks, user_intent)
+
+    # Generate response with intent-aware system message
+    system_message = f"""
+    You are a documentation assistant helping users understand technical content.
+    The user's intent is: {user_intent}
+    Use the following context to provide a helpful response:
+    {context}
+    """
+
+    messages = [{"role": "system", "content": system_message}]
+
+    if conversation_history:
+        messages.extend(conversation_history)
+
+    messages.append({"role": "user", "content": query})
+
+    response = openai.ChatCompletion.create(
+        model="gpt-4",  # Use more capable model for complex queries
+        messages=messages,
+        temperature=0.7,
+        max_tokens=800
+    )
+
+    return {
+        'response': response.choices[0].message.content,
+        'intent': user_intent,
+        'confidence': 0.8  # Placeholder for actual confidence scoring
+    }
+```
+
+### Performance Optimization
+
+#### Caching Strategies
+Implement caching to improve response times:
+
+```python
+import redis
+import pickle
+from functools import wraps
+
+class RAGCache:
+    def __init__(self, redis_url: str = "redis://localhost:6379"):
+        self.redis_client = redis.from_url(redis_url)
+
+    def get_cached_response(self, query_hash: str) -> Optional[str]:
+        cached = self.redis_client.get(f"rag_response:{query_hash}")
+        return pickle.loads(cached) if cached else None
+
+    def cache_response(self, query_hash: str, response: str, ttl: int = 3600):
+        self.redis_client.setex(
+            f"rag_response:{query_hash}",
+            ttl,
+            pickle.dumps(response)
+        )
+
+def with_cache(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        query = kwargs.get('query') or args[0] if args else None
+        if query:
+            cache_key = f"rag:{hash(query)}"
+            cached = self.cache.get_cached_response(cache_key)
+            if cached:
+                return cached
+
+        result = func(self, *args, **kwargs)
+
+        if query:
+            self.cache.cache_response(cache_key, result)
+
+        return result
+    return wrapper
+```
+
+## 🎨 UI/UX Angle
+The chatbot interface should feel natural and helpful, with clear visual indicators for different message types, loading states, and source citations. The interaction should feel conversational while maintaining the professional tone of documentation.
+
+## 📘 Real-World Example
+A RAG chatbot for an API documentation site:
+1. User asks: "How do I implement authentication?"
+2. System retrieves relevant sections about authentication methods
+3. AI generates: "To implement authentication, you can use API keys in the header or OAuth tokens..."
+4. Response includes citations to specific documentation sections
+5. User can ask follow-up questions with context maintained
+
+## ⚠️ Common Mistakes & Fixes
+
+### Mistake: Not handling token limits properly in context assembly
+**Fix**: Implement intelligent context truncation that preserves important information.
+
+### Mistake: Providing responses without source attribution
+**Fix**: Always include citations to the documentation sources used.
+
+### Mistake: Not differentiating between selected-text and full-document responses
+**Fix**: Implement clear visual and functional differences between modes.
+
+## 🧪 Micro-Exercises
+
+1. **Exercise**: Implement a basic RAG service that retrieves and generates responses from sample content.
+2. **Exercise**: Create a simple chat interface that integrates with your RAG backend.
+
+## 🧭 Reflection Prompts
+- How do users currently find information in your documentation?
+- What challenges do they face with traditional search?
+- How might a conversational interface improve their experience?
+
+## End-of-Chapter Summary
+- RAG chatbots combine retrieval and generation for contextual responses
+- Proper architecture includes frontend, backend, and RAG pipeline components
+- Selected text functionality requires special handling
+- Performance optimization is crucial for production use
+- The system transforms static documentation into interactive assistance

@@ -1,0 +1,106 @@
+{
+  "/book_writing_hackathon/__docusaurus/debug-d43": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---book-writing-hackathon-docusaurus-debugdc-7-70c"
+    }
+  },
+  "/book_writing_hackathon/__docusaurus/debug/config-90a": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---book-writing-hackathon-docusaurus-debugdc-7-70c"
+    }
+  },
+  "/book_writing_hackathon/__docusaurus/debug/content-d87": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---book-writing-hackathon-docusaurus-debugdc-7-70c"
+    },
+    "allContent": "allContent---book-writing-hackathon-docusaurus-debug-content-246-89a"
+  },
+  "/book_writing_hackathon/__docusaurus/debug/globalData-741": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---book-writing-hackathon-docusaurus-debugdc-7-70c"
+    }
+  },
+  "/book_writing_hackathon/__docusaurus/debug/metadata-92a": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---book-writing-hackathon-docusaurus-debugdc-7-70c"
+    }
+  },
+  "/book_writing_hackathon/__docusaurus/debug/registry-d22": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---book-writing-hackathon-docusaurus-debugdc-7-70c"
+    }
+  },
+  "/book_writing_hackathon/__docusaurus/debug/routes-0a5": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---book-writing-hackathon-docusaurus-debugdc-7-70c"
+    }
+  },
+  "/book_writing_hackathon/docs-64f": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---book-writing-hackathon-docs-210-ef8"
+    }
+  },
+  "/book_writing_hackathon/docs-075": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "version": "version---book-writing-hackathon-docs-935-3a4"
+  },
+  "/book_writing_hackathon/docs-af8": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/book_writing_hackathon/docs/foundations/ai-powered-documentation-7f1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-foundations-ai-powered-documentatione-4-b-b7d"
+  },
+  "/book_writing_hackathon/docs/foundations/claude-code-621": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-foundations-claude-codecbb-fc7"
+  },
+  "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals-103": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-foundations-docusaurus-fundamentals-997-7cb"
+  },
+  "/book_writing_hackathon/docs/foundations/openai-integration-6b4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-foundations-openai-integration-62-d-391"
+  },
+  "/book_writing_hackathon/docs/foundations/qdrant-cloud-f0e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-foundations-qdrant-cloud-8-be-066"
+  },
+  "/book_writing_hackathon/docs/foundations/rag-systems-b50": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-foundations-rag-systemsacf-bc5"
+  },
+  "/book_writing_hackathon/docs/foundations/spec-driven-development-819": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-foundations-spec-driven-development-25-c-dda"
+  },
+  "/book_writing_hackathon/docs/intro-a20": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-intro-0-e-3-a9a"
+  },
+  "/book_writing_hackathon/docs/systems/building-rag-chatbot-8d2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-systems-building-rag-chatbot-406-2a3"
+  },
+  "/book_writing_hackathon/docs/systems/content-generation-183": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-systems-content-generation-441-ded"
+  },
+  "/book_writing_hackathon/docs/systems/environment-setup-368": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-systems-environment-setupb-6-d-475"
+  },
+  "/book_writing_hackathon/docs/systems/fastapi-backend-484": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---book-writing-hackathon-docs-systems-fastapi-backend-4-d-3-c3a"
+  }
+}

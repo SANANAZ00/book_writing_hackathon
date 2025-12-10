@@ -1,0 +1,27 @@
+{
+  "id": "foundations/rag-systems",
+  "title": "Introduction to RAG Systems",
+  "description": "Hero Insight",
+  "source": "@site/docs/foundations/rag-systems.mdx",
+  "sourceDirName": "foundations",
+  "slug": "/foundations/rag-systems",
+  "permalink": "/book_writing_hackathon/docs/foundations/rag-systems",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/rag-systems.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docusaurus Fundamentals",
+    "permalink": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals"
+  },
+  "next": {
+    "title": "OpenAI Integration Basics",
+    "permalink": "/book_writing_hackathon/docs/foundations/openai-integration"
+  }
+}

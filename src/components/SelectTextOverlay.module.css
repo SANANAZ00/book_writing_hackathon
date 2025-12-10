@@ -1,0 +1,58 @@
+.selectTextOverlay {
+  position: fixed;
+  z-index: 10000;
+  display: flex;
+  gap: 0.25rem;
+  transform: translateY(-50%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: var(--ifm-global-radius);
+  overflow: hidden;
+}
+
+.askButton, .clearButton {
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--ifm-transition-fast) ease;
+}
+
+.askButton {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+.askButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.clearButton {
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.clearButton:hover {
+  background-color: var(--ifm-color-emphasis-300);
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .askButton {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+html[data-theme='dark'] .askButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+html[data-theme='dark'] .clearButton {
+  background-color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-0);
+}
+
+html[data-theme='dark'] .clearButton:hover {
+  background-color: var(--ifm-color-emphasis-500);
+}

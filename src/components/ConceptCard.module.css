@@ -1,0 +1,115 @@
+.conceptCard {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-global-radius);
+  padding: var(--ifm-spacing-horizontal);
+  background-color: var(--ifm-color-emphasis-0);
+  transition: box-shadow var(--ifm-transition-fast) ease,
+              border-color var(--ifm-transition-fast) ease;
+}
+
+.conceptCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+.conceptCardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--ifm-spacing-vertical);
+  padding-bottom: calc(var(--ifm-spacing-vertical) / 2);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.conceptCardIcon {
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+  line-height: 1;
+}
+
+.conceptCardTitle {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: var(--ifm-heading-font-weight);
+  flex: 1;
+}
+
+.conceptCardLevel {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.level--beginner {
+  background-color: var(--ifm-color-success-lighter);
+  color: var(--ifm-color-success-dark);
+}
+
+.level--intermediate {
+  background-color: var(--ifm-color-warning-lighter);
+  color: var(--ifm-color-warning-dark);
+}
+
+.level--advanced {
+  background-color: var(--ifm-color-danger-lighter);
+  color: var(--ifm-color-danger-dark);
+}
+
+.conceptCardBody {
+  margin-bottom: var(--ifm-spacing-vertical);
+}
+
+.conceptCardDescription {
+  margin-bottom: var(--ifm-spacing-vertical);
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+.conceptCardContent {
+  line-height: 1.6;
+}
+
+.conceptCardFooter {
+  padding-top: calc(var(--ifm-spacing-vertical) / 2);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.conceptCardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.conceptCardTag {
+  background-color: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-800);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .conceptCard {
+  background-color: color-mix(in srgb, var(--ifm-background-surface-color), black 10%);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+html[data-theme='dark'] .conceptCard:hover {
+  border-color: var(--ifm-color-emphasis-500);
+}
+
+html[data-theme='dark'] .conceptCardHeader {
+  border-bottom-color: var(--ifm-color-emphasis-400);
+}
+
+html[data-theme='dark'] .conceptCardFooter {
+  border-top-color: var(--ifm-color-emphasis-400);
+}
+
+html[data-theme='dark'] .conceptCardTag {
+  background-color: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-900);
+}

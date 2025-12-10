@@ -1,0 +1,27 @@
+{
+  "id": "foundations/spec-driven-development",
+  "title": "Understanding Spec-Driven Development",
+  "description": "Hero Insight",
+  "source": "@site/docs/foundations/spec-driven-development.mdx",
+  "sourceDirName": "foundations",
+  "slug": "/foundations/spec-driven-development",
+  "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/spec-driven-development.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Understanding AI-Powered Documentation",
+    "permalink": "/book_writing_hackathon/docs/foundations/ai-powered-documentation"
+  },
+  "next": {
+    "title": "Claude Code Overview",
+    "permalink": "/book_writing_hackathon/docs/foundations/claude-code"
+  }
+}

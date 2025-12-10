@@ -1,0 +1,23 @@
+{
+  "id": "foundations/ai-powered-documentation",
+  "title": "Understanding AI-Powered Documentation",
+  "description": "Hero Insight",
+  "source": "@site/docs/foundations/ai-powered-documentation.mdx",
+  "sourceDirName": "foundations",
+  "slug": "/foundations/ai-powered-documentation",
+  "permalink": "/book_writing_hackathon/docs/foundations/ai-powered-documentation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/foundations/ai-powered-documentation.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Understanding Spec-Driven Development",
+    "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development"
+  }
+}

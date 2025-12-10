@@ -1,0 +1,188 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": null,
+  "badge": false,
+  "noIndex": false,
+  "className": "docs-version-current",
+  "isLast": true,
+  "docsSidebars": {
+    "tutorialSidebar": [
+      {
+        "type": "category",
+        "label": "foundations",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Understanding AI-Powered Documentation",
+            "href": "/book_writing_hackathon/docs/foundations/ai-powered-documentation",
+            "docId": "foundations/ai-powered-documentation",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Understanding Spec-Driven Development",
+            "href": "/book_writing_hackathon/docs/foundations/spec-driven-development",
+            "docId": "foundations/spec-driven-development",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Claude Code Overview",
+            "href": "/book_writing_hackathon/docs/foundations/claude-code",
+            "docId": "foundations/claude-code",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Docusaurus Fundamentals",
+            "href": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals",
+            "docId": "foundations/docusaurus-fundamentals",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Introduction to RAG Systems",
+            "href": "/book_writing_hackathon/docs/foundations/rag-systems",
+            "docId": "foundations/rag-systems",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "OpenAI Integration Basics",
+            "href": "/book_writing_hackathon/docs/foundations/openai-integration",
+            "docId": "foundations/openai-integration",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Qdrant Cloud Vector Database Fundamentals",
+            "href": "/book_writing_hackathon/docs/foundations/qdrant-cloud",
+            "docId": "foundations/qdrant-cloud",
+            "unlisted": false
+          }
+        ]
+      },
+      {
+        "type": "link",
+        "label": "The AI-Powered Learning Journey",
+        "href": "/book_writing_hackathon/docs/intro",
+        "docId": "intro",
+        "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "systems",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Setting Up the Development Environment",
+            "href": "/book_writing_hackathon/docs/systems/environment-setup",
+            "docId": "systems/environment-setup",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Creating AI-Generated Content Systems",
+            "href": "/book_writing_hackathon/docs/systems/content-generation",
+            "docId": "systems/content-generation",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Building the RAG Chatbot Foundation",
+            "href": "/book_writing_hackathon/docs/systems/building-rag-chatbot",
+            "docId": "systems/building-rag-chatbot",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "FastAPI Backend Setup and Architecture",
+            "href": "/book_writing_hackathon/docs/systems/fastapi-backend",
+            "docId": "systems/fastapi-backend",
+            "unlisted": false
+          }
+        ]
+      }
+    ]
+  },
+  "docs": {
+    "foundations/ai-powered-documentation": {
+      "id": "foundations/ai-powered-documentation",
+      "title": "Understanding AI-Powered Documentation",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "foundations/claude-code": {
+      "id": "foundations/claude-code",
+      "title": "Claude Code Overview",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "foundations/docusaurus-fundamentals": {
+      "id": "foundations/docusaurus-fundamentals",
+      "title": "Docusaurus Fundamentals",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "foundations/openai-integration": {
+      "id": "foundations/openai-integration",
+      "title": "OpenAI Integration Basics",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "foundations/qdrant-cloud": {
+      "id": "foundations/qdrant-cloud",
+      "title": "Qdrant Cloud Vector Database Fundamentals",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "foundations/rag-systems": {
+      "id": "foundations/rag-systems",
+      "title": "Introduction to RAG Systems",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "foundations/spec-driven-development": {
+      "id": "foundations/spec-driven-development",
+      "title": "Understanding Spec-Driven Development",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "intro": {
+      "id": "intro",
+      "title": "The AI-Powered Learning Journey",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "systems/building-rag-chatbot": {
+      "id": "systems/building-rag-chatbot",
+      "title": "Building the RAG Chatbot Foundation",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "systems/content-generation": {
+      "id": "systems/content-generation",
+      "title": "Creating AI-Generated Content Systems",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "systems/environment-setup": {
+      "id": "systems/environment-setup",
+      "title": "Setting Up the Development Environment",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    },
+    "systems/fastapi-backend": {
+      "id": "systems/fastapi-backend",
+      "title": "FastAPI Backend Setup and Architecture",
+      "description": "Hero Insight",
+      "sidebar": "tutorialSidebar"
+    }
+  }
+}

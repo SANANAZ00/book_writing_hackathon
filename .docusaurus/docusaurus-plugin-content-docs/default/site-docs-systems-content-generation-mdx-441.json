@@ -1,0 +1,27 @@
+{
+  "id": "systems/content-generation",
+  "title": "Creating AI-Generated Content Systems",
+  "description": "Hero Insight",
+  "source": "@site/docs/systems/content-generation.mdx",
+  "sourceDirName": "systems",
+  "slug": "/systems/content-generation",
+  "permalink": "/book_writing_hackathon/docs/systems/content-generation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/systems/content-generation.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting Up the Development Environment",
+    "permalink": "/book_writing_hackathon/docs/systems/environment-setup"
+  },
+  "next": {
+    "title": "Building the RAG Chatbot Foundation",
+    "permalink": "/book_writing_hackathon/docs/systems/building-rag-chatbot"
+  }
+}

@@ -1,0 +1,196 @@
+.stepFlow {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-global-radius);
+  padding: var(--ifm-spacing-horizontal);
+  background-color: var(--ifm-color-emphasis-0);
+}
+
+.stepFlowTitle {
+  margin-top: 0;
+  margin-bottom: var(--ifm-spacing-vertical);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.stepFlowDescription {
+  margin-bottom: var(--ifm-spacing-vertical);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.stepFlowContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ifm-spacing-horizontal);
+}
+
+/* Vertical layout for smaller screens */
+@media (min-width: 768px) {
+  .stepFlowContainer {
+    flex-direction: row;
+  }
+}
+
+.stepFlowSteps {
+  flex: 0 0 auto;
+  min-width: 200px;
+}
+
+.stepFlowStep {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--ifm-global-radius);
+  cursor: pointer;
+  transition: background-color var(--ifm-transition-fast) ease;
+  border: 1px solid transparent;
+}
+
+.stepFlowStep:hover {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.stepFlowStepActive {
+  background-color: var(--ifm-color-primary-lightest);
+  border-color: var(--ifm-color-primary);
+}
+
+.stepFlowStepCompleted {
+  background-color: var(--ifm-color-success-lightest);
+  border-color: var(--ifm-color-success);
+}
+
+.stepFlowStepNumber {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+  font-weight: bold;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.stepFlowStepActive .stepFlowStepNumber {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+.stepFlowStepCompleted .stepFlowStepNumber {
+  background-color: var(--ifm-color-success);
+  color: white;
+}
+
+.stepFlowStepTitle {
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.stepFlowStepActive .stepFlowStepTitle {
+  color: var(--ifm-color-primary-darker);
+  font-weight: 600;
+}
+
+.stepFlowStepCompleted .stepFlowStepTitle {
+  color: var(--ifm-color-success-darker);
+}
+
+.stepFlowContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.stepFlowStepHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.stepFlowStepContentTitle {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.stepFlowStepNavigation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stepFlowNavButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  background-color: var(--ifm-button-background-color);
+  color: var(--ifm-button-color);
+  cursor: pointer;
+  transition: all var(--ifm-transition-fast) ease;
+}
+
+.stepFlowNavButton:hover:not(:disabled) {
+  background-color: var(--ifm-color-emphasis-200);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+.stepFlowNavButtonDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stepFlowProgress {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-600);
+  white-space: nowrap;
+}
+
+.stepFlowStepContent {
+  line-height: 1.6;
+}
+
+.stepFlowCode {
+  background-color: var(--ifm-color-emphasis-100);
+  border-radius: var(--ifm-global-radius);
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.stepFlowCode code {
+  background: none;
+  padding: 0;
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .stepFlow {
+  background-color: color-mix(in srgb, var(--ifm-background-surface-color), black 10%);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+html[data-theme='dark'] .stepFlowStep:hover {
+  background-color: var(--ifm-color-emphasis-300);
+}
+
+html[data-theme='dark'] .stepFlowStepActive {
+  background-color: color-mix(in srgb, var(--ifm-color-primary), transparent 85%);
+  border-color: var(--ifm-color-primary);
+}
+
+html[data-theme='dark'] .stepFlowStepCompleted {
+  background-color: color-mix(in srgb, var(--ifm-color-success), transparent 85%);
+  border-color: var(--ifm-color-success);
+}
+
+html[data-theme='dark'] .stepFlowStepNumber {
+  background-color: var(--ifm-color-emphasis-500);
+  color: var(--ifm-color-emphasis-0);
+}
+
+html[data-theme='dark'] .stepFlowCode {
+  background-color: var(--ifm-color-emphasis-700);
+}

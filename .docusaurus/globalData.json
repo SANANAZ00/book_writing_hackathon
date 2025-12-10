@@ -1,0 +1,88 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/book_writing_hackathon/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/book_writing_hackathon/docs",
+          "mainDocId": "foundations/ai-powered-documentation",
+          "docs": [
+            {
+              "id": "foundations/ai-powered-documentation",
+              "path": "/book_writing_hackathon/docs/foundations/ai-powered-documentation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "foundations/claude-code",
+              "path": "/book_writing_hackathon/docs/foundations/claude-code",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "foundations/docusaurus-fundamentals",
+              "path": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "foundations/openai-integration",
+              "path": "/book_writing_hackathon/docs/foundations/openai-integration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "foundations/qdrant-cloud",
+              "path": "/book_writing_hackathon/docs/foundations/qdrant-cloud",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "foundations/rag-systems",
+              "path": "/book_writing_hackathon/docs/foundations/rag-systems",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "foundations/spec-driven-development",
+              "path": "/book_writing_hackathon/docs/foundations/spec-driven-development",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/book_writing_hackathon/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "systems/building-rag-chatbot",
+              "path": "/book_writing_hackathon/docs/systems/building-rag-chatbot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "systems/content-generation",
+              "path": "/book_writing_hackathon/docs/systems/content-generation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "systems/environment-setup",
+              "path": "/book_writing_hackathon/docs/systems/environment-setup",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "systems/fastapi-backend",
+              "path": "/book_writing_hackathon/docs/systems/fastapi-backend",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/book_writing_hackathon/docs/foundations/ai-powered-documentation",
+                "label": "foundations/ai-powered-documentation"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}
