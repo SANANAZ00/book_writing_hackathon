@@ -298,6 +298,11 @@ export default [
     ]
   },
   {
+    path: '/book_writing_hackathon/',
+    component: ComponentCreator('/book_writing_hackathon/', '058'),
+    exact: true
+  },
+  {
     path: '*',
     component: ComponentCreator('*'),
   },

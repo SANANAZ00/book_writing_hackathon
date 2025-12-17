@@ -635,7 +635,13 @@
     }
   },
   "docusaurus-plugin-content-pages": {
-    "default": null
+    "default": [
+      {
+        "type": "jsx",
+        "permalink": "/book_writing_hackathon/",
+        "source": "@site/src/pages/index.js"
+      }
+    ]
   },
   "docusaurus-plugin-debug": {},
   "docusaurus-theme-classic": {},
