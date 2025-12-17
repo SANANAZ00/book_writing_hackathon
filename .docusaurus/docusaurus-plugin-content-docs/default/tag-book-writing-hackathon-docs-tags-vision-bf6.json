@@ -1,0 +1,15 @@
+{
+  "label": "vision",
+  "permalink": "/book_writing_hackathon/docs/tags/vision",
+  "allTagsPath": "/book_writing_hackathon/docs/tags",
+  "count": 1,
+  "items": [
+    {
+      "id": "module-5-vla",
+      "title": "Module 5 - Vision-Language-Action Integration",
+      "description": "Integrating vision, language, and action systems for humanoid robots",
+      "permalink": "/book_writing_hackathon/docs/module-5-vla"
+    }
+  ],
+  "unlisted": false
+}

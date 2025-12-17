@@ -14,14 +14,5 @@
   "sidebarPosition": 3,
   "frontMatter": {
     "sidebar_position": 3
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Creating AI-Generated Content Systems",
-    "permalink": "/book_writing_hackathon/docs/systems/content-generation"
-  },
-  "next": {
-    "title": "FastAPI Backend Setup and Architecture",
-    "permalink": "/book_writing_hackathon/docs/systems/fastapi-backend"
   }
 }

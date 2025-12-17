@@ -14,14 +14,5 @@
   "sidebarPosition": 1,
   "frontMatter": {
     "sidebar_position": 1
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "The AI-Powered Learning Journey",
-    "permalink": "/book_writing_hackathon/docs/intro"
-  },
-  "next": {
-    "title": "Creating AI-Generated Content Systems",
-    "permalink": "/book_writing_hackathon/docs/systems/content-generation"
   }
 }

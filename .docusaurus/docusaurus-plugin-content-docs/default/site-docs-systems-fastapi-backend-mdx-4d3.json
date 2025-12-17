@@ -14,10 +14,5 @@
   "sidebarPosition": 4,
   "frontMatter": {
     "sidebar_position": 4
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Building the RAG Chatbot Foundation",
-    "permalink": "/book_writing_hackathon/docs/systems/building-rag-chatbot"
   }
 }

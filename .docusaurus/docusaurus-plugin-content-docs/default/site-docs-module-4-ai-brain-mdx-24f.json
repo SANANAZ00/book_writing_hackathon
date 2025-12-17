@@ -1,0 +1,57 @@
+{
+  "id": "module-4-ai-brain",
+  "title": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+  "description": "NVIDIA Isaac platform capabilities for robotics perception and navigation",
+  "source": "@site/docs/module-4-ai-brain.mdx",
+  "sourceDirName": ".",
+  "slug": "/module-4-ai-brain",
+  "permalink": "/book_writing_hackathon/docs/module-4-ai-brain",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-4-ai-brain.mdx",
+  "tags": [
+    {
+      "label": "nvidia-isaac",
+      "permalink": "/book_writing_hackathon/docs/tags/nvidia-isaac"
+    },
+    {
+      "label": "perception",
+      "permalink": "/book_writing_hackathon/docs/tags/perception"
+    },
+    {
+      "label": "navigation",
+      "permalink": "/book_writing_hackathon/docs/tags/navigation"
+    },
+    {
+      "label": "ai",
+      "permalink": "/book_writing_hackathon/docs/tags/ai"
+    },
+    {
+      "label": "robotics",
+      "permalink": "/book_writing_hackathon/docs/tags/robotics"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+    "sidebar_position": 4,
+    "description": "NVIDIA Isaac platform capabilities for robotics perception and navigation",
+    "tags": [
+      "nvidia-isaac",
+      "perception",
+      "navigation",
+      "ai",
+      "robotics"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 3 - Digital Twin (Gazebo & Unity)",
+    "permalink": "/book_writing_hackathon/docs/module-3-digital-twin"
+  },
+  "next": {
+    "title": "Module 5 - Vision-Language-Action Integration",
+    "permalink": "/book_writing_hackathon/docs/module-5-vla"
+  }
+}

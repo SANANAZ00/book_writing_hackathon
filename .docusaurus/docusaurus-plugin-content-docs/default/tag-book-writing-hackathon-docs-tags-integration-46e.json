@@ -1,0 +1,15 @@
+{
+  "label": "integration",
+  "permalink": "/book_writing_hackathon/docs/tags/integration",
+  "allTagsPath": "/book_writing_hackathon/docs/tags",
+  "count": 1,
+  "items": [
+    {
+      "id": "module-7-capstone",
+      "title": "Module 7 - Capstone Project",
+      "description": "Comprehensive capstone project integrating all course concepts using major tools",
+      "permalink": "/book_writing_hackathon/docs/module-7-capstone"
+    }
+  ],
+  "unlisted": false
+}

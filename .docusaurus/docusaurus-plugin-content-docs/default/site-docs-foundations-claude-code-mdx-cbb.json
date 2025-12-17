@@ -14,14 +14,5 @@
   "sidebarPosition": 3,
   "frontMatter": {
     "sidebar_position": 3
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Understanding Spec-Driven Development",
-    "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development"
-  },
-  "next": {
-    "title": "Docusaurus Fundamentals",
-    "permalink": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals"
   }
 }

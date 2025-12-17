@@ -1,0 +1,517 @@
+openapi: 3.0.0
+info:
+  title: Physical AI & Humanoid Robotics Book API
+  description: API for managing book content, modules, and educational resources
+  version: 1.0.0
+servers:
+  - url: https://api.physicalai-book.com/v1
+    description: Production server
+  - url: https://staging-api.physicalai-book.com/v1
+    description: Staging server
+
+paths:
+  /modules:
+    get:
+      summary: List all book modules
+      description: Retrieve a list of all modules in the Physical AI & Humanoid Robotics book
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of modules to return
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+        - name: offset
+          in: query
+          description: Number of modules to skip
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: List of modules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  modules:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Module'
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+    post:
+      summary: Create a new module
+      description: Create a new module for the book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModuleInput'
+      responses:
+        '201':
+          description: Module created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /modules/{moduleId}:
+    get:
+      summary: Get a specific module
+      description: Retrieve details of a specific module by ID
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          description: Unique identifier of the module
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Module details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      summary: Update a module
+      description: Update an existing module
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          description: Unique identifier of the module
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModuleInput'
+      responses:
+        '200':
+          description: Module updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      summary: Delete a module
+      description: Remove a module from the book
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          description: Unique identifier of the module
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Module deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /modules/{moduleId}/chapters:
+    get:
+      summary: List chapters in a module
+      description: Retrieve all chapters within a specific module
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          description: Unique identifier of the module
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of chapters in the module
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  chapters:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Chapter'
+                  moduleId:
+                    type: string
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /chapters/{chapterId}:
+    get:
+      summary: Get a specific chapter
+      description: Retrieve details of a specific chapter by ID
+      parameters:
+        - name: chapterId
+          in: path
+          required: true
+          description: Unique identifier of the chapter
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Chapter details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chapter'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /exercises:
+    get:
+      summary: List all exercises
+      description: Retrieve a list of all exercises across all modules
+      parameters:
+        - name: moduleId
+          in: query
+          description: Filter exercises by module ID
+          required: false
+          schema:
+            type: string
+        - name: difficulty
+          in: query
+          description: Filter exercises by difficulty level
+          required: false
+          schema:
+            type: string
+            enum: [beginner, intermediate, advanced]
+      responses:
+        '200':
+          description: List of exercises
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exercises:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Exercise'
+                  total:
+                    type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+components:
+  schemas:
+    Module:
+      type: object
+      required:
+        - id
+        - title
+        - position
+        - description
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the module
+          example: "mod-ros2-fundamentals"
+        title:
+          type: string
+          description: Title of the module
+          example: "Module 1: ROS 2 (Robotic Nervous System)"
+        description:
+          type: string
+          description: Brief overview of the module content
+          example: "Understanding ROS 2 architecture and its role in humanoid robotics"
+        position:
+          type: integer
+          description: Order of the module in the book sequence
+          minimum: 1
+          example: 2
+        learning_outcomes:
+          type: array
+          description: Measurable outcomes for the module
+          items:
+            type: string
+          example: ["Explain ROS 2 architecture", "Implement basic communication patterns"]
+        prerequisites:
+          type: array
+          description: Required knowledge/skills for the module
+          items:
+            type: string
+          example: ["Basic Python programming", "Linux command line"]
+        duration:
+          type: string
+          description: Estimated time to complete the module
+          example: "2 weeks"
+        technology_stack:
+          type: array
+          description: Technologies covered in the module
+          items:
+            type: string
+          example: ["ROS 2", "rclpy", "URDF"]
+        created_date:
+          type: string
+          format: date-time
+          description: When the module was created
+        last_updated:
+          type: string
+          format: date-time
+          description: When the module was last modified
+
+    ModuleInput:
+      type: object
+      required:
+        - title
+        - position
+        - description
+      properties:
+        title:
+          type: string
+          description: Title of the module
+          maxLength: 100
+        description:
+          type: string
+          description: Brief overview of the module content
+        position:
+          type: integer
+          description: Order of the module in the book sequence
+          minimum: 1
+        learning_outcomes:
+          type: array
+          description: Measurable outcomes for the module
+          items:
+            type: string
+        prerequisites:
+          type: array
+          description: Required knowledge/skills for the module
+          items:
+            type: string
+        duration:
+          type: string
+          description: Estimated time to complete the module
+        technology_stack:
+          type: array
+          description: Technologies covered in the module
+          items:
+            type: string
+
+    Chapter:
+      type: object
+      required:
+        - id
+        - moduleId
+        - title
+        - sidebar_position
+        - content
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the chapter
+          example: "ch-ros2-nodes"
+        module_id:
+          type: string
+          description: Reference to the parent module
+          example: "mod-ros2-fundamentals"
+        title:
+          type: string
+          description: Title of the chapter
+          example: "Understanding ROS 2 Nodes"
+        filename:
+          type: string
+          description: MDX filename without extension
+          example: "module-1-nodes-topics-services"
+        sidebar_position:
+          type: integer
+          description: Position in sidebar navigation
+          minimum: 1
+          example: 2
+        content:
+          type: string
+          description: The actual MDX content
+        learning_objectives:
+          type: array
+          description: Specific objectives for this chapter
+          items:
+            type: string
+          example: ["Create a ROS 2 node", "Understand node communication"]
+        exercises:
+          type: array
+          description: Practice activities in the chapter
+          items:
+            $ref: '#/components/schemas/Exercise'
+        code_examples:
+          type: array
+          description: Embedded code examples
+          items:
+            $ref: '#/components/schemas/CodeExample'
+        tags:
+          type: array
+          description: Metadata tags for search and organization
+          items:
+            type: string
+          example: ["ros2", "nodes", "communication"]
+
+    Exercise:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - difficulty
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the exercise
+          example: "ex-ros2-publisher"
+        chapter_id:
+          type: string
+          description: Reference to the parent chapter
+          example: "ch-ros2-nodes"
+        title:
+          type: string
+          description: Brief title of the exercise
+          example: "Creating a Simple Publisher Node"
+        description:
+          type: string
+          description: Detailed description of the task
+          example: "Create a ROS 2 node that publishes messages to a topic"
+        difficulty:
+          type: string
+          description: Difficulty level
+          enum: [beginner, intermediate, advanced]
+          example: "intermediate"
+        estimated_time:
+          type: string
+          description: Time needed to complete
+          example: "45 minutes"
+        requirements:
+          type: array
+          description: Software/hardware needed
+          items:
+            type: string
+          example: ["ROS 2 Humble", "Python 3.8+"]
+        expected_outcome:
+          type: string
+          description: What should be achieved
+          example: "A working publisher node that sends messages"
+        hints:
+          type: array
+          description: Optional guidance for students
+          items:
+            type: string
+        solution:
+          type: string
+          description: Reference solution (optional)
+          example: "Complete code implementation"
+
+    CodeExample:
+      type: object
+      required:
+        - id
+        - title
+        - language
+        - code
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the example
+          example: "ce-ros2-publisher"
+        chapter_id:
+          type: string
+          description: Reference to the parent chapter
+          example: "ch-ros2-nodes"
+        title:
+          type: string
+          description: Brief description of the example
+          example: "Simple Publisher Node"
+        language:
+          type: string
+          description: Programming language or format
+          example: "python"
+        code:
+          type: string
+          description: The actual code content
+          example: "import rclpy\nfrom rclpy.node import Node\n..."
+        explanation:
+          type: string
+          description: Detailed explanation of the code
+          example: "This example shows how to create a basic publisher node..."
+        expected_output:
+          type: string
+          description: What the code should produce
+          example: "Publishing: 'Hello Robot: 0', Publishing: 'Hello Robot: 1'..."
+        prerequisites:
+          type: array
+          description: Requirements to run the example
+          items:
+            type: string
+          example: ["ROS 2 environment setup", "Python knowledge"]
+
+  responses:
+    BadRequest:
+      description: Bad request - invalid input
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid input parameters"
+              details:
+                type: object
+
+    Unauthorized:
+      description: Unauthorized access
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Authentication required"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Resource not found"
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,601 @@
+---
+title: Module 3 - Digital Twin (Gazebo & Unity)
+sidebar_position: 3
+description: Physics simulation for humanoid robotics in Gazebo and Unity
+tags: ["gazebo", "unity", "simulation", "digital-twin", "physics"]
+---
+
+# Module 3: Digital Twin (Gazebo & Unity)
+
+## Learning Objectives
+
+After completing this module, you will be able to:
+- Explain physics simulation for humanoid robotics in Gazebo
+- Demonstrate realistic environment rendering in Unity
+- Show sensor integration in both simulation platforms
+- Provide comparison between Gazebo and Unity for different use cases
+- Create and test humanoid robot simulations in both environments
+- Implement sensor data processing pipelines for simulated robots
+
+## Prerequisites
+
+- Completion of Module 1: Introduction
+- Completion of Module 2: ROS 2 (Robotic Nervous System)
+- Basic understanding of 3D modeling concepts
+- Familiarity with Linux (for Gazebo) and Windows/Mac (for Unity)
+
+## 1. Introduction to Digital Twins in Robotics
+
+A digital twin in robotics is a virtual replica of a physical robot that exists in simulation environments. This virtual model mirrors the physical robot's behavior, allowing for testing, validation, and optimization without the risks and costs associated with real-world experimentation.
+
+For humanoid robotics, digital twins are particularly valuable because they enable:
+- Safe testing of complex behaviors before deployment
+- Rapid iteration on control algorithms
+- Training of AI models in diverse scenarios
+- Validation of sensor integration and perception systems
+- Stress testing under various environmental conditions
+
+The concept of digital twins has become increasingly important as robotics systems become more complex and expensive. Rather than testing every possible scenario on expensive physical hardware, engineers can validate their systems in simulation first, dramatically reducing development time and costs.
+
+### Why Simulation is Critical for Humanoid Robotics
+
+Humanoid robots operate in human-designed environments and must interact safely with humans. This creates unique challenges that are difficult to address without extensive simulation:
+
+- **Safety**: Humanoid robots must operate safely around people, requiring extensive testing of emergency procedures
+- **Complexity**: With dozens of joints and multiple sensory systems, humanoid robots have complex dynamics
+- **Cost**: Physical humanoid robots are expensive, making extensive real-world testing impractical
+- **Repeatability**: Simulation allows for repeatable experiments with controlled variables
+
+## 2. Gazebo: Physics-Based Simulation for Robotics
+
+Gazebo is a physics-based simulation environment that provides realistic robot simulation and testing. It's widely used in the robotics community and integrates seamlessly with ROS 2, making it an ideal choice for humanoid robotics development.
+
+### 2.1 Gazebo Architecture and Features
+
+Gazebo provides several key features essential for humanoid robotics:
+
+- **Realistic Physics Engine**: Based on ODE (Open Dynamics Engine), Bullet, or DART, providing accurate simulation of rigid body dynamics
+- **Sensor Simulation**: Support for cameras, LIDAR, IMUs, force/torque sensors, and other robot sensors
+- **Environment Modeling**: Tools for creating complex 3D environments with realistic lighting and materials
+- **ROS 2 Integration**: Native support for ROS 2 topics, services, and actions
+- **Plugin Architecture**: Extensible system for custom sensors, controllers, and world modifications
+
+### 2.2 Setting Up a Humanoid Robot in Gazebo
+
+To use a humanoid robot in Gazebo, you need to create a URDF model that includes Gazebo-specific extensions. These extensions define how the robot interacts with the physics engine and how sensors are simulated.
+
+```xml
+<!-- Example: URDF with Gazebo extensions for a humanoid robot -->
+<?xml version="1.0"?>
+<robot name="humanoid_with_gazebo_extensions">
+  <!-- Include your basic URDF model here -->
+
+  <!-- Gazebo-specific extensions -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <!-- Camera sensor -->
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera1">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>600</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <frame_name>camera_optical_frame</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- IMU sensor -->
+  <gazebo reference="imu_link">
+    <sensor type="imu" name="imu_sensor">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+        <topic>__default_topic__</topic>
+        <body_name>imu_link</body_name>
+        <update_rate>100</update_rate>
+        <gaussian_noise>0.01</gaussian_noise>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- ROS 2 Control interface -->
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <parameters>$(find my_robot_description)/config/my_robot_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+</robot>
+```
+
+### 2.3 Creating Gazebo Worlds
+
+Gazebo worlds define the environment in which your robot operates. These are SDF (Simulation Description Format) files that specify the physics properties, lighting, and objects in the environment.
+
+```xml
+<!-- Example: Simple Gazebo world -->
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="simple_world">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Add your robot -->
+    <include>
+      <uri>model://humanoid_robot</uri>
+    </include>
+
+    <!-- Add obstacles -->
+    <model name="table">
+      <pose>2 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 0.8 0.8</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 0.8 0.8</size>
+            </box>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass>10</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+  </world>
+</sdf>
+```
+
+### 2.4 Physics Simulation for Humanoid Robotics
+
+Physics simulation in Gazebo is crucial for humanoid robots because it accurately models the complex interactions between the robot and its environment. This includes:
+
+- **Contact Dynamics**: How the robot's feet interact with the ground during walking
+- **Balance and Stability**: How the robot maintains balance under various conditions
+- **Manipulation Physics**: How the robot interacts with objects in the environment
+- **Sensor Accuracy**: How sensors respond to environmental conditions
+
+The physics engine calculates forces, torques, and resulting motions in real-time, providing realistic feedback for control algorithms. This allows developers to test complex behaviors like walking, grasping, and navigation in a safe, repeatable environment.
+
+## 3. Unity: Realistic Environment Rendering
+
+Unity is a powerful game engine that has been adapted for robotics simulation through the Unity Robotics package. Unlike Gazebo, which focuses on physics accuracy, Unity excels at creating photorealistic environments with advanced rendering capabilities.
+
+### 3.1 Unity Robotics Hub
+
+Unity provides several tools specifically for robotics:
+- **Unity Robotics Hub**: Centralized package management for robotics tools
+- **Unity ML-Agents**: Framework for training AI agents in Unity environments
+- **ROS#**: Bridge for connecting Unity to ROS/ROS 2
+- **Robotics Object Detection**: Tools for training computer vision models
+- **Synthetic Data Generation**: Creating labeled datasets for training
+
+### 3.2 Creating Photorealistic Environments
+
+Unity's strength lies in creating visually realistic environments that closely match real-world conditions. This is particularly valuable for:
+
+- **Computer Vision Training**: Creating realistic images for training perception models
+- **Human-Robot Interaction**: Simulating realistic lighting and environmental conditions
+- **Sensor Simulation**: Testing sensors under various lighting and environmental conditions
+
+```csharp
+// Example: Unity script for robot control integration
+using UnityEngine;
+using Unity.Robotics.ROSTCPConnector;
+using RosMessageTypes.Std;
+
+public class RobotController : MonoBehaviour
+{
+    ROSConnection ros;
+    string robotTopic = "unity_robot_command";
+
+    void Start()
+    {
+        ros = ROSConnection.GetOrCreateInstance();
+        ros.RegisterPublisher<UInt8Msg>(robotTopic);
+    }
+
+    void Update()
+    {
+        // Example: Send a command to the robot every second
+        if (Time.time % 1.0f < Time.deltaTime)
+        {
+            UInt8Msg command = new UInt8Msg();
+            command.data = 1; // Move forward command
+            ros.Publish(robotTopic, command);
+        }
+    }
+}
+```
+
+### 3.3 Unity-Rosbridge Integration
+
+Unity connects to ROS 2 through the ROS-TCP-Connector, which provides a bridge between Unity's C# environment and ROS 2's communication system. This allows:
+
+- **Real-time Communication**: Low-latency communication between Unity and ROS 2 nodes
+- **Sensor Data Streaming**: Real-time sensor data from Unity to ROS 2
+- **Control Command Transmission**: Sending control commands from ROS 2 to Unity robots
+- **Synchronized Simulation**: Keeping Unity physics synchronized with ROS 2 time
+
+## 4. Sensor Integration in Simulation Platforms
+
+Both Gazebo and Unity provide comprehensive sensor simulation capabilities, but with different strengths and approaches.
+
+### 4.1 Gazebo Sensor Integration
+
+Gazebo offers native sensor plugins with realistic physics-based simulation:
+
+- **Camera Sensors**: Simulates RGB, depth, and stereo cameras with realistic distortion
+- **LIDAR Sensors**: Simulates 2D and 3D LIDAR with configurable resolution and range
+- **IMU Sensors**: Simulates accelerometers and gyroscopes with configurable noise
+- **Force/Torque Sensors**: Simulates joint forces and external forces
+- **GPS Sensors**: Simulates GPS with configurable accuracy and noise
+
+```xml
+<!-- Example: Advanced camera sensor configuration -->
+<gazebo reference="camera_link">
+  <sensor type="camera" name="front_camera">
+    <update_rate>30</update_rate>
+    <camera name="head">
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.1</near>
+        <far>100</far>
+      </clip>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.007</stddev>
+      </noise>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <frame_name>camera_optical_frame</frame_name>
+      <min_depth>0.1</min_depth>
+      <max_depth>100.0</max_depth>
+    </plugin>
+  </sensor>
+</gazebo>
+```
+
+### 4.2 Unity Sensor Integration
+
+Unity provides sensor simulation through its rendering and physics systems:
+
+- **RGB Cameras**: High-quality rendering with realistic lighting and materials
+- **Depth Cameras**: Realistic depth perception based on raycasting
+- **Semantic Segmentation**: Pixel-level object classification in rendered images
+- **Instance Segmentation**: Individual object identification in scenes
+- **LiDAR Simulation**: Raycasting-based LiDAR simulation with realistic noise
+
+```csharp
+// Example: Unity sensor data collection
+using UnityEngine;
+using System.Collections;
+using Unity.Robotics.ROSTCPConnector;
+using RosMessageTypes.Sensor;
+
+public class UnityCameraSensor : MonoBehaviour
+{
+    public Camera sensorCamera;
+    private ROSConnection ros;
+    private string imageTopic = "unity_camera/image_raw";
+
+    void Start()
+    {
+        ros = ROSConnection.GetOrCreateInstance();
+    }
+
+    void Update()
+    {
+        if (Time.time % 0.1f < Time.deltaTime) // Publish at 10Hz
+        {
+            // Capture image from camera
+            RenderTexture currentRT = RenderTexture.active;
+            RenderTexture.active = sensorCamera.targetTexture;
+            sensorCamera.Render();
+
+            Texture2D image = new Texture2D(sensorCamera.targetTexture.width, sensorCamera.targetTexture.height);
+            image.ReadPixels(new Rect(0, 0, sensorCamera.targetTexture.width, sensorCamera.targetTexture.height), 0, 0);
+            image.Apply();
+
+            RenderTexture.active = currentRT;
+
+            // Convert and publish image (simplified)
+            // In practice, you would convert to ROS image format
+        }
+    }
+}
+```
+
+## 5. Comparison: Gazebo vs Unity for Different Use Cases
+
+### When to Use Gazebo
+
+**Strengths:**
+- Accurate physics simulation
+- Native ROS 2 integration
+- Extensive robotics tooling
+- Large community and resources
+- Realistic sensor simulation
+- Open source and free
+
+**Best for:**
+- Physics-based testing and validation
+- Control algorithm development
+- Realistic sensor simulation
+- Standard robotics research
+- Integration with existing ROS 2 workflows
+
+### When to Use Unity
+
+**Strengths:**
+- Photorealistic rendering
+- Advanced graphics capabilities
+- High-quality environment creation
+- Machine learning integration
+- Cross-platform deployment
+- Professional game engine features
+
+**Best for:**
+- Computer vision training
+- Human-robot interaction studies
+- Photorealistic simulation
+- ML agent training
+- User interface development
+- Presentation and demonstration
+
+### Hybrid Approach
+
+Many advanced robotics projects use both platforms:
+- **Gazebo** for physics-accurate control development
+- **Unity** for perception and vision system training
+- **Cross-platform validation** to ensure consistency
+
+## 6. Practical Exercise: Creating a Simple Humanoid Simulation
+
+Let's create a simple humanoid simulation in Gazebo that demonstrates the concepts we've learned.
+
+### Exercise 6.1: Basic Humanoid Model in Gazebo
+
+First, create a simple URDF model for a basic humanoid:
+
+```xml
+<!-- simple_humanoid.urdf -->
+<?xml version="1.0"?>
+<robot name="simple_humanoid">
+  <!-- Base body -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.1 0.4"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.1 0.4"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="10.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <!-- Head -->
+  <link name="head">
+    <visual>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="neck_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="head"/>
+    <origin xyz="0 0 0.25"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="1"/>
+  </joint>
+
+  <!-- Left arm -->
+  <link name="left_upper_arm">
+    <visual>
+      <geometry>
+        <cylinder length="0.2" radius="0.03"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.2" radius="0.03"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="left_shoulder_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="left_upper_arm"/>
+    <origin xyz="0.15 0 0.1" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="1.57" effort="50" velocity="1"/>
+  </joint>
+
+  <!-- Add Gazebo extensions -->
+  <gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <joint_name>neck_joint, left_shoulder_joint</joint_name>
+    </plugin>
+  </gazebo>
+</robot>
+```
+
+### Exercise 6.2: Launch File for the Simulation
+
+Create a launch file to start the simulation:
+
+```xml
+<!-- launch/humanoid_simulation.launch.xml -->
+<launch>
+  <!-- Load the robot description -->
+  <param name="robot_description"
+         value="$(find-pkg-share my_robot_description)/urdf/simple_humanoid.urdf"/>
+
+  <!-- Start robot state publisher -->
+  <node pkg="robot_state_publisher"
+        exec="robot_state_publisher"
+        name="robot_state_publisher">
+    <param name="robot_description"
+           value="$(var robot_description)"/>
+  </node>
+
+  <!-- Start Gazebo -->
+  <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py">
+    <arg name="world" value="$(find-pkg-share my_robot_description)/worlds/simple_world.world"/>
+  </include>
+
+  <!-- Spawn the robot in Gazebo -->
+  <node pkg="gazebo_ros"
+        exec="spawn_entity.py"
+        args="-topic robot_description -entity simple_humanoid"/>
+</launch>
+```
+
+### Exercise 6.3: Control Node
+
+Create a simple control node to move the joints:
+
+```python
+# control_node.py
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import JointState
+from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+import math
+
+class SimpleController(Node):
+    def __init__(self):
+        super().__init__('simple_controller')
+
+        # Publisher for joint trajectory commands
+        self.trajectory_pub = self.create_publisher(
+            JointTrajectory,
+            '/joint_trajectory',
+            10
+        )
+
+        # Timer for sending commands
+        self.timer = self.create_timer(0.1, self.timer_callback)
+        self.time = 0.0
+
+    def timer_callback(self):
+        trajectory_msg = JointTrajectory()
+        trajectory_msg.joint_names = ['neck_joint', 'left_shoulder_joint']
+
+        point = JointTrajectoryPoint()
+        point.positions = [
+            0.5 * math.sin(self.time),  # neck joint
+            0.5 * math.cos(self.time)   # left shoulder joint
+        ]
+        point.time_from_start.sec = 0
+        point.time_from_start.nanosec = 100000000  # 0.1 seconds
+
+        trajectory_msg.points = [point]
+
+        self.trajectory_pub.publish(trajectory_msg)
+        self.time += 0.1
+
+def main(args=None):
+    rclpy.init(args=args)
+    controller = SimpleController()
+    rclpy.spin(controller)
+    controller.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+## 7. Summary
+
+In this module, you've learned about digital twin simulation for humanoid robotics using both Gazebo and Unity. You now understand:
+
+- How to create and configure humanoid robot models in Gazebo
+- The process of setting up realistic physics simulation environments
+- How to integrate Unity for photorealistic rendering and perception training
+- The strengths and use cases for each simulation platform
+- How to implement sensor integration in both environments
+- Best practices for simulation-based robot development
+
+Simulation is a critical tool in the development of humanoid robots, allowing for safe, cost-effective testing and validation of complex behaviors. The choice between Gazebo and Unity (or using both) depends on your specific needs and use cases.
+
+In the next module, we'll explore the NVIDIA Isaac platform, which provides specialized tools for AI-robot integration, including perception and navigation systems.
+
+## Assessment
+
+Complete the following exercises to reinforce your understanding:
+
+1. Create a Gazebo world with obstacles and test your humanoid robot's navigation capabilities
+2. Implement a Unity scene with realistic lighting and train a simple object detection model
+3. Add IMU and camera sensors to your humanoid model and simulate sensor data
+4. Compare the physics behavior of your robot in Gazebo vs Unity for the same control commands

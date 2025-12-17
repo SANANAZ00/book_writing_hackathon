@@ -14,14 +14,5 @@
   "sidebarPosition": 2,
   "frontMatter": {
     "sidebar_position": 2
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Setting Up the Development Environment",
-    "permalink": "/book_writing_hackathon/docs/systems/environment-setup"
-  },
-  "next": {
-    "title": "Building the RAG Chatbot Foundation",
-    "permalink": "/book_writing_hackathon/docs/systems/building-rag-chatbot"
   }
 }

@@ -16,7 +16,7 @@ const config = {
   // For Vercel: baseUrl should be '/', for GitHub Pages: '/book_writing_hackathon/'
   baseUrl: process.env.VERCEL ? '/' : '/book_writing_hackathon/',
 
-  organizationName: 'SANANAZ00', 
+  organizationName: 'SANANAZ00',
   projectName: 'book_writing_hackathon',
 
   onBrokenLinks: 'warn',
@@ -35,10 +35,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/SANANAZ00/book_writing_hackathon/edit/main/',
         },
-        blog: {
-          showReadingTime: true,
-          editUrl: 'https://github.com/SANANAZ00/book_writing_hackathon/edit/main/',
-        },
+        blog: false, // Disable blog to remove broken links
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -75,7 +72,7 @@ const config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Introduction',
               to: '/docs/intro',
             },
           ],
@@ -100,10 +97,6 @@ const config = {
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
             {
               label: 'GitHub',
               href: 'https://github.com/SANANAZ00/book_writing_hackathon',

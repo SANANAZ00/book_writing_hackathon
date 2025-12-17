@@ -11,103 +11,60 @@
     "tutorialSidebar": [
       {
         "type": "category",
-        "label": "foundations",
-        "collapsible": true,
-        "collapsed": true,
+        "label": "Physical AI & Humanoid Robotics",
         "items": [
           {
             "type": "link",
-            "label": "Understanding AI-Powered Documentation",
-            "href": "/book_writing_hackathon/docs/foundations/ai-powered-documentation",
-            "docId": "foundations/ai-powered-documentation",
+            "label": "Introduction",
+            "href": "/book_writing_hackathon/docs/intro",
+            "docId": "intro",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Understanding Spec-Driven Development",
-            "href": "/book_writing_hackathon/docs/foundations/spec-driven-development",
-            "docId": "foundations/spec-driven-development",
+            "label": "Module 2 - ROS 2 (Robotic Nervous System)",
+            "href": "/book_writing_hackathon/docs/module-2-ros2",
+            "docId": "module-2-ros2",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Claude Code Overview",
-            "href": "/book_writing_hackathon/docs/foundations/claude-code",
-            "docId": "foundations/claude-code",
+            "label": "Module 3 - Digital Twin (Gazebo & Unity)",
+            "href": "/book_writing_hackathon/docs/module-3-digital-twin",
+            "docId": "module-3-digital-twin",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Docusaurus Fundamentals",
-            "href": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals",
-            "docId": "foundations/docusaurus-fundamentals",
+            "label": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+            "href": "/book_writing_hackathon/docs/module-4-ai-brain",
+            "docId": "module-4-ai-brain",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Introduction to RAG Systems",
-            "href": "/book_writing_hackathon/docs/foundations/rag-systems",
-            "docId": "foundations/rag-systems",
+            "label": "Module 5 - Vision-Language-Action Integration",
+            "href": "/book_writing_hackathon/docs/module-5-vla",
+            "docId": "module-5-vla",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "OpenAI Integration Basics",
-            "href": "/book_writing_hackathon/docs/foundations/openai-integration",
-            "docId": "foundations/openai-integration",
+            "label": "Module 6 - Weekly Breakdown",
+            "href": "/book_writing_hackathon/docs/module-6-weekly-breakdown",
+            "docId": "module-6-weekly-breakdown",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Qdrant Cloud Vector Database Fundamentals",
-            "href": "/book_writing_hackathon/docs/foundations/qdrant-cloud",
-            "docId": "foundations/qdrant-cloud",
+            "label": "Module 7 - Capstone Project",
+            "href": "/book_writing_hackathon/docs/module-7-capstone",
+            "docId": "module-7-capstone",
             "unlisted": false
           }
-        ]
-      },
-      {
-        "type": "link",
-        "label": "The AI-Powered Learning Journey",
-        "href": "/book_writing_hackathon/docs/intro",
-        "docId": "intro",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "systems",
-        "collapsible": true,
-        "collapsed": true,
-        "items": [
-          {
-            "type": "link",
-            "label": "Setting Up the Development Environment",
-            "href": "/book_writing_hackathon/docs/systems/environment-setup",
-            "docId": "systems/environment-setup",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Creating AI-Generated Content Systems",
-            "href": "/book_writing_hackathon/docs/systems/content-generation",
-            "docId": "systems/content-generation",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Building the RAG Chatbot Foundation",
-            "href": "/book_writing_hackathon/docs/systems/building-rag-chatbot",
-            "docId": "systems/building-rag-chatbot",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "FastAPI Backend Setup and Architecture",
-            "href": "/book_writing_hackathon/docs/systems/fastapi-backend",
-            "docId": "systems/fastapi-backend",
-            "unlisted": false
-          }
-        ]
+        ],
+        "collapsed": false,
+        "collapsible": true
       }
     ]
   },
@@ -115,74 +72,99 @@
     "foundations/ai-powered-documentation": {
       "id": "foundations/ai-powered-documentation",
       "title": "Understanding AI-Powered Documentation",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "foundations/claude-code": {
       "id": "foundations/claude-code",
       "title": "Claude Code Overview",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "foundations/docusaurus-fundamentals": {
       "id": "foundations/docusaurus-fundamentals",
       "title": "Docusaurus Fundamentals",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "foundations/openai-integration": {
       "id": "foundations/openai-integration",
       "title": "OpenAI Integration Basics",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "foundations/qdrant-cloud": {
       "id": "foundations/qdrant-cloud",
       "title": "Qdrant Cloud Vector Database Fundamentals",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "foundations/rag-systems": {
       "id": "foundations/rag-systems",
       "title": "Introduction to RAG Systems",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "foundations/spec-driven-development": {
       "id": "foundations/spec-driven-development",
       "title": "Understanding Spec-Driven Development",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "intro": {
       "id": "intro",
-      "title": "The AI-Powered Learning Journey",
-      "description": "Hero Insight",
+      "title": "Introduction",
+      "description": "Comprehensive overview of Physical AI and its importance in modern robotics",
+      "sidebar": "tutorialSidebar"
+    },
+    "module-2-ros2": {
+      "id": "module-2-ros2",
+      "title": "Module 2 - ROS 2 (Robotic Nervous System)",
+      "description": "Understanding ROS 2 architecture and its role in humanoid robotics",
+      "sidebar": "tutorialSidebar"
+    },
+    "module-3-digital-twin": {
+      "id": "module-3-digital-twin",
+      "title": "Module 3 - Digital Twin (Gazebo & Unity)",
+      "description": "Physics simulation for humanoid robotics in Gazebo and Unity",
+      "sidebar": "tutorialSidebar"
+    },
+    "module-4-ai-brain": {
+      "id": "module-4-ai-brain",
+      "title": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+      "description": "NVIDIA Isaac platform capabilities for robotics perception and navigation",
+      "sidebar": "tutorialSidebar"
+    },
+    "module-5-vla": {
+      "id": "module-5-vla",
+      "title": "Module 5 - Vision-Language-Action Integration",
+      "description": "Integrating vision, language, and action systems for humanoid robots",
+      "sidebar": "tutorialSidebar"
+    },
+    "module-6-weekly-breakdown": {
+      "id": "module-6-weekly-breakdown",
+      "title": "Module 6 - Weekly Breakdown",
+      "description": "13-week course structure with learning objectives and assessment guidance",
+      "sidebar": "tutorialSidebar"
+    },
+    "module-7-capstone": {
+      "id": "module-7-capstone",
+      "title": "Module 7 - Capstone Project",
+      "description": "Comprehensive capstone project integrating all course concepts using major tools",
       "sidebar": "tutorialSidebar"
     },
     "systems/building-rag-chatbot": {
       "id": "systems/building-rag-chatbot",
       "title": "Building the RAG Chatbot Foundation",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "systems/content-generation": {
       "id": "systems/content-generation",
       "title": "Creating AI-Generated Content Systems",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "systems/environment-setup": {
       "id": "systems/environment-setup",
       "title": "Setting Up the Development Environment",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     },
     "systems/fastapi-backend": {
       "id": "systems/fastapi-backend",
       "title": "FastAPI Backend Setup and Architecture",
-      "description": "Hero Insight",
-      "sidebar": "tutorialSidebar"
+      "description": "Hero Insight"
     }
   }
 }

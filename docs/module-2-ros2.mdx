@@ -1,0 +1,461 @@
+---
+title: Module 2 - ROS 2 (Robotic Nervous System)
+sidebar_position: 2
+description: Understanding ROS 2 architecture and its role in humanoid robotics
+tags: ["ros2", "robotics", "middleware", "communication"]
+---
+
+# Module 2: ROS 2 (Robotic Nervous System)
+
+## Learning Objectives
+
+After completing this module, you will be able to:
+- Explain the core concepts of ROS 2 architecture and its role in humanoid robotics
+- Implement basic communication patterns using nodes, topics, services, and actions
+- Integrate Python agents with robot controllers using rclpy
+- Understand URDF fundamentals specific to humanoid robots
+- Create and test basic ROS 2 communication systems
+
+## Prerequisites
+
+- Basic Python programming knowledge
+- Understanding of Linux command line
+- Completion of Module 1: Introduction
+- Familiarity with fundamental robotics concepts
+
+## 1. Introduction to ROS 2
+
+ROS 2 (Robot Operating System 2) serves as the essential communication backbone that enables complex humanoid robot behaviors. Unlike traditional software systems, ROS 2 provides a distributed computing framework specifically designed for robotics applications, where multiple processes must coordinate seamlessly to achieve complex behaviors.
+
+For humanoid robots specifically, ROS 2 addresses the unique challenge of coordinating dozens of sensors and actuators while maintaining real-time performance. Each component—vision, motor control, balance, speech recognition—needs to communicate with every other component, creating a complex web of interactions that ROS 2 manages efficiently.
+
+### Why ROS 2 for Humanoid Robotics?
+
+Humanoid robots require an extraordinary level of coordination between multiple subsystems. From maintaining balance while walking to processing visual input for object recognition, each component must communicate seamlessly with others. ROS 2 provides the infrastructure that allows these diverse systems to function as a unified intelligent agent.
+
+The distributed architecture of ROS 2 is particularly well-suited to humanoid robotics, where different components may run on different processors or even different physical computers within the robot. This flexibility allows for optimal resource allocation while maintaining reliable communication between all system components.
+
+## 2. Core Components of ROS 2
+
+### 2.1 Nodes: The Processing Units
+
+Nodes are the fundamental building blocks of any ROS 2 system. Think of a node as a specialized brain region—each handles a specific function while remaining connected to the broader network. In a humanoid robot, you might have nodes dedicated to:
+
+- Motor control for individual joints and limb coordination
+- Visual processing for cameras and depth sensors
+- Audio processing for speech recognition and synthesis
+- Balance and stability algorithms for locomotion
+- High-level decision making and behavior selection
+
+Each node runs independently and communicates with others through ROS 2's messaging system, creating a distributed architecture that's both flexible and robust.
+
+```python
+# Example: Simple ROS 2 Node Structure
+import rclpy
+from rclpy.node import Node
+
+class SimpleRobotNode(Node):
+    def __init__(self):
+        super().__init__('simple_robot_node')
+        self.get_logger().info('Simple Robot Node initialized')
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = SimpleRobotNode()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+### 2.2 Topics: Continuous Information Streams
+
+Topics operate on a publish-subscribe model where one node publishes data and multiple nodes can subscribe to receive it, creating efficient one-to-many communication patterns essential for humanoid robotics. This system is perfect for continuous data streams like sensor readings, camera feeds, or joint position updates.
+
+For example, a camera node continuously publishes image data on a "camera_feed" topic, while multiple perception nodes (face detection, object recognition, depth estimation) can simultaneously subscribe to this stream. Similarly, joint position sensors continuously publish their readings, allowing control algorithms to monitor the robot's posture in real-time and make necessary adjustments.
+
+```python
+# Example: Publisher Node
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MinimalPublisher(Node):
+    def __init__(self):
+        super().__init__('minimal_publisher')
+        self.publisher_ = self.create_publisher(String, 'topic', 10)
+        timer_period = 0.5  # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.i = 0
+
+    def timer_callback(self):
+        msg = String()
+        msg.data = f'Hello Robot: {self.i}'
+        self.publisher_.publish(msg)
+        self.get_logger().info(f'Publishing: "{msg.data}"')
+        self.i += 1
+
+def main(args=None):
+    rclpy.init(args=args)
+    minimal_publisher = MinimalPublisher()
+    rclpy.spin(minimal_publisher)
+    minimal_publisher.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+```python
+# Example: Subscriber Node
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MinimalSubscriber(Node):
+    def __init__(self):
+        super().__init__('minimal_subscriber')
+        self.subscription = self.create_subscription(
+            String,
+            'topic',
+            self.listener_callback,
+            10)
+        self.subscription  # prevent unused variable warning
+
+    def listener_callback(self, msg):
+        self.get_logger().info(f'I heard: "{msg.data}"')
+
+def main(args=None):
+    rclpy.init(args=args)
+    minimal_subscriber = MinimalSubscriber()
+    rclpy.spin(minimal_subscriber)
+    minimal_subscriber.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+### 2.3 Services: Request-Response Interactions
+
+Services provide synchronous communication for discrete operations that require immediate responses, following a client-server pattern where one node requests an action and waits for completion. This is ideal for operations that must complete before other actions can proceed.
+
+In humanoid robots, services typically handle:
+- Calibration routines that must complete before movement
+- Database queries for retrieving stored information
+- Emergency stop procedures that require immediate confirmation
+- Configuration changes that need validation
+
+```python
+# Example: Service Server
+import rclpy
+from rclpy.node import Node
+from example_interfaces.srv import AddTwoInts
+
+class MinimalService(Node):
+    def __init__(self):
+        super().__init__('minimal_service')
+        self.srv = self.create_service(AddTwoInts, 'add_two_ints', self.add_two_ints_callback)
+
+    def add_two_ints_callback(self, request, response):
+        response.sum = request.a + request.b
+        self.get_logger().info(f'Incoming request\na: {request.a}, b: {request.b}\nsum: {response.sum}')
+        return response
+
+def main(args=None):
+    rclpy.init(args=args)
+    minimal_service = MinimalService()
+    rclpy.spin(minimal_service)
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+### 2.4 Actions: Long-Running Operations with Feedback
+
+Actions bridge the gap between topics and services, handling operations that take time to complete while providing ongoing feedback. They're perfect for complex behaviors like walking, grasping, or navigation where progress must be monitored and potentially interrupted.
+
+An action system includes three components: a goal (what to do), feedback (progress updates), and result (final outcome). For a humanoid robot walking to a location, the action would accept the destination goal, continuously provide feedback on walking progress, and return success or failure upon completion.
+
+## 3. Python Agent Integration with rclpy
+
+rclpy serves as the Python interface to ROS 2, enabling developers to create ROS 2 nodes using familiar Python syntax. This integration is particularly valuable for humanoid robotics because Python excels at rapid prototyping, machine learning integration, and algorithm development—critical aspects of physical AI systems.
+
+Through rclpy, Python-based AI agents can seamlessly integrate with the broader ROS 2 ecosystem. A vision-language-action system implemented in Python can subscribe to camera topics, process images using neural networks, and publish commands to motor control nodes—all while leveraging ROS 2's robust communication infrastructure.
+
+The Python ecosystem's rich libraries for machine learning, computer vision, and natural language processing make rclpy an ideal choice for implementing the cognitive components of humanoid robots. Whether it's using TensorFlow for perception tasks or integrating with large language models for natural interaction, rclpy provides the bridge between advanced AI techniques and robotic hardware.
+
+```python
+# Example: AI Agent Integration with rclpy
+import rclpy
+from rclpy.node import Node
+import numpy as np
+from std_msgs.msg import String
+from sensor_msgs.msg import Image
+import cv2
+from cv_bridge import CvBridge
+
+class AIAgentNode(Node):
+    def __init__(self):
+        super().__init__('ai_agent_node')
+
+        # Initialize computer vision bridge
+        self.bridge = CvBridge()
+
+        # Subscribe to camera feed
+        self.image_subscription = self.create_subscription(
+            Image,
+            'camera/image_raw',
+            self.image_callback,
+            10
+        )
+
+        # Publisher for AI decisions
+        self.decision_publisher = self.create_publisher(String, 'ai_decision', 10)
+
+        self.get_logger().info('AI Agent Node initialized')
+
+    def image_callback(self, msg):
+        # Convert ROS image message to OpenCV format
+        cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+
+        # Process image with AI algorithm (simplified example)
+        decision = self.process_image(cv_image)
+
+        # Publish AI decision
+        decision_msg = String()
+        decision_msg.data = decision
+        self.decision_publisher.publish(decision_msg)
+        self.get_logger().info(f'AI Decision: {decision}')
+
+    def process_image(self, image):
+        # Simplified AI processing - in practice, this would use ML models
+        height, width, channels = image.shape
+        if width > height:
+            return "landscape detected"
+        else:
+            return "portrait detected"
+
+def main(args=None):
+    rclpy.init(args=args)
+    ai_agent = AIAgentNode()
+    rclpy.spin(ai_agent)
+    ai_agent.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+## 4. URDF Fundamentals for Humanoid Robots
+
+URDF (Unified Robot Description Format) serves as the digital blueprint for humanoid robots, defining their physical structure, joint configurations, and kinematic properties. Think of URDF as the robot's genetic code—it contains all the information needed to understand the robot's physical form and capabilities.
+
+For humanoid robots, URDF descriptions become particularly complex due to the intricate structure of human-like bodies. A typical humanoid URDF file defines:
+
+- **Link elements** representing rigid body parts (head, torso, arms, legs)
+- **Joint elements** specifying how links connect and move relative to each other
+- **Inertial properties** including mass, center of mass, and moment of inertia
+- **Visual and collision geometry** for simulation and planning
+- **Sensor mounting points** and attachment specifications
+
+The hierarchical structure of URDF mirrors the kinematic chains found in human anatomy, with the torso serving as the base and limbs extending outward. This structure enables forward and inverse kinematics calculations essential for coordinated movement, allowing the robot to determine how joint angles relate to end-effector positions (like where the hand is located in space).
+
+URDF also integrates with ROS 2's tf (transform) system, which continuously tracks the spatial relationships between all robot parts. This enables sophisticated behaviors like reaching, where the robot must understand the position of its hand relative to its environment and adjust accordingly.
+
+```xml
+<!-- Example: Simplified URDF for a humanoid robot -->
+<?xml version="1.0"?>
+<robot name="simple_humanoid">
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Head -->
+  <link name="head">
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="head_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="head"/>
+    <origin xyz="0 0 0.1"/>
+  </joint>
+
+  <!-- Left Arm -->
+  <link name="left_upper_arm">
+    <visual>
+      <geometry>
+        <cylinder length="0.15" radius="0.02"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="left_shoulder_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="left_upper_arm"/>
+    <origin xyz="0.05 0.05 0.05"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="1.57" effort="100" velocity="1"/>
+  </joint>
+</robot>
+```
+
+## 5. Practical Exercise: Creating Your First ROS 2 System
+
+Now let's create a simple ROS 2 system that demonstrates the concepts we've learned. We'll build a system where a sensor node publishes joint positions, and a controller node subscribes to these positions to maintain balance.
+
+### Exercise 5.1: Joint Position Publisher
+
+Create a node that simulates joint position sensors for a humanoid robot:
+
+```python
+# joint_publisher.py
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import JointState
+import math
+import time
+
+class JointStatePublisher(Node):
+    def __init__(self):
+        super().__init__('joint_state_publisher')
+        self.publisher_ = self.create_publisher(JointState, 'joint_states', 10)
+
+        # Timer for publishing joint states
+        timer_period = 0.1  # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+
+        # Initialize joint positions
+        self.joint_names = ['head_joint', 'left_shoulder', 'right_shoulder', 'left_elbow', 'right_elbow']
+        self.joint_positions = [0.0] * len(self.joint_names)
+        self.time_counter = 0.0
+
+    def timer_callback(self):
+        msg = JointState()
+        msg.name = self.joint_names
+        msg.position = self.joint_positions
+
+        # Simulate changing joint positions
+        self.time_counter += 0.1
+        for i in range(len(self.joint_positions)):
+            self.joint_positions[i] = math.sin(self.time_counter + i) * 0.5
+
+        msg.header.stamp = self.get_clock().now().to_msg()
+        msg.header.frame_id = "base_link"
+
+        self.publisher_.publish(msg)
+        self.get_logger().info(f'Publishing joint states: {msg.position}')
+
+def main(args=None):
+    rclpy.init(args=args)
+    joint_publisher = JointStatePublisher()
+    rclpy.spin(joint_publisher)
+    joint_publisher.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+### Exercise 5.2: Balance Controller
+
+Create a node that subscribes to joint states and implements a simple balance controller:
+
+```python
+# balance_controller.py
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import JointState
+from std_msgs.msg import Float64MultiArray
+
+class BalanceController(Node):
+    def __init__(self):
+        super().__init__('balance_controller')
+
+        # Subscribe to joint states
+        self.subscription = self.create_subscription(
+            JointState,
+            'joint_states',
+            self.joint_state_callback,
+            10
+        )
+
+        # Publisher for control commands
+        self.command_publisher = self.create_publisher(
+            Float64MultiArray,
+            'balance_commands',
+            10
+        )
+
+        self.get_logger().info('Balance Controller initialized')
+
+    def joint_state_callback(self, msg):
+        # Simple balance control logic
+        # Calculate center of mass based on joint positions
+        total_weight = len(msg.position)
+        if total_weight > 0:
+            avg_position = sum(msg.position) / total_weight
+        else:
+            avg_position = 0.0
+
+        # Generate control commands to maintain balance
+        control_commands = Float64MultiArray()
+        control_commands.data = [avg_position * 0.1]  # Simplified balance correction
+
+        self.command_publisher.publish(control_commands)
+        self.get_logger().info(f'Balance correction: {control_commands.data}')
+
+def main(args=None):
+    rclpy.init(args=args)
+    balance_controller = BalanceController()
+    rclpy.spin(balance_controller)
+    balance_controller.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+## 6. Summary
+
+In this module, you've learned about the fundamental concepts of ROS 2 and its role as the "nervous system" of humanoid robots. You now understand:
+
+- How nodes, topics, services, and actions enable distributed robotic systems
+- How to integrate Python AI agents with robot controllers using rclpy
+- The importance of URDF in defining humanoid robot structure and capabilities
+- How to create basic ROS 2 communication patterns for robotic systems
+
+These concepts form the foundation for all subsequent modules in this course. The communication patterns you've learned here will be used throughout the course as we build increasingly complex humanoid robot systems.
+
+In the next module, we'll explore simulation environments using Gazebo and Unity, where you'll apply these ROS 2 concepts in virtual environments before moving to real hardware.
+
+## Assessment
+
+Complete the following exercises to reinforce your understanding:
+
+1. Create a ROS 2 node that publishes temperature sensor data and another that subscribes to it to trigger cooling actions
+2. Implement a service that calculates the distance between two points in 3D space
+3. Modify the URDF example to include at least two additional joints for a humanoid leg
+4. Write a Python script using rclpy that integrates a simple machine learning model for object classification

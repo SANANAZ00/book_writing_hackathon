@@ -1,0 +1,15 @@
+{
+  "label": "physics",
+  "permalink": "/book_writing_hackathon/docs/tags/physics",
+  "allTagsPath": "/book_writing_hackathon/docs/tags",
+  "count": 1,
+  "items": [
+    {
+      "id": "module-3-digital-twin",
+      "title": "Module 3 - Digital Twin (Gazebo & Unity)",
+      "description": "Physics simulation for humanoid robotics in Gazebo and Unity",
+      "permalink": "/book_writing_hackathon/docs/module-3-digital-twin"
+    }
+  ],
+  "unlisted": false
+}

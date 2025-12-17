@@ -14,10 +14,5 @@
   "sidebarPosition": 1,
   "frontMatter": {
     "sidebar_position": 1
-  },
-  "sidebar": "tutorialSidebar",
-  "next": {
-    "title": "Understanding Spec-Driven Development",
-    "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development"
   }
 }

@@ -35,11 +35,6 @@
               "sidebarPosition": 1,
               "frontMatter": {
                 "sidebar_position": 1
-              },
-              "sidebar": "tutorialSidebar",
-              "next": {
-                "title": "Understanding Spec-Driven Development",
-                "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development"
               }
             },
             {
@@ -58,15 +53,6 @@
               "sidebarPosition": 3,
               "frontMatter": {
                 "sidebar_position": 3
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Understanding Spec-Driven Development",
-                "permalink": "/book_writing_hackathon/docs/foundations/spec-driven-development"
-              },
-              "next": {
-                "title": "Docusaurus Fundamentals",
-                "permalink": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals"
               }
             },
             {
@@ -85,15 +71,6 @@
               "sidebarPosition": 4,
               "frontMatter": {
                 "sidebar_position": 4
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Claude Code Overview",
-                "permalink": "/book_writing_hackathon/docs/foundations/claude-code"
-              },
-              "next": {
-                "title": "Introduction to RAG Systems",
-                "permalink": "/book_writing_hackathon/docs/foundations/rag-systems"
               }
             },
             {
@@ -112,15 +89,6 @@
               "sidebarPosition": 6,
               "frontMatter": {
                 "sidebar_position": 6
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Introduction to RAG Systems",
-                "permalink": "/book_writing_hackathon/docs/foundations/rag-systems"
-              },
-              "next": {
-                "title": "Qdrant Cloud Vector Database Fundamentals",
-                "permalink": "/book_writing_hackathon/docs/foundations/qdrant-cloud"
               }
             },
             {
@@ -139,15 +107,6 @@
               "sidebarPosition": 7,
               "frontMatter": {
                 "sidebar_position": 7
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "OpenAI Integration Basics",
-                "permalink": "/book_writing_hackathon/docs/foundations/openai-integration"
-              },
-              "next": {
-                "title": "The AI-Powered Learning Journey",
-                "permalink": "/book_writing_hackathon/docs/intro"
               }
             },
             {
@@ -166,15 +125,6 @@
               "sidebarPosition": 5,
               "frontMatter": {
                 "sidebar_position": 5
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Docusaurus Fundamentals",
-                "permalink": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals"
-              },
-              "next": {
-                "title": "OpenAI Integration Basics",
-                "permalink": "/book_writing_hackathon/docs/foundations/openai-integration"
               }
             },
             {
@@ -193,41 +143,377 @@
               "sidebarPosition": 2,
               "frontMatter": {
                 "sidebar_position": 2
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Understanding AI-Powered Documentation",
-                "permalink": "/book_writing_hackathon/docs/foundations/ai-powered-documentation"
-              },
-              "next": {
-                "title": "Claude Code Overview",
-                "permalink": "/book_writing_hackathon/docs/foundations/claude-code"
               }
             },
             {
               "id": "intro",
-              "title": "The AI-Powered Learning Journey",
-              "description": "Hero Insight",
-              "source": "@site/docs/intro.md",
+              "title": "Introduction",
+              "description": "Comprehensive overview of Physical AI and its importance in modern robotics",
+              "source": "@site/docs/intro.mdx",
               "sourceDirName": ".",
               "slug": "/intro",
               "permalink": "/book_writing_hackathon/docs/intro",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/intro.md",
-              "tags": [],
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/intro.mdx",
+              "tags": [
+                {
+                  "label": "physical-ai",
+                  "permalink": "/book_writing_hackathon/docs/tags/physical-ai"
+                },
+                {
+                  "label": "humanoid-robotics",
+                  "permalink": "/book_writing_hackathon/docs/tags/humanoid-robotics"
+                },
+                {
+                  "label": "introduction",
+                  "permalink": "/book_writing_hackathon/docs/tags/introduction"
+                }
+              ],
               "version": "current",
+              "sidebarPosition": 1,
               "frontMatter": {
-                "slug": "/intro"
+                "title": "Introduction",
+                "sidebar_position": 1,
+                "description": "Comprehensive overview of Physical AI and its importance in modern robotics",
+                "tags": [
+                  "physical-ai",
+                  "humanoid-robotics",
+                  "introduction"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "next": {
+                "title": "Module 2 - ROS 2 (Robotic Nervous System)",
+                "permalink": "/book_writing_hackathon/docs/module-2-ros2"
+              }
+            },
+            {
+              "id": "module-2-ros2",
+              "title": "Module 2 - ROS 2 (Robotic Nervous System)",
+              "description": "Understanding ROS 2 architecture and its role in humanoid robotics",
+              "source": "@site/docs/module-2-ros2.mdx",
+              "sourceDirName": ".",
+              "slug": "/module-2-ros2",
+              "permalink": "/book_writing_hackathon/docs/module-2-ros2",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-2-ros2.mdx",
+              "tags": [
+                {
+                  "label": "ros2",
+                  "permalink": "/book_writing_hackathon/docs/tags/ros-2"
+                },
+                {
+                  "label": "robotics",
+                  "permalink": "/book_writing_hackathon/docs/tags/robotics"
+                },
+                {
+                  "label": "middleware",
+                  "permalink": "/book_writing_hackathon/docs/tags/middleware"
+                },
+                {
+                  "label": "communication",
+                  "permalink": "/book_writing_hackathon/docs/tags/communication"
+                }
+              ],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "title": "Module 2 - ROS 2 (Robotic Nervous System)",
+                "sidebar_position": 2,
+                "description": "Understanding ROS 2 architecture and its role in humanoid robotics",
+                "tags": [
+                  "ros2",
+                  "robotics",
+                  "middleware",
+                  "communication"
+                ]
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Qdrant Cloud Vector Database Fundamentals",
-                "permalink": "/book_writing_hackathon/docs/foundations/qdrant-cloud"
+                "title": "Introduction",
+                "permalink": "/book_writing_hackathon/docs/intro"
               },
               "next": {
-                "title": "Setting Up the Development Environment",
-                "permalink": "/book_writing_hackathon/docs/systems/environment-setup"
+                "title": "Module 3 - Digital Twin (Gazebo & Unity)",
+                "permalink": "/book_writing_hackathon/docs/module-3-digital-twin"
+              }
+            },
+            {
+              "id": "module-3-digital-twin",
+              "title": "Module 3 - Digital Twin (Gazebo & Unity)",
+              "description": "Physics simulation for humanoid robotics in Gazebo and Unity",
+              "source": "@site/docs/module-3-digital-twin.mdx",
+              "sourceDirName": ".",
+              "slug": "/module-3-digital-twin",
+              "permalink": "/book_writing_hackathon/docs/module-3-digital-twin",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-3-digital-twin.mdx",
+              "tags": [
+                {
+                  "label": "gazebo",
+                  "permalink": "/book_writing_hackathon/docs/tags/gazebo"
+                },
+                {
+                  "label": "unity",
+                  "permalink": "/book_writing_hackathon/docs/tags/unity"
+                },
+                {
+                  "label": "simulation",
+                  "permalink": "/book_writing_hackathon/docs/tags/simulation"
+                },
+                {
+                  "label": "digital-twin",
+                  "permalink": "/book_writing_hackathon/docs/tags/digital-twin"
+                },
+                {
+                  "label": "physics",
+                  "permalink": "/book_writing_hackathon/docs/tags/physics"
+                }
+              ],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "title": "Module 3 - Digital Twin (Gazebo & Unity)",
+                "sidebar_position": 3,
+                "description": "Physics simulation for humanoid robotics in Gazebo and Unity",
+                "tags": [
+                  "gazebo",
+                  "unity",
+                  "simulation",
+                  "digital-twin",
+                  "physics"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Module 2 - ROS 2 (Robotic Nervous System)",
+                "permalink": "/book_writing_hackathon/docs/module-2-ros2"
+              },
+              "next": {
+                "title": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+                "permalink": "/book_writing_hackathon/docs/module-4-ai-brain"
+              }
+            },
+            {
+              "id": "module-4-ai-brain",
+              "title": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+              "description": "NVIDIA Isaac platform capabilities for robotics perception and navigation",
+              "source": "@site/docs/module-4-ai-brain.mdx",
+              "sourceDirName": ".",
+              "slug": "/module-4-ai-brain",
+              "permalink": "/book_writing_hackathon/docs/module-4-ai-brain",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-4-ai-brain.mdx",
+              "tags": [
+                {
+                  "label": "nvidia-isaac",
+                  "permalink": "/book_writing_hackathon/docs/tags/nvidia-isaac"
+                },
+                {
+                  "label": "perception",
+                  "permalink": "/book_writing_hackathon/docs/tags/perception"
+                },
+                {
+                  "label": "navigation",
+                  "permalink": "/book_writing_hackathon/docs/tags/navigation"
+                },
+                {
+                  "label": "ai",
+                  "permalink": "/book_writing_hackathon/docs/tags/ai"
+                },
+                {
+                  "label": "robotics",
+                  "permalink": "/book_writing_hackathon/docs/tags/robotics"
+                }
+              ],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "title": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+                "sidebar_position": 4,
+                "description": "NVIDIA Isaac platform capabilities for robotics perception and navigation",
+                "tags": [
+                  "nvidia-isaac",
+                  "perception",
+                  "navigation",
+                  "ai",
+                  "robotics"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Module 3 - Digital Twin (Gazebo & Unity)",
+                "permalink": "/book_writing_hackathon/docs/module-3-digital-twin"
+              },
+              "next": {
+                "title": "Module 5 - Vision-Language-Action Integration",
+                "permalink": "/book_writing_hackathon/docs/module-5-vla"
+              }
+            },
+            {
+              "id": "module-5-vla",
+              "title": "Module 5 - Vision-Language-Action Integration",
+              "description": "Integrating vision, language, and action systems for humanoid robots",
+              "source": "@site/docs/module-5-vla.mdx",
+              "sourceDirName": ".",
+              "slug": "/module-5-vla",
+              "permalink": "/book_writing_hackathon/docs/module-5-vla",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-5-vla.mdx",
+              "tags": [
+                {
+                  "label": "vision",
+                  "permalink": "/book_writing_hackathon/docs/tags/vision"
+                },
+                {
+                  "label": "language",
+                  "permalink": "/book_writing_hackathon/docs/tags/language"
+                },
+                {
+                  "label": "action",
+                  "permalink": "/book_writing_hackathon/docs/tags/action"
+                },
+                {
+                  "label": "multi-modal",
+                  "permalink": "/book_writing_hackathon/docs/tags/multi-modal"
+                },
+                {
+                  "label": "humanoid-robotics",
+                  "permalink": "/book_writing_hackathon/docs/tags/humanoid-robotics"
+                }
+              ],
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "title": "Module 5 - Vision-Language-Action Integration",
+                "sidebar_position": 5,
+                "description": "Integrating vision, language, and action systems for humanoid robots",
+                "tags": [
+                  "vision",
+                  "language",
+                  "action",
+                  "multi-modal",
+                  "humanoid-robotics"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+                "permalink": "/book_writing_hackathon/docs/module-4-ai-brain"
+              },
+              "next": {
+                "title": "Module 6 - Weekly Breakdown",
+                "permalink": "/book_writing_hackathon/docs/module-6-weekly-breakdown"
+              }
+            },
+            {
+              "id": "module-6-weekly-breakdown",
+              "title": "Module 6 - Weekly Breakdown",
+              "description": "13-week course structure with learning objectives and assessment guidance",
+              "source": "@site/docs/module-6-weekly-breakdown.mdx",
+              "sourceDirName": ".",
+              "slug": "/module-6-weekly-breakdown",
+              "permalink": "/book_writing_hackathon/docs/module-6-weekly-breakdown",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-6-weekly-breakdown.mdx",
+              "tags": [
+                {
+                  "label": "course-structure",
+                  "permalink": "/book_writing_hackathon/docs/tags/course-structure"
+                },
+                {
+                  "label": "weekly-plan",
+                  "permalink": "/book_writing_hackathon/docs/tags/weekly-plan"
+                },
+                {
+                  "label": "learning-objectives",
+                  "permalink": "/book_writing_hackathon/docs/tags/learning-objectives"
+                },
+                {
+                  "label": "assessment",
+                  "permalink": "/book_writing_hackathon/docs/tags/assessment"
+                }
+              ],
+              "version": "current",
+              "sidebarPosition": 6,
+              "frontMatter": {
+                "title": "Module 6 - Weekly Breakdown",
+                "sidebar_position": 6,
+                "description": "13-week course structure with learning objectives and assessment guidance",
+                "tags": [
+                  "course-structure",
+                  "weekly-plan",
+                  "learning-objectives",
+                  "assessment"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Module 5 - Vision-Language-Action Integration",
+                "permalink": "/book_writing_hackathon/docs/module-5-vla"
+              },
+              "next": {
+                "title": "Module 7 - Capstone Project",
+                "permalink": "/book_writing_hackathon/docs/module-7-capstone"
+              }
+            },
+            {
+              "id": "module-7-capstone",
+              "title": "Module 7 - Capstone Project",
+              "description": "Comprehensive capstone project integrating all course concepts using major tools",
+              "source": "@site/docs/module-7-capstone.mdx",
+              "sourceDirName": ".",
+              "slug": "/module-7-capstone",
+              "permalink": "/book_writing_hackathon/docs/module-7-capstone",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-7-capstone.mdx",
+              "tags": [
+                {
+                  "label": "capstone",
+                  "permalink": "/book_writing_hackathon/docs/tags/capstone"
+                },
+                {
+                  "label": "integration",
+                  "permalink": "/book_writing_hackathon/docs/tags/integration"
+                },
+                {
+                  "label": "project",
+                  "permalink": "/book_writing_hackathon/docs/tags/project"
+                },
+                {
+                  "label": "autonomous",
+                  "permalink": "/book_writing_hackathon/docs/tags/autonomous"
+                },
+                {
+                  "label": "humanoid-robotics",
+                  "permalink": "/book_writing_hackathon/docs/tags/humanoid-robotics"
+                }
+              ],
+              "version": "current",
+              "sidebarPosition": 7,
+              "frontMatter": {
+                "title": "Module 7 - Capstone Project",
+                "sidebar_position": 7,
+                "description": "Comprehensive capstone project integrating all course concepts using major tools",
+                "tags": [
+                  "capstone",
+                  "integration",
+                  "project",
+                  "autonomous",
+                  "humanoid-robotics"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Module 6 - Weekly Breakdown",
+                "permalink": "/book_writing_hackathon/docs/module-6-weekly-breakdown"
               }
             },
             {
@@ -246,15 +532,6 @@
               "sidebarPosition": 3,
               "frontMatter": {
                 "sidebar_position": 3
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Creating AI-Generated Content Systems",
-                "permalink": "/book_writing_hackathon/docs/systems/content-generation"
-              },
-              "next": {
-                "title": "FastAPI Backend Setup and Architecture",
-                "permalink": "/book_writing_hackathon/docs/systems/fastapi-backend"
               }
             },
             {
@@ -273,15 +550,6 @@
               "sidebarPosition": 2,
               "frontMatter": {
                 "sidebar_position": 2
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Setting Up the Development Environment",
-                "permalink": "/book_writing_hackathon/docs/systems/environment-setup"
-              },
-              "next": {
-                "title": "Building the RAG Chatbot Foundation",
-                "permalink": "/book_writing_hackathon/docs/systems/building-rag-chatbot"
               }
             },
             {
@@ -300,15 +568,6 @@
               "sidebarPosition": 1,
               "frontMatter": {
                 "sidebar_position": 1
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "The AI-Powered Learning Journey",
-                "permalink": "/book_writing_hackathon/docs/intro"
-              },
-              "next": {
-                "title": "Creating AI-Generated Content Systems",
-                "permalink": "/book_writing_hackathon/docs/systems/content-generation"
               }
             },
             {
@@ -327,11 +586,6 @@
               "sidebarPosition": 4,
               "frontMatter": {
                 "sidebar_position": 4
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Building the RAG Chatbot Foundation",
-                "permalink": "/book_writing_hackathon/docs/systems/building-rag-chatbot"
               }
             }
           ],
@@ -340,82 +594,44 @@
             "tutorialSidebar": [
               {
                 "type": "category",
-                "label": "foundations",
-                "collapsible": true,
-                "collapsed": true,
+                "label": "Physical AI & Humanoid Robotics",
                 "items": [
                   {
                     "type": "doc",
-                    "id": "foundations/ai-powered-documentation"
+                    "id": "intro"
                   },
                   {
                     "type": "doc",
-                    "id": "foundations/spec-driven-development"
+                    "id": "module-2-ros2"
                   },
                   {
                     "type": "doc",
-                    "id": "foundations/claude-code"
+                    "id": "module-3-digital-twin"
                   },
                   {
                     "type": "doc",
-                    "id": "foundations/docusaurus-fundamentals"
+                    "id": "module-4-ai-brain"
                   },
                   {
                     "type": "doc",
-                    "id": "foundations/rag-systems"
+                    "id": "module-5-vla"
                   },
                   {
                     "type": "doc",
-                    "id": "foundations/openai-integration"
+                    "id": "module-6-weekly-breakdown"
                   },
                   {
                     "type": "doc",
-                    "id": "foundations/qdrant-cloud"
+                    "id": "module-7-capstone"
                   }
-                ]
-              },
-              {
-                "type": "doc",
-                "id": "intro"
-              },
-              {
-                "type": "category",
-                "label": "systems",
-                "collapsible": true,
-                "collapsed": true,
-                "items": [
-                  {
-                    "type": "doc",
-                    "id": "systems/environment-setup"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "systems/content-generation"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "systems/building-rag-chatbot"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "systems/fastapi-backend"
-                  }
-                ]
+                ],
+                "collapsed": false,
+                "collapsible": true
               }
             ]
           }
         }
       ]
-    }
-  },
-  "docusaurus-plugin-content-blog": {
-    "default": {
-      "blogSidebarTitle": "Recent posts",
-      "blogPosts": [],
-      "blogListPaginated": [],
-      "blogTags": {},
-      "blogTagsListPath": "/book_writing_hackathon/blog/tags",
-      "blogTagsPaginated": []
     }
   },
   "docusaurus-plugin-content-pages": {

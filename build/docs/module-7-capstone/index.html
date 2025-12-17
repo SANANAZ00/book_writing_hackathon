@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-module-7-capstone" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.1.0">
+<title data-rh="true">Module 7 - Capstone Project | Physical AI &amp; Humanoid Robotics</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sananaz00.github.io/book_writing_hackathon/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://sananaz00.github.io/book_writing_hackathon/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://sananaz00.github.io/book_writing_hackathon/docs/module-7-capstone"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Module 7 - Capstone Project | Physical AI &amp; Humanoid Robotics"><meta data-rh="true" name="description" content="Comprehensive capstone project integrating all course concepts using major tools"><meta data-rh="true" property="og:description" content="Comprehensive capstone project integrating all course concepts using major tools"><link data-rh="true" rel="icon" href="/book_writing_hackathon/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://sananaz00.github.io/book_writing_hackathon/docs/module-7-capstone"><link data-rh="true" rel="alternate" href="https://sananaz00.github.io/book_writing_hackathon/docs/module-7-capstone" hreflang="en"><link data-rh="true" rel="alternate" href="https://sananaz00.github.io/book_writing_hackathon/docs/module-7-capstone" hreflang="x-default"><link rel="stylesheet" href="/book_writing_hackathon/assets/css/styles.7785dc77.css">
+<script src="/book_writing_hackathon/assets/js/runtime~main.ee4ca24d.js" defer="defer"></script>
+<script src="/book_writing_hackathon/assets/js/main.6cf79107.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/book_writing_hackathon/"><div class="navbar__logo"><img src="/book_writing_hackathon/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/book_writing_hackathon/img/logo.svg" alt="Physical AI &amp; Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Robotics</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/book_writing_hackathon/docs/intro">Book</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/SANANAZ00/book_writing_hackathon" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" aria-expanded="true" href="/book_writing_hackathon/docs/intro">Physical AI &amp; Humanoid Robotics</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/book_writing_hackathon/docs/intro">Introduction</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/book_writing_hackathon/docs/module-2-ros2">Module 2 - ROS 2 (Robotic Nervous System)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/book_writing_hackathon/docs/module-3-digital-twin">Module 3 - Digital Twin (Gazebo &amp; Unity)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/book_writing_hackathon/docs/module-4-ai-brain">Module 4 - AI-Robot Brain (NVIDIA Isaac)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/book_writing_hackathon/docs/module-5-vla">Module 5 - Vision-Language-Action Integration</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/book_writing_hackathon/docs/module-6-weekly-breakdown">Module 6 - Weekly Breakdown</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/book_writing_hackathon/docs/module-7-capstone">Module 7 - Capstone Project</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><span class="breadcrumbs__link">Physical AI &amp; Humanoid Robotics</span><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Module 7 - Capstone Project</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="container container--fluid"><h1 id="module-7-capstone-project">Module 7: Capstone Project</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After completing this module, you will be able to:</p>
+<ul>
+<li>Design and implement a comprehensive autonomous humanoid system that integrates all course concepts</li>
+<li>Demonstrate autonomous humanoid capabilities including perception, navigation, and interaction</li>
+<li>Successfully utilize all major tools (ROS 2, Gazebo/Unity, NVIDIA Isaac) in a unified system</li>
+<li>Apply assessment rubrics and evaluation criteria to measure system performance</li>
+<li>Present and defend technical implementation decisions</li>
+<li>Evaluate the effectiveness of integrated Physical AI systems</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Completion of all previous modules (Modules 1-6)</li>
+<li>Proficiency with ROS 2, Gazebo/Unity, and NVIDIA Isaac platforms</li>
+<li>Understanding of Vision-Language-Action integration</li>
+<li>Ability to work independently on complex integration projects</li>
+<li>Access to required hardware and software environments</li>
+</ul>
+<h2 id="1-introduction-to-the-capstone-project">1. Introduction to the Capstone Project</h2>
+<p>The capstone project represents the culmination of your learning journey in Physical AI &amp; Humanoid Robotics. This comprehensive project requires you to integrate all concepts, tools, and techniques covered throughout the course into a single, functional autonomous humanoid system.</p>
+<h3 id="project-philosophy">Project Philosophy</h3>
+<p>The capstone project is designed to mirror real-world robotics development challenges:</p>
+<ul>
+<li><strong>Integration Complexity</strong>: Combining multiple subsystems into a cohesive whole</li>
+<li><strong>Real-World Constraints</strong>: Working within computational, timing, and safety limitations</li>
+<li><strong>Multi-Modal Coordination</strong>: Managing vision, language, and action systems simultaneously</li>
+<li><strong>Autonomous Operation</strong>: Creating systems that operate independently with minimal human intervention</li>
+</ul>
+<h3 id="project-scope">Project Scope</h3>
+<p>Your capstone system should demonstrate:</p>
+<ul>
+<li><strong>Perception</strong>: Real-time environmental understanding through vision systems</li>
+<li><strong>Cognition</strong>: Natural language processing and decision-making capabilities</li>
+<li><strong>Action</strong>: Physical interaction and navigation in human environments</li>
+<li><strong>Integration</strong>: Seamless coordination between all subsystems</li>
+<li><strong>Autonomy</strong>: Independent operation following natural language commands</li>
+</ul>
+<h2 id="2-capstone-project-requirements">2. Capstone Project Requirements</h2>
+<h3 id="21-core-system-requirements">2.1 Core System Requirements</h3>
+<p>Your autonomous humanoid system must include:</p>
+<h4 id="perception-system">Perception System</h4>
+<ul>
+<li>Real-time object detection and recognition</li>
+<li>Spatial relationship understanding</li>
+<li>Dynamic scene analysis</li>
+<li>Integration with NVIDIA Isaac perception pipelines</li>
+</ul>
+<h4 id="navigation-system">Navigation System</h4>
+<ul>
+<li>Autonomous path planning and execution</li>
+<li>Obstacle avoidance and recovery behaviors</li>
+<li>Human-aware navigation in populated environments</li>
+<li>Integration with VSLAM for localization</li>
+</ul>
+<h4 id="interaction-system">Interaction System</h4>
+<ul>
+<li>Natural language command processing</li>
+<li>Visual scene description and question answering</li>
+<li>Multi-modal communication (speech and gesture)</li>
+<li>Context-aware dialogue management</li>
+</ul>
+<h4 id="control-system">Control System</h4>
+<ul>
+<li>ROS 2-based communication and coordination</li>
+<li>Real-time control loop implementation</li>
+<li>Safety monitoring and emergency procedures</li>
+<li>Hardware abstraction and device management</li>
+</ul>
+<h3 id="22-technical-integration-requirements">2.2 Technical Integration Requirements</h3>
+<p>Your system must demonstrate integration of:</p>
+<h4 id="ros-2-integration">ROS 2 Integration</h4>
+<ul>
+<li>Distributed node architecture with proper communication patterns</li>
+<li>Action servers for long-running operations</li>
+<li>Service interfaces for discrete operations</li>
+<li>Parameter management and configuration</li>
+</ul>
+<h4 id="simulation-integration">Simulation Integration</h4>
+<ul>
+<li>Gazebo for physics-accurate simulation</li>
+<li>Unity for photorealistic environment rendering</li>
+<li>Cross-platform validation and consistency</li>
+<li>Sensor simulation and validation</li>
+</ul>
+<h4 id="nvidia-isaac-integration">NVIDIA Isaac Integration</h4>
+<ul>
+<li>GPU-accelerated perception pipelines</li>
+<li>Isaac ROS packages for optimized processing</li>
+<li>Isaac Sim for training and validation</li>
+<li>VSLAM and navigation system implementation</li>
+</ul>
+<h3 id="23-performance-requirements">2.3 Performance Requirements</h3>
+<p>Your system must meet:</p>
+<h4 id="real-time-performance">Real-Time Performance</h4>
+<ul>
+<li>Perception pipeline: &lt; 100ms per frame</li>
+<li>Command processing: &lt; 500ms response time</li>
+<li>Navigation planning: &lt; 10ms for local planning</li>
+<li>Control loop: 50Hz minimum frequency</li>
+</ul>
+<h4 id="reliability-requirements">Reliability Requirements</h4>
+<ul>
+<li>95% task completion rate in controlled environments</li>
+<li>Graceful degradation when components fail</li>
+<li>Recovery from common error conditions</li>
+<li>Consistent performance across different scenarios</li>
+</ul>
+<h4 id="safety-requirements">Safety Requirements</h4>
+<ul>
+<li>Emergency stop functionality</li>
+<li>Collision avoidance and safety boundaries</li>
+<li>Human-aware interaction protocols</li>
+<li>Fail-safe behaviors for all critical systems</li>
+</ul>
+<h2 id="3-project-implementation-phases">3. Project Implementation Phases</h2>
+<h3 id="phase-1-system-architecture-design-week-1">Phase 1: System Architecture Design (Week 1)</h3>
+<h4 id="31-system-design-document">3.1 System Design Document</h4>
+<p>Create a comprehensive system architecture document that includes:</p>
+<ul>
+<li>High-level system architecture diagram</li>
+<li>Component interaction diagrams</li>
+<li>Data flow and communication patterns</li>
+<li>Resource allocation and performance requirements</li>
+</ul>
+<h4 id="32-component-specification">3.2 Component Specification</h4>
+<p>Define specifications for each major component:</p>
+<ul>
+<li>Perception module requirements and interfaces</li>
+<li>Navigation module requirements and interfaces</li>
+<li>Interaction module requirements and interfaces</li>
+<li>Integration layer specifications</li>
+</ul>
+<h4 id="33-development-plan">3.3 Development Plan</h4>
+<p>Create a detailed development plan with:</p>
+<ul>
+<li>Milestone timeline and deliverables</li>
+<li>Risk assessment and mitigation strategies</li>
+<li>Testing and validation approach</li>
+<li>Resource allocation and dependencies</li>
+</ul>
+<h3 id="phase-2-core-system-implementation-week-2">Phase 2: Core System Implementation (Week 2)</h3>
+<h4 id="31-ros-2-infrastructure">3.1 ROS 2 Infrastructure</h4>
+<p>Implement the foundational ROS 2 infrastructure:</p>
+<ul>
+<li>Node manager and communication framework</li>
+<li>Action server implementations</li>
+<li>Service interfaces and parameter management</li>
+<li>Logging and monitoring systems</li>
+</ul>
+<h4 id="32-simulation-environment">3.2 Simulation Environment</h4>
+<p>Set up and configure simulation environments:</p>
+<ul>
+<li>Gazebo world creation and robot spawning</li>
+<li>Unity scene setup and robot integration</li>
+<li>Cross-platform validation framework</li>
+<li>Sensor simulation and calibration</li>
+</ul>
+<h4 id="33-basic-control-system">3.3 Basic Control System</h4>
+<p>Implement basic robot control capabilities:</p>
+<ul>
+<li>Joint control and safety monitoring</li>
+<li>Basic navigation capabilities</li>
+<li>Simple perception and interaction</li>
+<li>Emergency stop and safety protocols</li>
+</ul>
+<h3 id="phase-3-advanced-integration-week-3">Phase 3: Advanced Integration (Week 3)</h3>
+<h4 id="31-perception-pipeline">3.1 Perception Pipeline</h4>
+<p>Develop advanced perception capabilities:</p>
+<ul>
+<li>Object detection and recognition</li>
+<li>Spatial reasoning and scene understanding</li>
+<li>Multi-modal sensor fusion</li>
+<li>Real-time performance optimization</li>
+</ul>
+<h4 id="32-navigation-system">3.2 Navigation System</h4>
+<p>Implement comprehensive navigation:</p>
+<ul>
+<li>Global and local path planning</li>
+<li>Dynamic obstacle avoidance</li>
+<li>Human-aware navigation behaviors</li>
+<li>Recovery and safety behaviors</li>
+</ul>
+<h4 id="33-interaction-system">3.3 Interaction System</h4>
+<p>Create natural interaction capabilities:</p>
+<ul>
+<li>Natural language understanding</li>
+<li>Dialogue management</li>
+<li>Visual question answering</li>
+<li>Context maintenance</li>
+</ul>
+<h3 id="phase-4-system-integration-and-testing-week-4">Phase 4: System Integration and Testing (Week 4)</h3>
+<h4 id="31-end-to-end-integration">3.1 End-to-End Integration</h4>
+<p>Integrate all subsystems into a cohesive system:</p>
+<ul>
+<li>Multi-modal coordination and timing</li>
+<li>Error handling and recovery</li>
+<li>Performance optimization</li>
+<li>Safety system validation</li>
+</ul>
+<h4 id="32-comprehensive-testing">3.2 Comprehensive Testing</h4>
+<p>Conduct thorough system testing:</p>
+<ul>
+<li>Unit testing for individual components</li>
+<li>Integration testing for subsystems</li>
+<li>System-level testing for complete scenarios</li>
+<li>Stress testing and edge case validation</li>
+</ul>
+<h4 id="33-performance-optimization">3.3 Performance Optimization</h4>
+<p>Optimize system performance:</p>
+<ul>
+<li>Computational efficiency improvements</li>
+<li>Memory usage optimization</li>
+<li>Communication latency reduction</li>
+<li>Real-time performance validation</li>
+</ul>
+<h3 id="phase-5-demonstration-and-evaluation-week-5">Phase 5: Demonstration and Evaluation (Week 5)</h3>
+<h4 id="31-demonstration-preparation">3.1 Demonstration Preparation</h4>
+<p>Prepare for project demonstration:</p>
+<ul>
+<li>Demonstration scenarios and test cases</li>
+<li>Presentation materials and documentation</li>
+<li>Performance metrics and evaluation criteria</li>
+<li>Troubleshooting and backup plans</li>
+</ul>
+<h4 id="32-system-evaluation">3.2 System Evaluation</h4>
+<p>Conduct comprehensive system evaluation:</p>
+<ul>
+<li>Performance metric measurement</li>
+<li>User experience assessment</li>
+<li>Technical capability validation</li>
+<li>Safety and reliability verification</li>
+</ul>
+<h4 id="33-project-presentation">3.3 Project Presentation</h4>
+<p>Present the completed project:</p>
+<ul>
+<li>Technical implementation overview</li>
+<li>System demonstration and capabilities</li>
+<li>Challenges faced and solutions implemented</li>
+<li>Future improvements and extensions</li>
+</ul>
+<h2 id="4-technical-implementation-details">4. Technical Implementation Details</h2>
+<h3 id="41-system-architecture">4.1 System Architecture</h3>
+<p>The recommended architecture follows a layered approach:</p>
+<pre><code>┌─────────────────────────────────────────┐
+│            User Interface Layer         │
+├─────────────────────────────────────────┤
+│          Coordination Layer             │
+├─────────────────────────────────────────┤
+│    Perception    │  Navigation  │  Action│
+├─────────────────────────────────────────┤
+│         ROS 2 Communication Layer       │
+├─────────────────────────────────────────┤
+│     Hardware Abstraction Layer          │
+└─────────────────────────────────────────┘
+</code></pre>
+<h4 id="411-user-interface-layer">4.1.1 User Interface Layer</h4>
+<ul>
+<li>Natural language command interface</li>
+<li>Visual feedback and status display</li>
+<li>Emergency control and monitoring</li>
+<li>Performance metrics and diagnostics</li>
+</ul>
+<h4 id="412-coordination-layer">4.1.2 Coordination Layer</h4>
+<ul>
+<li>Task planning and execution management</li>
+<li>Multi-modal integration and coordination</li>
+<li>Context maintenance and state management</li>
+<li>Error handling and recovery coordination</li>
+</ul>
+<h4 id="413-subsystem-layers">4.1.3 Subsystem Layers</h4>
+<ul>
+<li><strong>Perception</strong>: Object detection, scene understanding, sensor fusion</li>
+<li><strong>Navigation</strong>: Path planning, obstacle avoidance, localization</li>
+<li><strong>Action</strong>: Manipulation, locomotion, interaction</li>
+</ul>
+<h4 id="414-communication-layer">4.1.4 Communication Layer</h4>
+<ul>
+<li>ROS 2 message passing and services</li>
+<li>Action server interfaces</li>
+<li>Parameter management</li>
+<li>Logging and monitoring</li>
+</ul>
+<h4 id="415-hardware-abstraction">4.1.5 Hardware Abstraction</h4>
+<ul>
+<li>Device drivers and interfaces</li>
+<li>Safety monitoring and limits</li>
+<li>Calibration and configuration</li>
+<li>Emergency stop and safety systems</li>
+</ul>
+<h3 id="42-key-implementation-components">4.2 Key Implementation Components</h3>
+<h4 id="421-perception-manager-node">4.2.1 Perception Manager Node</h4>
+<pre><code class="language-python"># perception_manager.py
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Image, CameraInfo
+from vision_msgs.msg import Detection2DArray
+from geometry_msgs.msg import PointStamped
+import cv2
+from cv_bridge import CvBridge
+import numpy as np
+
+class PerceptionManager(Node):
+    def __init__(self):
+        super().__init__(&#x27;perception_manager&#x27;)
+
+        # Initialize components
+        self.bridge = CvBridge()
+        self.object_detector = self.initialize_detector()
+        self.scene_analyzer = SceneAnalyzer()
+
+        # Create subscriptions
+        self.image_sub = self.create_subscription(
+            Image, &#x27;/camera/rgb/image_raw&#x27;, self.image_callback, 10
+        )
+        self.camera_info_sub = self.create_subscription(
+            CameraInfo, &#x27;/camera/rgb/camera_info&#x27;, self.camera_info_callback, 10
+        )
+
+        # Create publishers
+        self.detection_pub = self.create_publisher(
+            Detection2DArray, &#x27;/perception/detections&#x27;, 10
+        )
+        self.scene_pub = self.create_publisher(
+            String, &#x27;/perception/scene_description&#x27;, 10
+        )
+
+        # System state
+        self.camera_intrinsics = None
+        self.perception_rate = 10  # Hz
+        self.timer = self.create_timer(1.0/self.perception_rate, self.process_scene)
+
+    def image_callback(self, msg):
+        &quot;&quot;&quot;Process incoming camera images&quot;&quot;&quot;
+        try:
+            cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding=&#x27;bgr8&#x27;)
+            self.latest_image = cv_image
+            self.image_header = msg.header
+        except Exception as e:
+            self.get_logger().error(f&#x27;Error processing image: {e}&#x27;)
+
+    def process_scene(self):
+        &quot;&quot;&quot;Process the latest scene and publish results&quot;&quot;&quot;
+        if self.latest_image is None or self.camera_intrinsics is None:
+            return
+
+        # Run object detection
+        detections = self.object_detector.detect(self.latest_image)
+
+        # Analyze scene relationships
+        scene_description = self.scene_analyzer.analyze(
+            detections, self.latest_image, self.camera_intrinsics
+        )
+
+        # Publish results
+        self.publish_detections(detections)
+        self.publish_scene_description(scene_description)
+
+    def publish_detections(self, detections):
+        &quot;&quot;&quot;Publish object detection results&quot;&quot;&quot;
+        detection_msg = Detection2DArray()
+        detection_msg.header = self.image_header
+        detection_msg.header.stamp = self.get_clock().now().to_msg()
+
+        for detection in detections:
+            detection_msg.detections.append(detection)
+
+        self.detection_pub.publish(detection_msg)
+
+    def publish_scene_description(self, description):
+        &quot;&quot;&quot;Publish scene description&quot;&quot;&quot;
+        desc_msg = String()
+        desc_msg.data = description
+        self.scene_pub.publish(desc_msg)
+</code></pre>
+<h4 id="422-navigation-manager-node">4.2.2 Navigation Manager Node</h4>
+<pre><code class="language-python"># navigation_manager.py
+import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import PoseStamped, Twist
+from nav2_msgs.action import NavigateToPose
+from rclpy.action import ActionClient
+from sensor_msgs.msg import LaserScan
+import math
+
+class NavigationManager(Node):
+    def __init__(self):
+        super().__init__(&#x27;navigation_manager&#x27;)
+
+        # Action client for navigation
+        self.nav_client = ActionClient(
+            self, NavigateToPose, &#x27;navigate_to_pose&#x27;
+        )
+
+        # Laser scan subscription for local obstacle detection
+        self.scan_sub = self.create_subscription(
+            LaserScan, &#x27;/scan&#x27;, self.scan_callback, 10
+        )
+
+        # Velocity command publisher
+        self.cmd_vel_pub = self.create_publisher(Twist, &#x27;/cmd_vel&#x27;, 10)
+
+        # System state
+        self.safety_enabled = True
+        self.emergency_stop = False
+        self.current_goal = None
+
+    def navigate_to_pose(self, x, y, theta):
+        &quot;&quot;&quot;Navigate to a specific pose&quot;&quot;&quot;
+        if not self.nav_client.wait_for_server(timeout_sec=5.0):
+            self.get_logger().error(&#x27;Navigation server not available&#x27;)
+            return False
+
+        goal_msg = NavigateToPose.Goal()
+        goal_msg.pose.header.frame_id = &#x27;map&#x27;
+        goal_msg.pose.header.stamp = self.get_clock().now().to_msg()
+
+        goal_msg.pose.pose.position.x = x
+        goal_msg.pose.pose.position.y = y
+        goal_msg.pose.pose.position.z = 0.0
+
+        # Convert theta to quaternion
+        from tf_transformations import quaternion_from_euler
+        quat = quaternion_from_euler(0, 0, theta)
+        goal_msg.pose.pose.orientation.x = quat[0]
+        goal_msg.pose.pose.orientation.y = quat[1]
+        goal_msg.pose.pose.orientation.z = quat[2]
+        goal_msg.pose.pose.orientation.w = quat[3]
+
+        self.current_goal = goal_msg
+        self._send_goal_future = self.nav_client.send_goal_async(
+            goal_msg, feedback_callback=self.feedback_callback
+        )
+        self._send_goal_future.add_done_callback(self.goal_response_callback)
+
+        return True
+
+    def scan_callback(self, msg):
+        &quot;&quot;&quot;Process laser scan for obstacle detection&quot;&quot;&quot;
+        if not self.safety_enabled:
+            return
+
+        # Check for obstacles in front of robot
+        front_range = min(msg.ranges[0:10] + msg.ranges[-10:])
+
+        if front_range &lt; 0.5:  # Obstacle within 0.5m
+            self.emergency_stop = True
+            self.stop_robot()
+            self.get_logger().warn(&#x27;Obstacle detected, stopping robot&#x27;)
+        else:
+            self.emergency_stop = False
+
+    def stop_robot(self):
+        &quot;&quot;&quot;Stop robot movement&quot;&quot;&quot;
+        stop_cmd = Twist()
+        stop_cmd.linear.x = 0.0
+        stop_cmd.angular.z = 0.0
+        self.cmd_vel_pub.publish(stop_cmd)
+</code></pre>
+<h4 id="423-interaction-manager-node">4.2.3 Interaction Manager Node</h4>
+<pre><code class="language-python"># interaction_manager.py
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+from geometry_msgs.msg import Twist
+import speech_recognition as sr
+import pyttsx3
+import threading
+
+class InteractionManager(Node):
+    def __init__(self):
+        super().__init__(&#x27;interaction_manager&#x27;)
+
+        # Create publishers
+        self.response_pub = self.create_publisher(String, &#x27;/robot_response&#x27;, 10)
+        self.command_pub = self.create_publisher(String, &#x27;/user_command&#x27;, 10)
+
+        # Initialize speech components
+        self.speech_recognizer = sr.Recognizer()
+        self.text_to_speech = pyttsx3.init()
+        self.setup_speech_engine()
+
+        # System state
+        self.listening_enabled = True
+        self.conversation_active = False
+
+        # Start speech recognition thread
+        self.speech_thread = threading.Thread(target=self.listen_continuously, daemon=True)
+        self.speech_thread.start()
+
+    def setup_speech_engine(self):
+        &quot;&quot;&quot;Configure text-to-speech engine&quot;&quot;&quot;
+        self.text_to_speech.setProperty(&#x27;rate&#x27;, 150)  # Speed of speech
+        self.text_to_speech.setProperty(&#x27;volume&#x27;, 0.9)  # Volume level
+
+    def listen_continuously(self):
+        &quot;&quot;&quot;Continuously listen for voice commands&quot;&quot;&quot;
+        with sr.Microphone() as source:
+            self.speech_recognizer.adjust_for_ambient_noise(source)
+
+            while rclpy.ok() and self.listening_enabled:
+                try:
+                    audio = self.speech_recognizer.listen(source, timeout=1.0)
+                    command = self.speech_recognizer.recognize_google(audio)
+
+                    if command:
+                        self.get_logger().info(f&#x27;Heard command: {command}&#x27;)
+
+                        # Publish command for processing
+                        cmd_msg = String()
+                        cmd_msg.data = command
+                        self.command_pub.publish(cmd_msg)
+
+                        # Respond to the command
+                        self.speak_response(f&quot;I heard {command}&quot;)
+
+                except sr.WaitTimeoutError:
+                    # No speech detected, continue listening
+                    continue
+                except sr.UnknownValueError:
+                    # Speech not understood, continue listening
+                    continue
+                except sr.RequestError as e:
+                    self.get_logger().error(f&#x27;Speech recognition error: {e}&#x27;)
+                    continue
+
+    def speak_response(self, text):
+        &quot;&quot;&quot;Speak a response using text-to-speech&quot;&quot;&quot;
+        def speak_thread():
+            self.text_to_speech.say(text)
+            self.text_to_speech.runAndWait()
+
+        # Run in separate thread to avoid blocking
+        speak_thread = threading.Thread(target=speak_thread)
+        speak_thread.start()
+</code></pre>
+<h3 id="43-integration-framework">4.3 Integration Framework</h3>
+<p>Create an integration manager that coordinates all subsystems:</p>
+<pre><code class="language-python"># capstone_integration_manager.py
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+from geometry_msgs.msg import Twist
+import threading
+import time
+
+class CapstoneIntegrationManager(Node):
+    def __init__(self):
+        super().__init__(&#x27;capstone_integration_manager&#x27;)
+
+        # Create subscriptions for all subsystems
+        self.command_sub = self.create_subscription(
+            String, &#x27;/user_command&#x27;, self.command_callback, 10
+        )
+        self.perception_sub = self.create_subscription(
+            String, &#x27;/perception/scene_description&#x27;, self.perception_callback, 10
+        )
+        self.navigation_sub = self.create_subscription(
+            String, &#x27;/navigation/status&#x27;, self.navigation_callback, 10
+        )
+
+        # Create publishers for coordination
+        self.status_pub = self.create_publisher(String, &#x27;/capstone/status&#x27;, 10)
+        self.control_pub = self.create_publisher(Twist, &#x27;/cmd_vel&#x27;, 10)
+
+        # System state
+        self.system_state = &#x27;idle&#x27;
+        self.active_tasks = []
+        self.perception_data = None
+        self.navigation_data = None
+
+        # Task queue for processing
+        self.task_queue = []
+        self.task_thread = threading.Thread(target=self.process_tasks, daemon=True)
+        self.task_thread.start()
+
+        self.get_logger().info(&#x27;Capstone Integration Manager initialized&#x27;)
+
+    def command_callback(self, msg):
+        &quot;&quot;&quot;Process incoming commands and create tasks&quot;&quot;&quot;
+        command = msg.data.lower()
+
+        if &#x27;go to&#x27; in command or &#x27;navigate to&#x27; in command:
+            # Extract destination and create navigation task
+            destination = self.extract_destination(command)
+            task = {
+                &#x27;type&#x27;: &#x27;navigation&#x27;,
+                &#x27;destination&#x27;: destination,
+                &#x27;priority&#x27;: &#x27;high&#x27;
+            }
+            self.task_queue.append(task)
+
+        elif &#x27;look at&#x27; in command or &#x27;find&#x27; in command:
+            # Create perception task
+            target = self.extract_target(command)
+            task = {
+                &#x27;type&#x27;: &#x27;perception&#x27;,
+                &#x27;target&#x27;: target,
+                &#x27;priority&#x27;: &#x27;medium&#x27;
+            }
+            self.task_queue.append(task)
+
+        elif &#x27;stop&#x27; in command or &#x27;halt&#x27; in command:
+            # Create stop task
+            task = {
+                &#x27;type&#x27;: &#x27;stop&#x27;,
+                &#x27;priority&#x27;: &#x27;critical&#x27;
+            }
+            self.task_queue.insert(0, task)  # Insert at front for immediate execution
+
+    def extract_destination(self, command):
+        &quot;&quot;&quot;Extract destination from navigation command&quot;&quot;&quot;
+        # Simple keyword extraction - in practice, use NLP
+        if &#x27;kitchen&#x27; in command:
+            return &#x27;kitchen&#x27;
+        elif &#x27;living room&#x27; in command:
+            return &#x27;living_room&#x27;
+        elif &#x27;bedroom&#x27; in command:
+            return &#x27;bedroom&#x27;
+        else:
+            return &#x27;unknown&#x27;
+
+    def extract_target(self, command):
+        &quot;&quot;&quot;Extract target object from command&quot;&quot;&quot;
+        # Simple keyword extraction
+        if &#x27;person&#x27; in command:
+            return &#x27;person&#x27;
+        elif &#x27;cup&#x27; in command:
+            return &#x27;cup&#x27;
+        elif &#x27;book&#x27; in command:
+            return &#x27;book&#x27;
+        else:
+            return &#x27;unknown&#x27;
+
+    def process_tasks(self):
+        &quot;&quot;&quot;Process tasks from the queue&quot;&quot;&quot;
+        while rclpy.ok():
+            if self.task_queue:
+                # Sort tasks by priority
+                self.task_queue.sort(key=lambda x: self.get_priority_value(x[&#x27;priority&#x27;]))
+
+                task = self.task_queue.pop(0)
+                self.execute_task(task)
+
+            time.sleep(0.1)  # Small delay to prevent busy waiting
+
+    def get_priority_value(self, priority):
+        &quot;&quot;&quot;Convert priority string to numeric value&quot;&quot;&quot;
+        priority_map = {
+            &#x27;critical&#x27;: 0,
+            &#x27;high&#x27;: 1,
+            &#x27;medium&#x27;: 2,
+            &#x27;low&#x27;: 3
+        }
+        return priority_map.get(priority, 2)
+
+    def execute_task(self, task):
+        &quot;&quot;&quot;Execute a specific task&quot;&quot;&quot;
+        self.get_logger().info(f&#x27;Executing task: {task}&#x27;)
+
+        if task[&#x27;type&#x27;] == &#x27;navigation&#x27;:
+            self.execute_navigation_task(task)
+        elif task[&#x27;type&#x27;] == &#x27;perception&#x27;:
+            self.execute_perception_task(task)
+        elif task[&#x27;type&#x27;] == &#x27;stop&#x27;:
+            self.execute_stop_task(task)
+
+    def execute_navigation_task(self, task):
+        &quot;&quot;&quot;Execute navigation task&quot;&quot;&quot;
+        self.system_state = &#x27;navigating&#x27;
+        destination = task[&#x27;destination&#x27;]
+
+        # Publish navigation command (would interface with navigation manager)
+        status_msg = String()
+        status_msg.data = f&#x27;Navigating to {destination}&#x27;
+        self.status_pub.publish(status_msg)
+
+        # In practice, this would call navigation services
+        self.get_logger().info(f&#x27;Navigating to {destination}&#x27;)
+
+        # Simulate navigation completion
+        time.sleep(2.0)
+
+        self.system_state = &#x27;idle&#x27;
+        completion_msg = String()
+        completion_msg.data = f&#x27;Arrived at {destination}&#x27;
+        self.status_pub.publish(completion_msg)
+
+    def execute_perception_task(self, task):
+        &quot;&quot;&quot;Execute perception task&quot;&quot;&quot;
+        self.system_state = &#x27;perceiving&#x27;
+        target = task[&#x27;target&#x27;]
+
+        status_msg = String()
+        status_msg.data = f&#x27;Looking for {target}&#x27;
+        self.status_pub.publish(status_msg)
+
+        # In practice, this would trigger perception pipeline
+        self.get_logger().info(f&#x27;Looking for {target}&#x27;)
+
+        # Simulate perception completion
+        time.sleep(1.0)
+
+        self.system_state = &#x27;idle&#x27;
+        completion_msg = String()
+        completion_msg.data = f&#x27;Found {target}&#x27; if target != &#x27;unknown&#x27; else &#x27;Object not found&#x27;
+        self.status_pub.publish(completion_msg)
+
+    def execute_stop_task(self, task):
+        &quot;&quot;&quot;Execute stop task&quot;&quot;&quot;
+        self.system_state = &#x27;stopping&#x27;
+
+        # Stop all robot movement
+        stop_cmd = Twist()
+        stop_cmd.linear.x = 0.0
+        stop_cmd.angular.z = 0.0
+        self.control_pub.publish(stop_cmd)
+
+        status_msg = String()
+        status_msg.data = &#x27;Robot stopped&#x27;
+        self.status_pub.publish(status_msg)
+
+        self.system_state = &#x27;idle&#x27;
+
+    def perception_callback(self, msg):
+        &quot;&quot;&quot;Process perception updates&quot;&quot;&quot;
+        self.perception_data = msg.data
+        self.get_logger().debug(f&#x27;Perception update: {msg.data}&#x27;)
+
+    def navigation_callback(self, msg):
+        &quot;&quot;&quot;Process navigation updates&quot;&quot;&quot;
+        self.navigation_data = msg.data
+        self.get_logger().debug(f&#x27;Navigation update: {msg.data}&#x27;)
+
+def main(args=None):
+    rclpy.init(args=args)
+    integration_manager = CapstoneIntegrationManager()
+
+    try:
+        rclpy.spin(integration_manager)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        integration_manager.destroy_node()
+        rclpy.shutdown()
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre>
+<h2 id="5-demonstration-scenarios">5. Demonstration Scenarios</h2>
+<h3 id="51-basic-interaction-scenario">5.1 Basic Interaction Scenario</h3>
+<p><strong>Objective</strong>: Demonstrate basic voice command processing and simple navigation</p>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>User says: &quot;Robot, please go to the kitchen&quot;</li>
+<li>Robot processes command and identifies &quot;kitchen&quot; as destination</li>
+<li>Robot plans path to kitchen and begins navigation</li>
+<li>Robot announces arrival: &quot;I have arrived at the kitchen&quot;</li>
+<li>Robot waits for next command</li>
+</ol>
+<h3 id="52-object-interaction-scenario">5.2 Object Interaction Scenario</h3>
+<p><strong>Objective</strong>: Demonstrate perception, navigation, and interaction capabilities</p>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>User says: &quot;Robot, find the red cup in the living room&quot;</li>
+<li>Robot uses perception system to locate red cup</li>
+<li>Robot navigates to the cup&#x27;s location</li>
+<li>Robot confirms: &quot;I found the red cup&quot;</li>
+<li>Robot waits for further instructions</li>
+</ol>
+<h3 id="53-complex-task-scenario">5.3 Complex Task Scenario</h3>
+<p><strong>Objective</strong>: Demonstrate multi-step task execution and coordination</p>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>User says: &quot;Robot, go to the kitchen and bring me a cup&quot;</li>
+<li>Robot navigates to kitchen</li>
+<li>Robot uses perception to locate a cup</li>
+<li>Robot approaches and grasps the cup (simulated)</li>
+<li>Robot navigates back to user</li>
+<li>Robot announces: &quot;I have brought you a cup&quot;</li>
+</ol>
+<h3 id="54-safety-and-recovery-scenario">5.4 Safety and Recovery Scenario</h3>
+<p><strong>Objective</strong>: Demonstrate safety systems and error recovery</p>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Robot begins navigation task</li>
+<li>Simulated obstacle appears in path</li>
+<li>Robot detects obstacle and stops</li>
+<li>Robot announces: &quot;I encountered an obstacle, finding alternative path&quot;</li>
+<li>Robot replans and continues task</li>
+<li>Task completes successfully</li>
+</ol>
+<h2 id="6-assessment-rubrics-and-evaluation-criteria">6. Assessment Rubrics and Evaluation Criteria</h2>
+<h3 id="61-technical-implementation-40-points">6.1 Technical Implementation (40 points)</h3>
+<h4 id="611-system-architecture-10-points">6.1.1 System Architecture (10 points)</h4>
+<ul>
+<li><strong>Excellent (9-10)</strong>: Well-designed architecture with clear component separation and appropriate design patterns</li>
+<li><strong>Good (7-8)</strong>: Good architecture with minor design issues</li>
+<li><strong>Satisfactory (5-6)</strong>: Functional architecture with some design flaws</li>
+<li><strong>Needs Improvement (0-4)</strong>: Poor architecture with significant design issues</li>
+</ul>
+<h4 id="612-code-quality-10-points">6.1.2 Code Quality (10 points)</h4>
+<ul>
+<li><strong>Excellent (9-10)</strong>: Clean, well-documented code with appropriate error handling</li>
+<li><strong>Good (7-8)</strong>: Good code quality with minor issues</li>
+<li><strong>Satisfactory (5-6)</strong>: Adequate code with some quality issues</li>
+<li><strong>Needs Improvement (0-4)</strong>: Poor code quality with significant issues</li>
+</ul>
+<h4 id="613-integration-quality-10-points">6.1.3 Integration Quality (10 points)</h4>
+<ul>
+<li><strong>Excellent (9-10)</strong>: Seamless integration between all subsystems with proper communication</li>
+<li><strong>Good (7-8)</strong>: Good integration with minor communication issues</li>
+<li><strong>Satisfactory (5-6)</strong>: Basic integration with some communication problems</li>
+<li><strong>Needs Improvement (0-4)</strong>: Poor integration with significant communication issues</li>
+</ul>
+<h4 id="614-performance-10-points">6.1.4 Performance (10 points)</h4>
+<ul>
+<li><strong>Excellent (9-10)</strong>: Meets all performance requirements with efficient resource usage</li>
+<li><strong>Good (7-8)</strong>: Meets most performance requirements</li>
+<li><strong>Satisfactory (5-6)</strong>: Meets basic performance requirements</li>
+<li><strong>Needs Improvement (0-4)</strong>: Fails to meet performance requirements</li>
+</ul>
+<h3 id="62-functionality-35-points">6.2 Functionality (35 points)</h3>
+<h4 id="621-perception-capabilities-10-points">6.2.1 Perception Capabilities (10 points)</h4>
+<ul>
+<li><strong>Excellent (9-10)</strong>: Robust object detection, scene understanding, and multi-modal processing</li>
+<li><strong>Good (7-8)</strong>: Good perception with minor limitations</li>
+<li><strong>Satisfactory (5-6)</strong>: Basic perception capabilities</li>
+<li><strong>Needs Improvement (0-4)</strong>: Limited or unreliable perception</li>
+</ul>
+<h4 id="622-navigation-capabilities-10-points">6.2.2 Navigation Capabilities (10 points)</h4>
+<ul>
+<li><strong>Excellent (9-10)</strong>: Reliable navigation with obstacle avoidance and recovery</li>
+<li><strong>Good (7-8)</strong>: Good navigation with minor issues</li>
+<li><strong>Satisfactory (5-6)</strong>: Basic navigation functionality</li>
+<li><strong>Needs Improvement (0-4)</strong>: Unreliable navigation</li>
+</ul>
+<h4 id="623-interaction-capabilities-10-points">6.2.3 Interaction Capabilities (10 points)</h4>
+<ul>
+<li><strong>Excellent (9-10)</strong>: Natural language processing with context awareness</li>
+<li><strong>Good (7-8)</strong>: Good interaction with minor limitations</li>
+<li><strong>Satisfactory (5-6)</strong>: Basic interaction capabilities</li>
+<li><strong>Needs Improvement (0-4)</strong>: Limited interaction</li>
+</ul>
+<h4 id="624-autonomy-level-5-points">6.2.4 Autonomy Level (5 points)</h4>
+<ul>
+<li><strong>Excellent (5)</strong>: High level of autonomous operation with minimal human intervention</li>
+<li><strong>Good (4)</strong>: Good autonomy with occasional human assistance</li>
+<li><strong>Satisfactory (3)</strong>: Basic autonomy with regular human assistance</li>
+<li><strong>Needs Improvement (0-2)</strong>: Low autonomy requiring constant human intervention</li>
+</ul>
+<h3 id="63-innovation-and-problem-solving-15-points">6.3 Innovation and Problem-Solving (15 points)</h3>
+<h4 id="631-creative-solutions-8-points">6.3.1 Creative Solutions (8 points)</h4>
+<ul>
+<li><strong>Excellent (7-8)</strong>: Innovative approaches to challenging problems</li>
+<li><strong>Good (5-6)</strong>: Good creative solutions to some challenges</li>
+<li><strong>Satisfactory (3-4)</strong>: Adequate solutions without significant innovation</li>
+<li><strong>Needs Improvement (0-2)</strong>: Standard solutions with little innovation</li>
+</ul>
+<h4 id="632-technical-depth-7-points">6.3.2 Technical Depth (7 points)</h4>
+<ul>
+<li><strong>Excellent (6-7)</strong>: Deep understanding demonstrated through complex implementations</li>
+<li><strong>Good (4-5)</strong>: Good technical understanding</li>
+<li><strong>Satisfactory (2-3)</strong>: Basic technical understanding</li>
+<li><strong>Needs Improvement (0-1)</strong>: Limited technical understanding</li>
+</ul>
+<h3 id="64-documentation-and-presentation-10-points">6.4 Documentation and Presentation (10 points)</h3>
+<h4 id="641-technical-documentation-5-points">6.4.1 Technical Documentation (5 points)</h4>
+<ul>
+<li><strong>Excellent (5)</strong>: Comprehensive, clear, and well-organized documentation</li>
+<li><strong>Good (4)</strong>: Good documentation with minor issues</li>
+<li><strong>Satisfactory (3)</strong>: Adequate documentation</li>
+<li><strong>Needs Improvement (0-2)</strong>: Poor or incomplete documentation</li>
+</ul>
+<h4 id="642-presentation-quality-5-points">6.4.2 Presentation Quality (5 points)</h4>
+<ul>
+<li><strong>Excellent (5)</strong>: Clear, engaging presentation with effective demonstrations</li>
+<li><strong>Good (4)</strong>: Good presentation with minor issues</li>
+<li><strong>Satisfactory (3)</strong>: Adequate presentation</li>
+<li><strong>Needs Improvement (0-2)</strong>: Poor presentation quality</li>
+</ul>
+<h2 id="7-evaluation-criteria">7. Evaluation Criteria</h2>
+<h3 id="71-success-metrics">7.1 Success Metrics</h3>
+<ul>
+<li><strong>Task Completion Rate</strong>: Percentage of tasks completed successfully</li>
+<li><strong>Response Time</strong>: Average time to process and respond to commands</li>
+<li><strong>Accuracy</strong>: Correctness of perception, navigation, and interaction</li>
+<li><strong>Reliability</strong>: Consistency of system performance across multiple runs</li>
+<li><strong>Safety</strong>: Proper handling of safety situations and emergency stops</li>
+</ul>
+<h3 id="72-performance-benchmarks">7.2 Performance Benchmarks</h3>
+<ul>
+<li><strong>Perception Pipeline</strong>: &lt; 100ms per frame processing time</li>
+<li><strong>Command Response</strong>: &lt; 500ms from command to action initiation</li>
+<li><strong>Navigation Success</strong>: &gt; 90% successful navigation attempts</li>
+<li><strong>Interaction Success</strong>: &gt; 85% successful command interpretation</li>
+</ul>
+<h3 id="73-qualitative-assessment">7.3 Qualitative Assessment</h3>
+<ul>
+<li><strong>User Experience</strong>: Naturalness and intuitiveness of interaction</li>
+<li><strong>Robustness</strong>: Ability to handle unexpected situations gracefully</li>
+<li><strong>Scalability</strong>: Potential for extension to more complex scenarios</li>
+<li><strong>Maintainability</strong>: Code quality and system design for future development</li>
+</ul>
+<h2 id="8-step-by-step-implementation-guidance">8. Step-by-Step Implementation Guidance</h2>
+<h3 id="81-phase-1-planning-and-design-week-1">8.1 Phase 1: Planning and Design (Week 1)</h3>
+<ol>
+<li><strong>System Architecture</strong>: Design the overall system architecture</li>
+<li><strong>Component Specification</strong>: Define interfaces and responsibilities for each component</li>
+<li><strong>Development Timeline</strong>: Create a detailed development plan with milestones</li>
+<li><strong>Risk Assessment</strong>: Identify potential challenges and mitigation strategies</li>
+</ol>
+<h3 id="82-phase-2-foundation-implementation-week-2">8.2 Phase 2: Foundation Implementation (Week 2)</h3>
+<ol>
+<li><strong>ROS 2 Infrastructure</strong>: Set up the basic ROS 2 communication framework</li>
+<li><strong>Simulation Environment</strong>: Configure Gazebo and Unity environments</li>
+<li><strong>Basic Control</strong>: Implement fundamental robot control capabilities</li>
+<li><strong>Safety Systems</strong>: Establish emergency stop and safety monitoring</li>
+</ol>
+<h3 id="83-phase-3-core-capabilities-week-3">8.3 Phase 3: Core Capabilities (Week 3)</h3>
+<ol>
+<li><strong>Perception Pipeline</strong>: Implement object detection and scene understanding</li>
+<li><strong>Navigation System</strong>: Develop path planning and obstacle avoidance</li>
+<li><strong>Interaction Interface</strong>: Create basic command processing and response</li>
+<li><strong>Integration Layer</strong>: Begin connecting subsystems</li>
+</ol>
+<h3 id="84-phase-4-integration-and-optimization-week-4">8.4 Phase 4: Integration and Optimization (Week 4)</h3>
+<ol>
+<li><strong>End-to-End Integration</strong>: Connect all subsystems into a unified system</li>
+<li><strong>Performance Optimization</strong>: Optimize computational efficiency and response times</li>
+<li><strong>Testing and Validation</strong>: Conduct comprehensive system testing</li>
+<li><strong>Error Handling</strong>: Implement robust error recovery mechanisms</li>
+</ol>
+<h3 id="85-phase-5-demonstration-preparation-week-5">8.5 Phase 5: Demonstration Preparation (Week 5)</h3>
+<ol>
+<li><strong>Scenario Development</strong>: Create demonstration scenarios and test cases</li>
+<li><strong>Performance Tuning</strong>: Fine-tune system performance for demonstration</li>
+<li><strong>Documentation</strong>: Complete technical documentation and user guides</li>
+<li><strong>Presentation Preparation</strong>: Prepare demonstration materials and backup plans</li>
+</ol>
+<h2 id="9-troubleshooting-and-common-issues">9. Troubleshooting and Common Issues</h2>
+<h3 id="91-common-technical-issues">9.1 Common Technical Issues</h3>
+<ul>
+<li><strong>Communication Failures</strong>: Verify ROS 2 network configuration and topic connections</li>
+<li><strong>Performance Bottlenecks</strong>: Profile code to identify and optimize slow components</li>
+<li><strong>Integration Problems</strong>: Ensure proper message format and timing between components</li>
+<li><strong>Simulation Inconsistencies</strong>: Validate that simulation and real-world behavior align</li>
+</ul>
+<h3 id="92-recommended-solutions">9.2 Recommended Solutions</h3>
+<ul>
+<li><strong>Modular Development</strong>: Develop and test components independently before integration</li>
+<li><strong>Comprehensive Logging</strong>: Implement detailed logging for debugging and monitoring</li>
+<li><strong>Version Control</strong>: Use Git for managing code changes and collaboration</li>
+<li><strong>Incremental Testing</strong>: Test integration in small, manageable steps</li>
+</ul>
+<h2 id="10-summary">10. Summary</h2>
+<p>The capstone project represents the ultimate test of your understanding of Physical AI and humanoid robotics. By successfully completing this project, you will demonstrate mastery of:</p>
+<ul>
+<li><strong>Integration Skills</strong>: Ability to combine multiple complex subsystems</li>
+<li><strong>Problem-Solving</strong>: Capability to address real-world robotics challenges</li>
+<li><strong>Technical Proficiency</strong>: Deep understanding of ROS 2, simulation, and AI systems</li>
+<li><strong>Innovation</strong>: Creative approaches to complex technical problems</li>
+</ul>
+<p>This project prepares you for advanced work in robotics research and development, providing practical experience with the tools and techniques used in professional robotics applications. The comprehensive assessment framework ensures that your system meets professional standards for functionality, reliability, and safety.</p>
+<p>Upon completion, you will have created a sophisticated autonomous humanoid system that demonstrates the integration of all concepts learned throughout the course, representing a significant achievement in Physical AI and humanoid robotics.</p>
+<h2 id="11-additional-resources">11. Additional Resources</h2>
+<h3 id="111-reference-materials">11.1 Reference Materials</h3>
+<ul>
+<li>ROS 2 documentation and tutorials</li>
+<li>NVIDIA Isaac SDK documentation</li>
+<li>Gazebo and Unity robotics guides</li>
+<li>Research papers on humanoid robotics</li>
+</ul>
+<h3 id="112-advanced-extensions">11.2 Advanced Extensions</h3>
+<ul>
+<li>Multi-robot coordination systems</li>
+<li>Advanced machine learning integration</li>
+<li>Human-robot collaboration protocols</li>
+<li>Cloud robotics and remote operation</li>
+</ul>
+<h3 id="113-career-pathways">11.3 Career Pathways</h3>
+<ul>
+<li>Robotics research and development</li>
+<li>Autonomous systems engineering</li>
+<li>AI and robotics integration</li>
+<li>Human-robot interaction design</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-tags-row row margin-bottom--sm"><div class="col"><b>Tags:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/book_writing_hackathon/docs/tags/capstone">capstone</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/book_writing_hackathon/docs/tags/integration">integration</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/book_writing_hackathon/docs/tags/project">project</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/book_writing_hackathon/docs/tags/autonomous">autonomous</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/book_writing_hackathon/docs/tags/humanoid-robotics">humanoid-robotics</a></li></ul></div></div><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-7-capstone.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/book_writing_hackathon/docs/module-6-weekly-breakdown"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Module 6 - Weekly Breakdown</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#learning-objectives" class="table-of-contents__link toc-highlight">Learning Objectives</a></li><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#1-introduction-to-the-capstone-project" class="table-of-contents__link toc-highlight">1. Introduction to the Capstone Project</a><ul><li><a href="#project-philosophy" class="table-of-contents__link toc-highlight">Project Philosophy</a></li><li><a href="#project-scope" class="table-of-contents__link toc-highlight">Project Scope</a></li></ul></li><li><a href="#2-capstone-project-requirements" class="table-of-contents__link toc-highlight">2. Capstone Project Requirements</a><ul><li><a href="#21-core-system-requirements" class="table-of-contents__link toc-highlight">2.1 Core System Requirements</a></li><li><a href="#22-technical-integration-requirements" class="table-of-contents__link toc-highlight">2.2 Technical Integration Requirements</a></li><li><a href="#23-performance-requirements" class="table-of-contents__link toc-highlight">2.3 Performance Requirements</a></li></ul></li><li><a href="#3-project-implementation-phases" class="table-of-contents__link toc-highlight">3. Project Implementation Phases</a><ul><li><a href="#phase-1-system-architecture-design-week-1" class="table-of-contents__link toc-highlight">Phase 1: System Architecture Design (Week 1)</a></li><li><a href="#phase-2-core-system-implementation-week-2" class="table-of-contents__link toc-highlight">Phase 2: Core System Implementation (Week 2)</a></li><li><a href="#phase-3-advanced-integration-week-3" class="table-of-contents__link toc-highlight">Phase 3: Advanced Integration (Week 3)</a></li><li><a href="#phase-4-system-integration-and-testing-week-4" class="table-of-contents__link toc-highlight">Phase 4: System Integration and Testing (Week 4)</a></li><li><a href="#phase-5-demonstration-and-evaluation-week-5" class="table-of-contents__link toc-highlight">Phase 5: Demonstration and Evaluation (Week 5)</a></li></ul></li><li><a href="#4-technical-implementation-details" class="table-of-contents__link toc-highlight">4. Technical Implementation Details</a><ul><li><a href="#41-system-architecture" class="table-of-contents__link toc-highlight">4.1 System Architecture</a></li><li><a href="#42-key-implementation-components" class="table-of-contents__link toc-highlight">4.2 Key Implementation Components</a></li><li><a href="#43-integration-framework" class="table-of-contents__link toc-highlight">4.3 Integration Framework</a></li></ul></li><li><a href="#5-demonstration-scenarios" class="table-of-contents__link toc-highlight">5. Demonstration Scenarios</a><ul><li><a href="#51-basic-interaction-scenario" class="table-of-contents__link toc-highlight">5.1 Basic Interaction Scenario</a></li><li><a href="#52-object-interaction-scenario" class="table-of-contents__link toc-highlight">5.2 Object Interaction Scenario</a></li><li><a href="#53-complex-task-scenario" class="table-of-contents__link toc-highlight">5.3 Complex Task Scenario</a></li><li><a href="#54-safety-and-recovery-scenario" class="table-of-contents__link toc-highlight">5.4 Safety and Recovery Scenario</a></li></ul></li><li><a href="#6-assessment-rubrics-and-evaluation-criteria" class="table-of-contents__link toc-highlight">6. Assessment Rubrics and Evaluation Criteria</a><ul><li><a href="#61-technical-implementation-40-points" class="table-of-contents__link toc-highlight">6.1 Technical Implementation (40 points)</a></li><li><a href="#62-functionality-35-points" class="table-of-contents__link toc-highlight">6.2 Functionality (35 points)</a></li><li><a href="#63-innovation-and-problem-solving-15-points" class="table-of-contents__link toc-highlight">6.3 Innovation and Problem-Solving (15 points)</a></li><li><a href="#64-documentation-and-presentation-10-points" class="table-of-contents__link toc-highlight">6.4 Documentation and Presentation (10 points)</a></li></ul></li><li><a href="#7-evaluation-criteria" class="table-of-contents__link toc-highlight">7. Evaluation Criteria</a><ul><li><a href="#71-success-metrics" class="table-of-contents__link toc-highlight">7.1 Success Metrics</a></li><li><a href="#72-performance-benchmarks" class="table-of-contents__link toc-highlight">7.2 Performance Benchmarks</a></li><li><a href="#73-qualitative-assessment" class="table-of-contents__link toc-highlight">7.3 Qualitative Assessment</a></li></ul></li><li><a href="#8-step-by-step-implementation-guidance" class="table-of-contents__link toc-highlight">8. Step-by-Step Implementation Guidance</a><ul><li><a href="#81-phase-1-planning-and-design-week-1" class="table-of-contents__link toc-highlight">8.1 Phase 1: Planning and Design (Week 1)</a></li><li><a href="#82-phase-2-foundation-implementation-week-2" class="table-of-contents__link toc-highlight">8.2 Phase 2: Foundation Implementation (Week 2)</a></li><li><a href="#83-phase-3-core-capabilities-week-3" class="table-of-contents__link toc-highlight">8.3 Phase 3: Core Capabilities (Week 3)</a></li><li><a href="#84-phase-4-integration-and-optimization-week-4" class="table-of-contents__link toc-highlight">8.4 Phase 4: Integration and Optimization (Week 4)</a></li><li><a href="#85-phase-5-demonstration-preparation-week-5" class="table-of-contents__link toc-highlight">8.5 Phase 5: Demonstration Preparation (Week 5)</a></li></ul></li><li><a href="#9-troubleshooting-and-common-issues" class="table-of-contents__link toc-highlight">9. Troubleshooting and Common Issues</a><ul><li><a href="#91-common-technical-issues" class="table-of-contents__link toc-highlight">9.1 Common Technical Issues</a></li><li><a href="#92-recommended-solutions" class="table-of-contents__link toc-highlight">9.2 Recommended Solutions</a></li></ul></li><li><a href="#10-summary" class="table-of-contents__link toc-highlight">10. Summary</a></li><li><a href="#11-additional-resources" class="table-of-contents__link toc-highlight">11. Additional Resources</a><ul><li><a href="#111-reference-materials" class="table-of-contents__link toc-highlight">11.1 Reference Materials</a></li><li><a href="#112-advanced-extensions" class="table-of-contents__link toc-highlight">11.2 Advanced Extensions</a></li><li><a href="#113-career-pathways" class="table-of-contents__link toc-highlight">11.3 Career Pathways</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/book_writing_hackathon/docs/intro">Introduction</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/tagged/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://discordapp.com/invite/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://twitter.com/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/SANANAZ00/book_writing_hackathon" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics. Built with Docusaurus.</div></div></div></footer><div class="chatbotWidget_q_OK"><button class="chatToggle_zvSz" aria-label="Open chat">💬 AI Assistant</button></div></div>
+</body>
+</html>

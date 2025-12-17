@@ -14,14 +14,5 @@
   "sidebarPosition": 4,
   "frontMatter": {
     "sidebar_position": 4
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Claude Code Overview",
-    "permalink": "/book_writing_hackathon/docs/foundations/claude-code"
-  },
-  "next": {
-    "title": "Introduction to RAG Systems",
-    "permalink": "/book_writing_hackathon/docs/foundations/rag-systems"
   }
 }

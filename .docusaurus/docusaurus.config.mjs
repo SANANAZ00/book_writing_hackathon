@@ -11,7 +11,7 @@ export default {
   "baseUrl": "/book_writing_hackathon/",
   "organizationName": "SANANAZ00",
   "projectName": "book_writing_hackathon",
-  "onBrokenLinks": "throw",
+  "onBrokenLinks": "warn",
   "onBrokenMarkdownLinks": "warn",
   "i18n": {
     "defaultLocale": "en",
@@ -29,10 +29,7 @@ export default {
           "sidebarPath": "D:\\hackathon_book\\book-writing\\sidebars.js",
           "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/"
         },
-        "blog": {
-          "showReadingTime": true,
-          "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/"
-        },
+        "blog": false,
         "theme": {
           "customCss": "D:\\hackathon_book\\book-writing\\src\\css\\custom.css"
         }
@@ -69,7 +66,7 @@ export default {
           "title": "Docs",
           "items": [
             {
-              "label": "Tutorial",
+              "label": "Introduction",
               "to": "/docs/intro"
             }
           ]
@@ -94,10 +91,6 @@ export default {
         {
           "title": "More",
           "items": [
-            {
-              "label": "Blog",
-              "to": "/blog"
-            },
             {
               "label": "GitHub",
               "href": "https://github.com/SANANAZ00/book_writing_hackathon"

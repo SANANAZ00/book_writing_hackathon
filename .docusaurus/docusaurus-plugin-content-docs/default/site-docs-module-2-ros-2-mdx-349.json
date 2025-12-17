@@ -1,0 +1,52 @@
+{
+  "id": "module-2-ros2",
+  "title": "Module 2 - ROS 2 (Robotic Nervous System)",
+  "description": "Understanding ROS 2 architecture and its role in humanoid robotics",
+  "source": "@site/docs/module-2-ros2.mdx",
+  "sourceDirName": ".",
+  "slug": "/module-2-ros2",
+  "permalink": "/book_writing_hackathon/docs/module-2-ros2",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-2-ros2.mdx",
+  "tags": [
+    {
+      "label": "ros2",
+      "permalink": "/book_writing_hackathon/docs/tags/ros-2"
+    },
+    {
+      "label": "robotics",
+      "permalink": "/book_writing_hackathon/docs/tags/robotics"
+    },
+    {
+      "label": "middleware",
+      "permalink": "/book_writing_hackathon/docs/tags/middleware"
+    },
+    {
+      "label": "communication",
+      "permalink": "/book_writing_hackathon/docs/tags/communication"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Module 2 - ROS 2 (Robotic Nervous System)",
+    "sidebar_position": 2,
+    "description": "Understanding ROS 2 architecture and its role in humanoid robotics",
+    "tags": [
+      "ros2",
+      "robotics",
+      "middleware",
+      "communication"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/book_writing_hackathon/docs/intro"
+  },
+  "next": {
+    "title": "Module 3 - Digital Twin (Gazebo & Unity)",
+    "permalink": "/book_writing_hackathon/docs/module-3-digital-twin"
+  }
+}

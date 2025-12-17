@@ -1,0 +1,15 @@
+{
+  "label": "middleware",
+  "permalink": "/book_writing_hackathon/docs/tags/middleware",
+  "allTagsPath": "/book_writing_hackathon/docs/tags",
+  "count": 1,
+  "items": [
+    {
+      "id": "module-2-ros2",
+      "title": "Module 2 - ROS 2 (Robotic Nervous System)",
+      "description": "Understanding ROS 2 architecture and its role in humanoid robotics",
+      "permalink": "/book_writing_hackathon/docs/module-2-ros2"
+    }
+  ],
+  "unlisted": false
+}

@@ -1,0 +1,15 @@
+{
+  "label": "ai",
+  "permalink": "/book_writing_hackathon/docs/tags/ai",
+  "allTagsPath": "/book_writing_hackathon/docs/tags",
+  "count": 1,
+  "items": [
+    {
+      "id": "module-4-ai-brain",
+      "title": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+      "description": "NVIDIA Isaac platform capabilities for robotics perception and navigation",
+      "permalink": "/book_writing_hackathon/docs/module-4-ai-brain"
+    }
+  ],
+  "unlisted": false
+}

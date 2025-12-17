@@ -1,0 +1,15 @@
+{
+  "label": "introduction",
+  "permalink": "/book_writing_hackathon/docs/tags/introduction",
+  "allTagsPath": "/book_writing_hackathon/docs/tags",
+  "count": 1,
+  "items": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "description": "Comprehensive overview of Physical AI and its importance in modern robotics",
+      "permalink": "/book_writing_hackathon/docs/intro"
+    }
+  ],
+  "unlisted": false
+}

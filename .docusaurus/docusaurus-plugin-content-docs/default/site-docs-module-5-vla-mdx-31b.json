@@ -1,0 +1,57 @@
+{
+  "id": "module-5-vla",
+  "title": "Module 5 - Vision-Language-Action Integration",
+  "description": "Integrating vision, language, and action systems for humanoid robots",
+  "source": "@site/docs/module-5-vla.mdx",
+  "sourceDirName": ".",
+  "slug": "/module-5-vla",
+  "permalink": "/book_writing_hackathon/docs/module-5-vla",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/SANANAZ00/book_writing_hackathon/edit/main/docs/module-5-vla.mdx",
+  "tags": [
+    {
+      "label": "vision",
+      "permalink": "/book_writing_hackathon/docs/tags/vision"
+    },
+    {
+      "label": "language",
+      "permalink": "/book_writing_hackathon/docs/tags/language"
+    },
+    {
+      "label": "action",
+      "permalink": "/book_writing_hackathon/docs/tags/action"
+    },
+    {
+      "label": "multi-modal",
+      "permalink": "/book_writing_hackathon/docs/tags/multi-modal"
+    },
+    {
+      "label": "humanoid-robotics",
+      "permalink": "/book_writing_hackathon/docs/tags/humanoid-robotics"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Module 5 - Vision-Language-Action Integration",
+    "sidebar_position": 5,
+    "description": "Integrating vision, language, and action systems for humanoid robots",
+    "tags": [
+      "vision",
+      "language",
+      "action",
+      "multi-modal",
+      "humanoid-robotics"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 4 - AI-Robot Brain (NVIDIA Isaac)",
+    "permalink": "/book_writing_hackathon/docs/module-4-ai-brain"
+  },
+  "next": {
+    "title": "Module 6 - Weekly Breakdown",
+    "permalink": "/book_writing_hackathon/docs/module-6-weekly-breakdown"
+  }
+}

@@ -14,14 +14,5 @@
   "sidebarPosition": 6,
   "frontMatter": {
     "sidebar_position": 6
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Introduction to RAG Systems",
-    "permalink": "/book_writing_hackathon/docs/foundations/rag-systems"
-  },
-  "next": {
-    "title": "Qdrant Cloud Vector Database Fundamentals",
-    "permalink": "/book_writing_hackathon/docs/foundations/qdrant-cloud"
   }
 }

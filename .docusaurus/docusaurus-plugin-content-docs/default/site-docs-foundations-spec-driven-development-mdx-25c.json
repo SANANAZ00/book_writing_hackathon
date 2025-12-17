@@ -14,14 +14,5 @@
   "sidebarPosition": 2,
   "frontMatter": {
     "sidebar_position": 2
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Understanding AI-Powered Documentation",
-    "permalink": "/book_writing_hackathon/docs/foundations/ai-powered-documentation"
-  },
-  "next": {
-    "title": "Claude Code Overview",
-    "permalink": "/book_writing_hackathon/docs/foundations/claude-code"
   }
 }

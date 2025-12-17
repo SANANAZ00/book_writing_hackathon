@@ -1,14 +1,14 @@
 <!--
 Sync Impact Report:
-Version change: None → 0.1.0
+Version change: 0.1.0 → 0.2.0
 List of modified principles:
-  - PRINCIPLE_1_NAME → Embodied Intelligence
-  - PRINCIPLE_2_NAME → ROS 2 Control Mastery
-  - PRINCIPLE_3_NAME → Digital Twin Simulation Proficiency
-  - PRINCIPLE_4_NAME → NVIDIA Isaac Development
-  - PRINCIPLE_5_NAME → Humanoid Interaction Design
-  - PRINCIPLE_6_NAME → Conversational Robotics Integration
-Added sections: Hardware and Compute Requirements, Constraints, Risks, and Edge Cases
+  - Embodied Intelligence → Physical AI Focus
+  - ROS 2 Control Mastery → ROS 2 Integration
+  - Digital Twin Simulation Proficiency → Simulation Mastery
+  - NVIDIA Isaac Development → NVIDIA Isaac Integration
+  - Humanoid Interaction Design → Humanoid Robotics Focus
+  - Conversational Robotics Integration → Vision-Language-Action Integration
+Added sections: Docusaurus Documentation Structure, Book Development Guidelines
 Removed sections: None
 Templates requiring updates:
   - .specify/templates/plan-template.md ⚠ pending
@@ -17,134 +17,162 @@ Templates requiring updates:
   - .specify/templates/commands/sp.phr.md ⚠ pending
 Follow-up TODOs: None
 -->
-# Physical AI & Humanoid Robotics Course Constitution
+# Physical AI & Humanoid Robotics Book Constitution
 
-The "Physical AI & Humanoid Robotics" course bridges the gap between digital AI and physical robotics, enabling students to apply AI knowledge to control humanoid robots in simulated and real-world environments.
+The "Physical AI & Humanoid Robotics" book guides, trains, and enables students to understand and implement Physical AI and humanoid robotics. The content provides comprehensive knowledge and practical skills necessary for students to design, simulate, and deploy humanoid robots using industry-standard tools including ROS 2, Gazebo, Unity, and NVIDIA Isaac platforms.
 
 ## Core Principles
 
-### Embodied Intelligence
-Every student will understand Physical AI and AI systems that function in reality, comprehending physical laws.
+### Physical AI Focus
+Content MUST explain concepts with clarity and simplicity, focusing on how physical embodiment influences intelligence and robotic behavior. All material MUST connect theoretical concepts to practical applications in humanoid robotics.
 
-### ROS 2 Control Mastery
-Students MUST design and implement middleware for robot control, including ROS 2 Nodes, Topics, Services, and `rclpy` for Python agent integration.
+### ROS 2 Integration
+Content MUST demonstrate practical steps using ROS 2, including nodes, topics, services, and Python agent integration. Students MUST understand the communication patterns and system design principles necessary for coordinating complex robotic behaviors.
 
-### Digital Twin Simulation Proficiency
-Students MUST build and simulate robot environments using Gazebo and Unity, incorporating physics, sensor data (LiDAR, Depth Cameras, IMUs), and URDF/SDF.
+### Simulation Mastery
+Content MUST demonstrate practical steps using Gazebo and Unity for digital twin creation. Students MUST understand physics simulation, environment rendering, and sensor integration for effective robot development and testing.
 
-### NVIDIA Isaac Development
-Students MUST develop on the NVIDIA Isaac platform, utilizing Isaac Sim for photorealistic simulation, Isaac ROS for VSLAM + navigation, and Nav2 for bipedal humanoid path planning.
+### NVIDIA Isaac Integration
+Content MUST demonstrate practical steps using NVIDIA Isaac for AI-robot brain development. Students MUST understand perception model training, VSLAM implementation, and navigation system development.
 
-### Humanoid Interaction Design
-Students MUST design humanoids capable of natural human interactions, focusing on kinematics, locomotion, and manipulation.
+### Humanoid Robotics Focus
+Content MUST focus exclusively on humanoid robotics applications and avoid general robotics topics. All examples, exercises, and projects MUST be relevant to humanoid robot platforms.
 
-### Conversational Robotics Integration
-Students MUST integrate GPT models and multimodal interaction for voice-to-action capabilities, LLM-based cognitive planning, and natural-language to ROS 2 action sequences.
+### Vision-Language-Action Integration
+Content MUST integrate vision, language, and action systems for comprehensive humanoid robot capabilities. Students MUST understand how to combine multi-modal sensory inputs for intelligent decision-making in dynamic environments.
 
-## Course Architecture and Technical Stack
+## Book Architecture and Technical Stack
 
 ### Executive Summary
-The course focuses on bridging the gap between digital AI and physical robotics, enabling students to apply AI knowledge to control humanoid robots in simulated and real-world environments.
+The book provides comprehensive coverage of Physical AI and humanoid robotics, enabling students to build, simulate, and implement humanoid robots in real and virtual environments. Content flows from basic concepts to advanced implementation, with each chapter building upon previous knowledge.
 
 ### Modules
-#### Module 1: The Robotic Nervous System (ROS 2)
-- **Inputs**: AI knowledge, Python programming.
-- **Outputs**: ROS 2 nodes, topics, services, URDF models.
-- **Required Skills**: Python, Linux command line, basic robotics concepts.
-- **Acceptance Criteria**: Successful deployment of ROS 2 communication, accurate URDF representation of a humanoid.
+#### Module 1: Introduction
+- **Focus**: Explain Course Overview, highlight Why Physical AI Matters, present Learning Outcomes
+- **Content**: Course structure, theoretical foundations, learning objectives
+- **Required Skills**: Basic programming knowledge, foundational robotics concepts
+- **Acceptance Criteria**: Students understand course objectives and Physical AI importance
 
-#### Module 2: The Digital Twin (Gazebo & Unity)
-- **Inputs**: ROS 2 knowledge, physics concepts.
-- **Outputs**: Simulated environments, sensor data streams.
-- **Required Skills**: ROS 2, 3D modeling basics, physics principles.
-- **Acceptance Criteria**: High-fidelity physics simulation, accurate sensor data generation within Gazebo/Unity.
+#### Module 2: ROS 2 (Robotic Nervous System)
+- **Focus**: Demonstrate Nodes, Topics, Services, Python agent integration
+- **Content**: ROS 2 architecture, communication patterns, rclpy integration
+- **Required Skills**: Python programming, basic Linux command line
+- **Acceptance Criteria**: Students can implement basic ROS 2 communication patterns
 
-#### Module 3: The AI-Robot Brain (NVIDIA Isaac)
-- **Inputs**: Simulation data, AI algorithms.
-- **Outputs**: VSLAM maps, navigation paths, perception pipelines.
-- **Required Skills**: NVIDIA Isaac SDK, computer vision, path planning algorithms.
-- **Acceptance Criteria**: Robust VSLAM, efficient path planning for bipedal humanoids.
+#### Module 3: Digital Twin (Gazebo & Unity)
+- **Focus**: Simulate physics, render realistic environments, show sensor integration
+- **Content**: Gazebo physics engine, Unity robotics, cross-platform simulation
+- **Required Skills**: Basic 3D concepts, physics understanding
+- **Acceptance Criteria**: Students can create and simulate robot environments
 
-#### Module 4: Vision-Language-Action (VLA)
-- **Inputs**: Natural language commands, visual data, robot state.
-- **Outputs**: Cognitive plans, ROS 2 action sequences.
-- **Required Skills**: LLM integration, speech recognition (Whisper), natural language processing.
-- **Acceptance Criteria**: Accurate voice-to-action translation, effective LLM-based planning.
+#### Module 4: AI-Robot Brain (NVIDIA Isaac)
+- **Focus**: Train perception models, implement VSLAM and navigation
+- **Content**: NVIDIA Isaac platform, perception pipelines, navigation systems
+- **Required Skills**: Basic machine learning concepts, computer vision fundamentals
+- **Acceptance Criteria**: Students can implement perception and navigation systems
+
+#### Module 5: Vision-Language-Action
+- **Focus**: Integrate multi-modal AI for embodied decision-making
+- **Content**: Vision processing, language understanding, action planning
+- **Required Skills**: Basic natural language processing, computer vision
+- **Acceptance Criteria**: Students can integrate multi-modal systems
+
+#### Module 6: Weekly Breakdown
+- **Focus**: Provide structured 13-week course progression
+- **Content**: Weekly learning objectives, practical emphasis areas
+- **Required Skills**: Understanding of course progression
+- **Acceptance Criteria**: Clear weekly structure for course implementation
+
+#### Module 7: Capstone Project
+- **Focus**: Synthesize all course knowledge into complete system
+- **Content**: Autonomous humanoid system integrating all concepts
+- **Required Skills**: All skills from previous modules
+- **Acceptance Criteria**: Complete functional humanoid robot system
 
 ### Technical Stack
-ROS 2, Gazebo, Unity, NVIDIA Isaac Sim, NVIDIA Isaac ROS, Nav2, OpenAI Whisper, GPT (or similar LLMs).
+ROS 2, Gazebo, Unity, NVIDIA Isaac, Python, rclpy, URDF, Docusaurus v2.
 
-### Weekly Milestones
-- **Weeks 1-2**: Intro to Physical AI, sensors, physics-aware AI
-- **Weeks 3-5**: ROS 2 fundamentals
-- **Weeks 6-7**: Gazebo simulation, URDF/SDF
-- **Weeks 8-10**: NVIDIA Isaac platform
-- **Weeks 11-12**: Humanoid development (kinematics, locomotion, manipulation)
-- **Week 13**: Conversational robotics with GPT + multimodal interaction
+### Docusaurus Documentation Structure
+- **File Format**: MDX files with proper frontmatter (title, sidebar_position)
+- **Navigation**: Logical sidebar positioning and cross-referencing
+- **Content Organization**: Each module as separate chapter with clear headings
+- **Code Examples**: Complete, tested code snippets with explanations
+- **Visual Aids**: Diagrams, charts, and illustrations to support learning
 
-### Capstone Robot System
-- **Sensors**: LiDAR, Depth Cameras, IMUs, Microphones (for voice commands).
-- **Control Stack**: ROS 2, `rclpy`.
-- **Perception Pipeline**: NVIDIA Isaac ROS (VSLAM), object detection (vision-based).
-- **Planning**: Nav2 (path planning), LLM-based cognitive planning.
-- **Simulation Pipeline**: Gazebo, Unity, NVIDIA Isaac Sim.
+### Book Development Guidelines
+- **Style**: Professional, clear, easy to learn
+- **Progression**: Build complexity gradually from fundamental to advanced concepts
+- **Integration**: Connect theoretical concepts with practical implementation
+- **Safety**: Emphasize safe practices in robot development and deployment
 
 ### Data Models
-- **Course Content**: Modules (name, description, learning outcomes, required skills, technical stack), Weeks (topics, deliverables).
-- **Robot Skills**: Skill (name, description, required inputs, expected outputs, success criteria).
-- **Project Grading**: Rubric (criteria, weighting, assessment method), Submission (student ID, project URL, demo video).
+- **Book Content**: Modules (name, description, learning outcomes, required skills, technical stack), Chapters (topics, examples, exercises)
+- **Learning Objectives**: Outcome (description, skill level, assessment method), Chapter (module ID, content, exercises)
+- **Assessment**: Rubric (criteria, weighting, assessment method), Exercise (type, difficulty, expected outcome)
 
-### API-Style Specifications for Robot Interactions
-- `POST /robot/command`:
-    - **Input**: `{ "voice_command": "string" }`
-    - **Output**: `{ "plan": ["string"], "status": "success/failure", "message": "string" }`
-    - **Errors**: 400 (Invalid Command), 500 (Execution Failure).
-- `GET /robot/status`:
-    - **Input**: None
-    - **Output**: `{ "current_task": "string", "robot_position": { "x": float, "y": float, "z": float }, "battery_level": float }`
+### API-Style Specifications for Book Content
+- `POST /chapter/create`:
+    - **Input**: `{ "module": "string", "title": "string", "content": "string" }`
+    - **Output**: `{ "chapter_id": "string", "status": "success/failure", "message": "string" }`
+    - **Errors**: 400 (Invalid Content), 500 (Creation Failure).
+- `GET /chapter/{id}`:
+    - **Input**: Chapter ID
+    - **Output**: `{ "title": "string", "content": "string", "sidebar_position": number, "prerequisites": ["string"] }`
 
 ### UI/UX Guidelines
-Simulation environments MUST provide clear visualization of robot state, sensor data, and planning trajectories. Dashboards for robot control and monitoring MUST be intuitive.
+Content MUST be structured for optimal learning progression and retention. Navigation MUST be intuitive with clear pathways between related concepts. Visual elements MUST enhance understanding without overwhelming the reader.
 
 ## Assessment and Evaluation Framework
 
 ### Assessments
-- ROS 2 project
-- Gazebo simulation
-- Isaac perception pipeline
-- Capstone humanoid with conversational AI
+- Module exercises with practical implementations
+- Cross-module integration projects
+- Capstone project integrating all course concepts
+- Peer review activities for collaborative learning
 
 ### Test & Evaluation Framework
-- **Rubrics**: Detailed rubrics for each assessment, evaluating technical implementation, design choices, and problem-solving.
-- **System Tests**: Automated tests for ROS 2 node communication, Gazebo physics accuracy, Isaac navigation, and VLA integration.
-- **Scenario Tests**: Real-world (or simulated equivalent) scenarios for the Capstone Project, e.g., "Navigate to the red cube, pick it up, and bring it here."
+- **Rubrics**: Detailed rubrics for each assessment, evaluating technical implementation, conceptual understanding, and practical application.
+- **System Tests**: Validation of code examples and implementation procedures for accuracy and functionality.
+- **Scenario Tests**: Practical scenarios that test student understanding of integrated concepts, e.g., "Implement a humanoid robot that responds to voice commands and navigates to objects."
 
-## Hardware and Compute Requirements
+## Book Development Requirements
 
-### High-Performance Workstations
-Required for NVIDIA Isaac, Gazebo, Unity, and local LLM execution. Minimum 32GB RAM, NVIDIA RTX 3080 (or equivalent) GPU, multi-core CPU.
+### Content Quality Standards
+- **Professional**: University-level academic rigor appropriate for target audience
+- **Clear**: Accessible explanations with minimal jargon and clear examples
+- **Actionable**: Practical, implementable concepts with step-by-step guidance
+- **Progressive**: Building complexity gradually from fundamental to advanced concepts
+- **Integrated**: Connecting theoretical concepts with practical implementation
+- **Safety-Conscious**: Emphasizing safe practices in robot development and deployment
 
-### Edge Computing Kits
-Optional, for real-world robotics deployment (e.g., NVIDIA Jetson series).
+### Output Requirements
+- **Format**: Ready for Docusaurus v2 book generation
+- **Structure**: MDX format with proper frontmatter for each chapter
+- **Navigation**: Logical sidebar positioning and cross-referencing
+- **Code Examples**: Complete, tested code snippets with explanations
+- **Visual Aids**: Diagrams, charts, and illustrations to support learning
 
-### Optional Robotics Hardware
-Physical humanoid robots for advanced students to deploy their AI systems.
+### Interactive Learning Elements
+- **Examples**: Practical code and implementation examples
+- **Exercises**: Hands-on practice opportunities for each concept
+- **Challenges**: Capstone and integration challenges
+- **Activities**: Interactive elements that promote active engagement
 
 ## Constraints, Risks, and Edge Cases
 
-### Compute Limits
-Resource constraints on student workstations may limit simulation complexity and LLM model size.
+### Content Scope
+Content MUST remain focused on Physical AI and humanoid robotics. No hackathon content, AI documentation theory, RAG, chatbots, APIs, or general software documentation theory allowed.
 
-### Sim-to-Real Gaps
-Discrepancies between simulated and real-world physics, sensor noise, and environmental factors can impact real-world deployment. Mitigation: Emphasize robust control and perception.
+### Target Audience Alignment
+Content MUST be appropriate for advanced undergraduate or early graduate students. Concepts MUST be accessible while maintaining academic rigor.
 
-### API Rate Limits
-External LLM APIs may have rate limits, requiring careful design of interaction patterns.
+### Technical Accuracy
+All technical information MUST be accurate and up-to-date. Code examples MUST be tested and functional with current tool versions.
 
-### Data Privacy
-Handling of voice commands and user interaction data MUST comply with privacy regulations.
+### Platform Compatibility
+Content MUST be compatible with current versions of ROS 2, Gazebo, Unity, and NVIDIA Isaac platforms.
 
 ## Governance
 This Constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs/reviews MUST verify compliance. Complexity MUST be justified.
 
-**Version**: 0.1.0 | **Ratified**: 2025-12-07 | **Last Amended**: 2025-12-07
+**Version**: 0.2.0 | **Ratified**: 2025-12-07 | **Last Amended**: 2025-12-18

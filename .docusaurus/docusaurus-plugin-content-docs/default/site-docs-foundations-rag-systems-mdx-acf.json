@@ -14,14 +14,5 @@
   "sidebarPosition": 5,
   "frontMatter": {
     "sidebar_position": 5
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Docusaurus Fundamentals",
-    "permalink": "/book_writing_hackathon/docs/foundations/docusaurus-fundamentals"
-  },
-  "next": {
-    "title": "OpenAI Integration Basics",
-    "permalink": "/book_writing_hackathon/docs/foundations/openai-integration"
   }
 }
