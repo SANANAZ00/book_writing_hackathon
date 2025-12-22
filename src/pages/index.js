@@ -24,8 +24,53 @@ function HomepageHeader() {
   );
 }
 
+function ModuleCard({title, description, link}) {
+  return (
+    <div className={clsx('col col--3')}>
+      <div className={styles.moduleCard}>
+        <div className={styles.cardContent}>
+          <h3 className={styles.cardTitle}>{title}</h3>
+          <p className={styles.cardDescription}>{description}</p>
+          <div className={styles.cardButtonContainer}>
+            <Link
+              className={clsx('button button--secondary button--block', styles.learnMoreButton)}
+              to={link}
+            >
+              Learn More
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
+
+  const moduleCards = [
+    {
+      title: 'Module 1: The Robotic Nervous System (ROS 2)',
+      description: 'Learn about ROS 2, the middleware that enables communication between robotic components.',
+      link: '/docs/module-2-ros2',
+    },
+    {
+      title: 'Module 2: The Digital Twin (Gazebo & Unity)',
+      description: 'Explore digital twin technologies using Gazebo and Unity for robot simulation.',
+      link: '/docs/module-3-digital-twin',
+    },
+    {
+      title: 'Module 3: The AI-Robot Brain (NVIDIA Isaac™)',
+      description: 'Discover NVIDIA Isaac™ platform for developing AI-powered robotic applications.',
+      link: '/docs/module-4-ai-brain',
+    },
+    {
+      title: 'Module 4: Vision-Language-Action (VLA)',
+      description: 'Understand Vision-Language-Action models that enable robots to perceive and act.',
+      link: '/docs/module-5-vla',
+    },
+  ];
+
   return (
     <Layout
       title={`Welcome to ${siteConfig.title}`}
@@ -35,18 +80,9 @@ export default function Home() {
         <section className={styles.features}>
           <div className="container">
             <div className="row">
-              <div className="col col--4">
-                <h3>Embodied Intelligence</h3>
-                <p>Learn how physical embodiment influences intelligent behavior in robotic systems.</p>
-              </div>
-              <div className="col col--4">
-                <h3>Complete Toolchain</h3>
-                <p>Master ROS 2, Gazebo, Unity, and NVIDIA Isaac for comprehensive robotics development.</p>
-              </div>
-              <div className="col col--4">
-                <h3>Real-World Applications</h3>
-                <p>Apply concepts through practical exercises and a comprehensive capstone project.</p>
-              </div>
+              {moduleCards.map((card, index) => (
+                <ModuleCard key={index} {...card} />
+              ))}
             </div>
           </div>
         </section>

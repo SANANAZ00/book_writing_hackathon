@@ -1,12 +1,12 @@
 import os
 import asyncio
 import hashlib
+import time
 from pathlib import Path
 from typing import List, Dict, Any
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
-import openai
-import tiktoken
+import cohere
 from dotenv import load_dotenv
 import markdown
 from bs4 import BeautifulSoup
@@ -22,9 +22,9 @@ class EmbeddingGenerator:
             api_key=os.getenv("QDRANT_API_KEY"),
             prefer_grpc=True
         )
-        openai.api_key = os.getenv("OPENAI_API_KEY")
-        self.encoder = tiktoken.encoding_for_model("gpt-3.5-turbo")
-        self.embedding_model = "text-embedding-ada-002"
+        self.cohere_client = cohere.Client(api_key=os.getenv("COHERE_API_KEY"))
+        # Using a simple tokenizer instead of tiktoken since we're using Cohere
+        self.embedding_model = "embed-english-v3.0"
 
         # Create collection if it doesn't exist
         self._create_collection()
@@ -38,7 +38,7 @@ class EmbeddingGenerator:
             self.qdrant_client.create_collection(
                 collection_name="documentation",
                 vectors_config=models.VectorParams(
-                    size=1536,  # OpenAI embedding dimension
+                    size=1024,  # Cohere embedding dimension
                     distance=models.Distance.COSINE
                 )
             )
@@ -60,34 +60,45 @@ class EmbeddingGenerator:
         return clean_text
 
     def chunk_text(self, text: str, chunk_size: int = 500, overlap: int = 50) -> List[str]:
-        """Split text into overlapping chunks"""
-        tokens = self.encoder.encode(text)
+        """Split text into overlapping chunks using character-based splitting"""
         chunks = []
-
         start_idx = 0
-        while start_idx < len(tokens):
-            end_idx = start_idx + chunk_size
-            chunk_tokens = tokens[start_idx:end_idx]
-            chunk_text = self.encoder.decode(chunk_tokens)
 
+        while start_idx < len(text):
+            end_idx = start_idx + chunk_size
+
+            # Extract chunk
+            chunk_text = text[start_idx:end_idx]
             chunks.append(chunk_text)
 
             # Move start index with overlap
             start_idx = end_idx - overlap
 
-            # Handle the case where remaining tokens are less than chunk_size
-            if len(tokens) - end_idx < overlap:
+            # Handle the case where remaining text is less than overlap
+            if len(text) - end_idx < overlap:
                 break
 
         return chunks
-
     def generate_embedding(self, text: str) -> List[float]:
-        """Generate embedding for text using OpenAI"""
-        response = openai.Embedding.create(
-            input=text,
-            model=self.embedding_model
-        )
-        return response['data'][0]['embedding']
+        """Generate embedding for text using Cohere"""
+        try:
+            response = self.cohere_client.embed(
+                texts=[text],
+                model=self.embedding_model,
+                input_type="search_document"  # Required for newer Cohere embedding models
+            )
+            return response.embeddings[0]
+        except cohere.errors.TooManyRequestsError:
+            print("Rate limit hit, waiting 60 seconds before retrying...")
+            time.sleep(60)
+            # Retry once after rate limit
+            response = self.cohere_client.embed(
+                texts=[text],
+                model=self.embedding_model,
+                input_type="search_document"
+            )
+            return response.embeddings[0]
+
 
     async def process_document(self, file_path: Path, source_url: str) -> List[Dict[str, Any]]:
         """Process a single document file and return embedding points"""
@@ -177,10 +188,10 @@ async def main():
     generator = EmbeddingGenerator()
 
     # Process all documentation files
-    docs_path = Path("docs")
+    docs_path = Path(r"D:\hackathon_book\book-writing\docs")
     if docs_path.exists():
         print("Processing documentation files...")
-        points = await generator.process_directory("docs")
+        points = await generator.process_directory(r"D:\hackathon_book\book-writing\docs")
 
         if points:
             # Upload to Qdrant

@@ -1,0 +1,108 @@
+# OpenAPI Contract for RAG Chatbot
+
+```yaml
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  version: 1.0.0
+  description: API for the Physical AI & Humanoid Robotics Book RAG Chatbot
+
+paths:
+  /chat:
+    post:
+      summary: Process user query and return response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: User's question
+                session_id:
+                  type: string
+                  description: Session identifier
+                mode:
+                  type: string
+                  enum: [full_book, selected_text]
+                  description: Query mode
+                selected_text:
+                  type: string
+                  description: Optional selected text for selected-text mode
+              required:
+                - message
+                - mode
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+                    description: Generated response
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        chapter:
+                          type: string
+                          description: Chapter title
+                        page:
+                          type: number
+                          description: Page number
+                  session_id:
+                    type: string
+                    description: Session identifier
+        '400':
+          description: Invalid request
+        '429':
+          description: Rate limited
+        '500':
+          description: Processing error
+
+  /sessions/{session_id}:
+    get:
+      summary: Get session history
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session history
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        role:
+                          type: string
+                          enum: [user, assistant]
+                        content:
+                          type: string
+                        timestamp:
+                          type: string
+                          format: date-time
+        '404':
+          description: Session not found
+
+  /health:
+    get:
+      summary: Health check endpoint
+      responses:
+        '200':
+          description: Service is healthy
+```

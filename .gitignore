@@ -1,1 +1,141 @@
-node_modules
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.env
+venv/
+ENV/
+.venv
+.envrc
+
+# Docusaurus
+.docusaurus/
+.cache/
+.build/
+dist/
+out/
+
+# FastAPI/Python
+*.so
+.Python
+__pycache__/
+*.py[cod]
+*$py.class
+*$pyc.class
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.coverage.*
+.pytest_cache/
+.pyre/
+.pytype/
+celerybeat-schedule
+celerybeat.pid
+*.sage.py
+.spyderproject
+.spyproject
+.project
+.pydevproject
+ipynb_checkpoints
+.ipynb_checkpoints
+.nbextensions
+.autopep8-cache
+
+# Local development settings
+.settings/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+nul
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage.*
+.nyc_output
+coverage/
+junit.xml
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sw?
+*~
+*#
+*.log
+*.tmp
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Coverage
+.coverage
+.coverage.*
+.cache
+.pytest_cache
+.hypothesis/
+
+# Documentation
+docs/_build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# MyPy
+.mypy_cache/
+
+# FastAPI specific
+alembic/
+alembic.ini
+.env
+.env.local

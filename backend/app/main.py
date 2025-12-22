@@ -6,7 +6,7 @@ import logging
 import time
 
 from app.config import settings
-from app.routes import chat, rag, content, agents  # Added agents import
+from app.routes import chat, rag, content, agents, book_chat  # Added agents and book_chat import
 from app.utils.logging import setup_logging
 from app.database import init_db
 
@@ -44,6 +44,7 @@ app.include_router(chat.router, prefix="/api/chat", tags=["chat"])
 app.include_router(rag.router, prefix="/api/rag", tags=["rag"])
 app.include_router(content.router, prefix="/api/content", tags=["content"])
 app.include_router(agents.router, prefix="/api/agents", tags=["agents"])  # Added agents router
+app.include_router(book_chat.router, prefix="/api/book-chat", tags=["book-chat"])  # Book-specific chat router
 
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
