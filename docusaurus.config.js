@@ -44,7 +44,7 @@ const config = {
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/logo.svg',
     navbar: {
       title: 'Physical AI & Robotics',
       logo: {

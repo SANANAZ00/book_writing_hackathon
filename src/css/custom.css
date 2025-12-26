@@ -11,29 +11,100 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom Infima overrides */
+/* High-Contrast Cyan-Focused Color Palette */
 :root {
-  --ifm-color-primary: #2563eb;
-  --ifm-color-primary-dark: #1d4ed8;
-  --ifm-color-primary-darker: #1e40af;
-  --ifm-color-primary-darkest: #1e3a8a;
-  --ifm-color-primary-light: #3b82f6;
-  --ifm-color-primary-lighter: #60a5fa;
-  --ifm-color-primary-lightest: #dbeafe;
+  /* Primary Colors - Cyan */
+  --ifm-color-primary: #06B6D4;           /* Main cyan */
+  --ifm-color-primary-dark: #0891B2;      /* Darker cyan */
+  --ifm-color-primary-darker: #0E7490;    /* Deeper cyan */
+  --ifm-color-primary-darkest: #155E78;   /* Deepest cyan */
+  --ifm-color-primary-light: #2DD4BF;     /* Light cyan */
+  --ifm-color-primary-lighter: #A5F3FC;   /* Lighter cyan */
+  --ifm-color-primary-lightest: #ECFEFF;  /* Lightest cyan */
+
+  /* Secondary Colors - Professional dark navy and grays */
+  --ifm-color-secondary-50: #f8fafc;      /* Off-white */
+  --ifm-color-secondary-100: #f1f5f9;     /* Light off-white */
+  --ifm-color-secondary-200: #e2e8f0;     /* Light-gray */
+  --ifm-color-secondary-300: #cbd5e1;     /* Medium-gray */
+  --ifm-color-secondary-400: #94a3b8;     /* Medium-dark gray */
+  --ifm-color-secondary-500: #64748b;     /* Gray */
+  --ifm-color-secondary-600: #475569;     /* Dark gray */
+  --ifm-color-secondary-700: #334155;     /* Darker gray */
+  --ifm-color-secondary-800: #1e293b;     /* Very dark gray */
+  --ifm-color-secondary-900: #0f172a;     /* Dark navy */
+
+  /* Accent Colors - Coral/Orange */
+  --ifm-color-success: #059669;           /* Emerald green */
+  --ifm-color-success-dark: #047857;      /* Dark emerald */
+  --ifm-color-success-darker: #065f46;    /* Deeper emerald */
+  --ifm-color-success-light: #34d399;     /* Light emerald */
+
+  /* Warning Colors - Coral/Orange */
+  --ifm-color-warning: #f97316;           /* Orange */
+  --ifm-color-warning-dark: #ea580c;      /* Dark orange */
+  --ifm-color-warning-light: #fb923c;     /* Light orange */
+
+  /* Danger Colors - Coral/Orange */
+  --ifm-color-danger: #f87171;            /* Coral-red */
+  --ifm-color-danger-dark: #ef4444;       /* Dark coral */
+  --ifm-color-danger-light: #fca5a5;      /* Light coral */
+
+  /* Background Colors */
+  --ifm-background-color: #f5f5f5;        /* Off-white background */
+  --ifm-background-surface-color: #ffffff; /* White surface background */
+
+  /* Text Colors */
+  --ifm-font-color-base: #1a1a1a;         /* Dark charcoal text */
+  --ifm-font-color-base-inverse: #f5f5f5; /* Off-white inverse text */
+  --ifm-heading-color: #0f172a;           /* Dark navy headings */
+  --ifm-color-content-secondary: #9ca3af; /* Light grey secondary text */
+
+  /* Code styling */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(6, 182, 212, 0.1); /* Cyan tint */
+
+  /* Spacing and sizing */
+  --ifm-global-radius: 12px;              /* Modern rounded corners */
+  --ifm-global-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -1px rgba(15, 23, 42, 0.06);
+  --ifm-global-shadow-heavy: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -2px rgba(15, 23, 42, 0.05);
 }
 
 /* Dark mode customizations */
 html[data-theme='dark'] {
-  --ifm-color-primary: #3b82f6;
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e3a8a;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
-  --ifm-color-primary-lightest: #dbeafe;
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+  /* Primary Colors - Adjusted for dark mode */
+  --ifm-color-primary: #2DD4BF;          /* Lighter cyan for dark mode */
+  --ifm-color-primary-dark: #06B6D4;     /* Base cyan */
+  --ifm-color-primary-darker: #0891B2;   /* Darker cyan */
+  --ifm-color-primary-darkest: #0E7490;  /* Dark cyan */
+  --ifm-color-primary-light: #5EEAD4;    /* Lighter cyan */
+  --ifm-color-primary-lighter: #A5F3FC;  /* Even lighter cyan */
+  --ifm-color-primary-lightest: #ECFEFF; /* Lightest cyan */
+
+  /* Secondary Colors - Darker versions */
+  --ifm-color-secondary-50: #0f172a;     /* Dark navy background */
+  --ifm-color-secondary-100: #1e293b;    /* Darker navy */
+  --ifm-color-secondary-200: #334155;    /* Medium dark */
+  --ifm-color-secondary-300: #475569;    /* Medium */
+  --ifm-color-secondary-400: #64748b;    /* Medium-light */
+  --ifm-color-secondary-500: #94a3b8;    /* Light-medium */
+  --ifm-color-secondary-600: #cbd5e1;    /* Light */
+  --ifm-color-secondary-700: #e2e8f0;    /* Lighter */
+  --ifm-color-secondary-800: #f1f5f9;    /* Very light */
+  --ifm-color-secondary-900: #f8fafc;    /* Off-white */
+
+  /* Background Colors for Dark Mode */
+  --ifm-background-color: #0f172a;        /* Dark navy background */
+  --ifm-background-surface-color: #1e293b; /* Dark surface background */
+
+  /* Text Colors for Dark Mode */
+  --ifm-font-color-base: #e2e8f0;         /* Light text */
+  --ifm-font-color-base-inverse: #0f172a; /* Dark inverse */
+  --ifm-heading-color: #f8fafc;           /* Light headings */
+  --ifm-color-content-secondary: #94a3b8; /* Light grey secondary text */
+
+  /* Code styling for dark mode */
+  --docusaurus-highlighted-code-line-bg: rgba(45, 212, 191, 0.15); /* Cyan tint */
 }
 
 /* Smooth transitions for interactive elements */
@@ -86,25 +157,66 @@ select:focus {
 
 /* Enhanced typography */
 .hero__title {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 800;
   line-height: 1.2;
+  letter-spacing: -0.03em;
 }
 
 @media (max-width: 996px) {
+  .hero__title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
   .hero__title {
     font-size: 2rem;
   }
 }
 
+/* Typography improvements */
+h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+p {
+  line-height: 1.7;
+  color: var(--ifm-color-secondary-700);
+  margin-bottom: 1rem;
+}
+
 /* Custom card styles */
 .card {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.2s ease;
+  box-shadow: var(--ifm-global-shadow);
+  transition: all 0.3s ease;
+  border-radius: 16px;
+  border: 1px solid var(--ifm-color-secondary-200);
 }
 
 .card:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: var(--ifm-global-shadow-heavy);
+  border-color: var(--ifm-color-primary-light);
 }
 
 /* Custom button styles */

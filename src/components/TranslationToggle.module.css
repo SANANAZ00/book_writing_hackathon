@@ -1,0 +1,329 @@
+.translationContainer {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.translationControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.translationButton {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-darker) 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--ifm-global-shadow);
+  position: relative;
+  overflow: hidden;
+  min-height: 40px;
+}
+
+.translationButton:hover {
+  background: linear-gradient(135deg, var(--ifm-color-primary-darker) 0%, var(--ifm-color-primary-darkest) 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--ifm-global-shadow-heavy);
+}
+
+.translationButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.translationButton:hover::before {
+  left: 100%;
+}
+
+.urduActive {
+  background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
+}
+
+.buttonIcon {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonText {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.toggleSlider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.translationButton:hover .toggleSlider {
+  transform: scaleX(1);
+}
+
+.translationNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: color-mix(in srgb, var(--ifm-color-warning), transparent 90%);
+  border: 1px solid color-mix(in srgb, var(--ifm-color-warning), transparent 70%);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--ifm-color-warning-dark);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.noticeIcon {
+  font-size: 1rem;
+}
+
+.contentWrapper {
+  position: relative;
+  min-height: 40px;
+}
+
+.translatedContent {
+  width: 100%;
+}
+
+.translationPlaceholder {
+  background: color-mix(in srgb, var(--ifm-color-primary), transparent 95%);
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary), transparent 70%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.translationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--ifm-color-primary), transparent 80%);
+}
+
+.languageTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.8rem;
+  background: color-mix(in srgb, var(--ifm-color-primary), transparent 85%);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.originalContent {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--ifm-color-emphasis-200), transparent 50%);
+}
+
+.urduContent {
+  padding: 1rem;
+  background: color-mix(in srgb, #06B6D4, transparent 95%);
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, #06B6D4, transparent 70%);
+}
+
+.urduContent h2 {
+  color: #06B6D4;
+  margin: 0 0 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  direction: ltr;
+  text-align: left;
+}
+
+.urduContent p {
+  color: var(--ifm-color-secondary-700);
+  line-height: 1.8;
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.urduTextDirection {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+  line-height: 2;
+  color: var(--ifm-color-secondary-800);
+}
+
+.urduTextDirection h1,
+.urduTextDirection h2,
+.urduTextDirection h3,
+.urduTextDirection h4,
+.urduTextDirection h5,
+.urduTextDirection h6,
+.urduTextDirection p,
+.urduTextDirection div,
+.urduTextDirection span,
+.urduTextDirection li,
+.urduTextDirection ul,
+.urduTextDirection ol,
+.urduTextDirection strong,
+.urduTextDirection em,
+.urduTextDirection a {
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif !important;
+}
+
+/* Preserve code blocks and pre elements from Urdu styling */
+.urduTextDirection code,
+.urduTextDirection pre {
+  direction: ltr !important;
+  text-align: left !important;
+  font-family: var(--ifm-font-family-monospace) !important;
+  unicode-bidi: embed;
+}
+
+.loadingSpinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.translationBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--ifm-color-warning);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .translationControls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .translationButton {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .translationHeader {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .languageTag {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .translationButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .translationPlaceholder {
+    padding: 1rem;
+  }
+
+  .urduContent h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Animation for content transition */
+@keyframes contentFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contentWrapper > * {
+  animation: contentFade 0.3s ease;
+}
+
+/* Accessibility improvements */
+.translationButton:focus {
+  outline: 3px solid var(--ifm-color-primary-light);
+  outline-offset: 2px;
+}
+
+.translationButton:focus-visible {
+  outline: 3px solid var(--ifm-color-primary-light);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .translationButton {
+    border: 2px solid currentColor;
+  }
+
+  .translationPlaceholder {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .translationButton,
+  .translationButton:hover,
+  .translationButton::before {
+    transition: none;
+    animation: none;
+  }
+
+  .contentWrapper > * {
+    animation: none;
+  }
+}
