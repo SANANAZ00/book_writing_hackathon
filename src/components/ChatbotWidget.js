@@ -8,6 +8,7 @@ function ChatbotWidget({ selectedText }) {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
+  const [connectionStatus, setConnectionStatus] = useState('checking'); // 'connected', 'disconnected', 'checking'
   const messagesEndRef = useRef(null);
   const [conversationId, setConversationId] = useState(null);
   const [currentModule, setCurrentModule] = useState(null);
@@ -21,6 +22,13 @@ function ChatbotWidget({ selectedText }) {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Check backend connection when chat opens
+  useEffect(() => {
+    if (isOpen) {
+      checkBackendConnection();
+    }
+  }, [isOpen]);
 
   // Initialize with Lucy's welcome message
   useEffect(() => {
@@ -39,6 +47,34 @@ function ChatbotWidget({ selectedText }) {
     }
   }, [isOpen]);
 
+  // Function to check backend connection
+  const checkBackendConnection = async () => {
+    setConnectionStatus('checking');
+
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL ||
+                        process.env.NEXT_PUBLIC_BACKEND_URL ||
+                        'https://your-huggingface-space-name.hf.space';
+
+      // Check the main backend health endpoint first
+      const response = await fetch(`${backendUrl}/health`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+        }
+      });
+
+      if (response.ok) {
+        setConnectionStatus('connected');
+      } else {
+        setConnectionStatus('disconnected');
+      }
+    } catch (error) {
+      console.error('Backend connection check failed:', error);
+      setConnectionStatus('disconnected');
+    }
+  };
+
   const handleSendMessage = async () => {
     if (!inputValue.trim() || isLoading) return;
 
@@ -56,49 +92,66 @@ function ChatbotWidget({ selectedText }) {
 
     try {
       // Use environment variable for backend API URL, fallback to localhost for development
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-      const response = await fetch(`${backendUrl}/api/chat/`, {
+      // For production, this should be set to the deployed backend URL on Hugging Face
+      const backendUrl = process.env.REACT_APP_BACKEND_URL ||
+                        process.env.NEXT_PUBLIC_BACKEND_URL ||
+                        'https://your-huggingface-space-name.hf.space'; // Replace with actual deployed URL
+
+      // Use the book chat endpoint which is more specific to the course content
+      const response = await fetch(`${backendUrl}/api/book-chat/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify({
           message: inputValue,
           selected_text: selectedText || null,
-          conversation_history: messages.map(msg => ({
+          mode: isBookMode ? 'full_book' : 'selected_text', // Use appropriate mode based on context
+          session_id: conversationId || null,
+          provider: 'cohere', // Use Cohere as default provider
+          model: 'command-r-plus-08-2024', // Use the available model
+          temperature: 0.7,
+          max_tokens: 500,
+          search_limit: 5,
+          score_threshold: 0.3,
+          // Include conversation history for context
+          history: messages.filter(msg => msg.role !== 'assistant' || msg.id !== 'welcome-message').map(msg => ({
             role: msg.role,
             content: msg.content
-          })),
-          context_only: !!selectedText
+          }))
         })
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.detail || 'Unknown error'}`);
       }
 
       const data = await response.json();
 
+      // Create the AI message with proper response structure
       const aiMessage = {
         role: 'assistant',
-        content: data.response,
-        sources: data.sources || [],
+        content: data.response || data.answer || 'No response received',
+        sources: data.sources || data.references || [],
         timestamp: new Date().toISOString(),
-        query: data.query,
         id: Date.now() + 1
       };
 
       setMessages(prev => [...prev, aiMessage]);
-      setConversationId(data.conversation_id || conversationId);
+      setConversationId(data.session_id || data.conversation_id || conversationId);
     } catch (error) {
       console.error('Error sending message:', error);
-      setMessages(prev => [...prev, {
+      // Add error message to chat
+      const errorMessage = {
         role: 'assistant',
-        content: "I'm having trouble connecting to my brain right now. Please try again in a moment!",
+        content: "I'm having trouble connecting to my brain right now. Please try again in a moment! The backend might be temporarily unavailable or still starting up.",
         sources: [],
         timestamp: new Date().toISOString(),
         id: Date.now() + 1
-      }]);
+      };
+      setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
@@ -198,7 +251,28 @@ function ChatbotWidget({ selectedText }) {
                 <span className={styles.lucyIcon}>👩‍🏫</span>
               </div>
               <div className={styles.lucyInfo}>
-                <h3 className={styles.lucyTitle}>Lucy - AI Learning Companion</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <h3 className={styles.lucyTitle}>Lucy - AI Learning Companion</h3>
+                  <div className={styles.connectionStatus}>
+                    <div className={clsx(
+                      styles.connectionIndicator,
+                      styles[connectionStatus],
+                      connectionStatus === 'checking' && styles.connecting
+                    )}></div>
+                    <span className={styles.connectionText}>
+                      {connectionStatus === 'connected' ? 'Online' :
+                       connectionStatus === 'checking' ? 'Connecting...' : 'Offline'}
+                    </span>
+                    <button
+                      className={styles.refreshButton}
+                      onClick={checkBackendConnection}
+                      title="Refresh connection"
+                      aria-label="Refresh connection"
+                    >
+                      🔄
+                    </button>
+                  </div>
+                </div>
                 <p className={styles.lucySubtitle}>Always here to help you learn</p>
               </div>
             </div>

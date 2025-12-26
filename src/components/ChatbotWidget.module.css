@@ -780,9 +780,75 @@ html[data-theme='dark'] .selectionIndicator {
   scroll-behavior: smooth;
 }
 
+/* Connection status indicator */
+.connectionStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.connectionIndicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ifm-color-secondary-400);
+}
+
+.connectionIndicator.connected {
+  background: var(--ifm-color-success);
+  box-shadow: 0 0 8px var(--ifm-color-success);
+}
+
+.connectionIndicator.disconnected {
+  background: var(--ifm-color-danger);
+}
+
+.connectionIndicator.connecting {
+  background: var(--ifm-color-warning);
+  animation: pulse 1.5s infinite;
+}
+
+.connectionText {
+  color: white;
+  font-weight: 500;
+}
+
+.refreshButton {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  padding: 2px;
+  margin-left: 4px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.refreshButton:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(180deg);
+}
+
 /* Focus styles for accessibility */
 button:focus,
 textarea:focus {
   outline: 2px solid var(--ifm-color-primary);
   outline-offset: 2px;
+}
+
+/* Animation for connection indicator */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
