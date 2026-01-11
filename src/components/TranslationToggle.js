@@ -45,17 +45,11 @@ const TranslationToggle = ({ children, contentId }) => {
         </div>
       );
     } else {
-      // When there's no specific translation available, show a message indicating
-      // that translation is in progress and apply styling to all content
+      // When there's no specific translation available, try to translate the children content
+      // using the general text translation function
       return (
-        <div>
-          <div className={styles.translationNotice}>
-            <span className={styles.noticeIcon}>⚠️</span>
-            <span>Urdu translation in progress for this section...</span>
-          </div>
-          <div className={styles.urduTextDirection}>
-            {children}
-          </div>
+        <div className={styles.urduTextDirection}>
+          {translateMdxContent(children, contentId)}
         </div>
       );
     }

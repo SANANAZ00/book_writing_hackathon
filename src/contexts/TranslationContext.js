@@ -1052,10 +1052,35 @@ export const TranslationProvider = ({ children }) => {
       return translation.content || content;
     }
 
-    // Otherwise, return the original content for now
-    // In a real implementation, this would process the MDX content and translate each piece
+    // For general content translation, recursively process React elements
+    if (React.isValidElement(content)) {
+      return React.cloneElement(content, {
+        children: React.Children.map(content.props.children, child => {
+          if (typeof child === 'string') {
+            return translateText(child);
+          } else if (React.isValidElement(child)) {
+            return translateMdxContent(child, null);
+          } else {
+            return child;
+          }
+        })
+      });
+    } else if (Array.isArray(content)) {
+      return content.map(item => {
+        if (typeof item === 'string') {
+          return translateText(item);
+        } else if (React.isValidElement(item)) {
+          return translateMdxContent(item, null);
+        } else {
+          return item;
+        }
+      });
+    } else if (typeof content === 'string') {
+      return translateText(content);
+    }
+
     return content;
-  }, [isUrdu]);
+  }, [isUrdu, translateText]);
 
   // Toggle translation state
   const toggleTranslation = useCallback(() => {

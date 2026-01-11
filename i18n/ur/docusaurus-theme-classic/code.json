@@ -1,0 +1,42 @@
+{
+  "theme.NotFound.title": {
+    "message": "صفحہ نہیں ملا",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "ہمیں وہ صفحہ نہیں ملا جسے آپ تلاش کر رہے تھے۔",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "براہ کرم سائٹ مالک سے رابطہ کریں تاکہ آپ کو یہاں ریفرنس مل سکے۔",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "کوڈ کلپ بورڈ پر کاپی کریں",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "کاپی ہو گیا",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "کاپی",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "اس صفحے پر",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "پچھلا",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "اگلا",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.common.editThisPage": {
+    "message": "اس صفحے میں ترمیم کریں",
+    "description": "The link label to edit the current page"
+  }
+}
