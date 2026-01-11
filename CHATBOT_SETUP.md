@@ -17,7 +17,7 @@ REACT_APP_DEBUG=true
 ## API Endpoints Used
 
 - Health Check: `GET /health`
-- Book Chat: `POST /api/book-chat/`
+- Chat (with history support): `POST /api/chat/`
 - Book Chat Health: `GET /api/book-chat/health`
 
 ## Troubleshooting
@@ -62,15 +62,14 @@ When sending messages, the frontend sends:
 {
   "message": "user input",
   "selected_text": "optional selected text",
-  "mode": "full_book|selected_text",
-  "session_id": "optional session id",
+  "history": [{"role": "user|assistant", "content": "message content"}],
   "provider": "cohere",
   "model": "command-r-plus-08-2024",
+  "use_rag": true,
   "temperature": 0.7,
   "max_tokens": 500,
   "search_limit": 5,
-  "score_threshold": 0.3,
-  "history": [{"role": "user|assistant", "content": "message content"}]
+  "score_threshold": 0.3
 }
 ```
 

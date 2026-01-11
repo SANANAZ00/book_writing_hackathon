@@ -27,7 +27,7 @@ class BaseSubagent(abc.ABC):
 
     def __init__(self, config: SubagentConfig):
         self.config = config
-        openai.api_key = settings.OPENAI_API_KEY
+        openai.api_key = settings.OPENROUTER_API_KEY
         self.name = config.name
         self.description = config.description
         self.capabilities = config.capabilities

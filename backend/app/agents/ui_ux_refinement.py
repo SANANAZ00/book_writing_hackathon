@@ -33,7 +33,7 @@ class UIUXRefinementSubagent(BaseSubagent):
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",  # Use more capable model for design tasks
+                model=settings.OPENROUTER_MODEL,
                 messages=messages,
                 temperature=self.config.temperature,
                 max_tokens=self.config.max_tokens

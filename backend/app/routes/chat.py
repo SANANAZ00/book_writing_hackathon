@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Request
 from typing import Dict, Any, Optional, List
 import logging
+import time
 
 from pydantic import BaseModel
 from app.utils.rag import RAGPipeline
@@ -182,13 +183,26 @@ async def debug_chat(request: ChatRequest):
 
 @router.get("/health")
 async def chat_health():
-    """Health check for chat service using Cohere as default"""
+    """Health check for chat service with comprehensive status"""
     try:
         from app.utils.llm_clients import LLMManager
+        logger.info("Health check initiated")
+
+        # Check if required API keys are available
+        if not settings.OPENROUTER_API_KEY:
+            logger.warning("OPENROUTER_API_KEY not configured")
+        if not settings.COHERE_API_KEY:
+            logger.warning("COHERE_API_KEY not configured")
+        if not settings.QDRANT_URL:
+            logger.warning("QDRANT_URL not configured")
+        if not settings.QDRANT_API_KEY:
+            logger.warning("QDRANT_API_KEY not configured")
+
         llm_manager = LLMManager()
 
         # Test basic LLM functionality
         test_messages = [{"role": "user", "content": "Hello"}]
+        logger.info(f"Testing LLM connection with provider: {settings.DEFAULT_PROVIDER}, model: {settings.DEFAULT_MODEL}")
         test_response = await llm_manager.generate_response(
             messages=test_messages,
             provider=settings.DEFAULT_PROVIDER,
@@ -198,6 +212,7 @@ async def chat_health():
 
         # Check Qdrant connection
         from qdrant_client import QdrantClient
+        logger.info(f"Testing Qdrant connection to: {settings.QDRANT_URL}")
         qdrant_client = QdrantClient(
             url=settings.QDRANT_URL,
             api_key=settings.QDRANT_API_KEY,
@@ -207,20 +222,27 @@ async def chat_health():
 
         # Get collection info to verify connectivity
         collection_info = qdrant_client.get_collection(settings.QDRANT_COLLECTION_NAME)
+        logger.info(f"Qdrant collection '{settings.QDRANT_COLLECTION_NAME}' has {collection_info.points_count} documents")
 
         return {
             "status": "healthy",
+            "timestamp": time.time(),
+            "environment": settings.ENVIRONMENT,
             "llm_connection": True,
             "qdrant_connection": True,
             "collection_exists": True,
             "collection_points": collection_info.points_count,
-            "test_generation_success": bool(test_response.get("response"))
+            "test_generation_success": bool(test_response.get("response")),
+            "model_used": test_response.get("model_used"),
+            "provider_used": test_response.get("provider")
         }
     except Exception as e:
-        logger.error(f"Chat health check failed: {str(e)}")
+        logger.error(f"Chat health check failed: {str(e)}", exc_info=True)
         return {
             "status": "unhealthy",
+            "timestamp": time.time(),
             "error": str(e),
             "llm_connection": False,
-            "qdrant_connection": False
+            "qdrant_connection": False,
+            "environment": settings.ENVIRONMENT
         }

@@ -26,7 +26,7 @@ class BaseSkill(abc.ABC):
 
     def __init__(self, config: SkillConfig):
         self.config = config
-        openai.api_key = settings.OPENAI_API_KEY
+        openai.api_key = settings.OPENROUTER_API_KEY
         self.name = config.name
         self.description = config.description
         self.parameters = config.parameters
@@ -143,7 +143,7 @@ class ExplainConceptSkill(BaseSkill):
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model=settings.OPENROUTER_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_message}
@@ -207,7 +207,7 @@ class RewriteInBookToneSkill(BaseSkill):
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model=settings.OPENROUTER_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_message}
@@ -275,7 +275,7 @@ class GenerateUIComponentSkill(BaseSkill):
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model=settings.OPENROUTER_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_message}
@@ -348,7 +348,7 @@ class GenerateAPIRouteSkill(BaseSkill):
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model=settings.OPENROUTER_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_message}
@@ -419,7 +419,7 @@ class OptimizeEmbeddingChunkSkill(BaseSkill):
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model=settings.OPENROUTER_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_message}
@@ -488,7 +488,7 @@ class ImproveRetrievalQualitySkill(BaseSkill):
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model=settings.OPENROUTER_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_message}

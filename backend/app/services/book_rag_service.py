@@ -84,7 +84,7 @@ class BookRAGService:
             mode_used=request.mode,
             grounding_confirmed=True
         )
-
+# uncommit krna  hy
     async def _query_full_book(
         self,
         query: str,
@@ -126,7 +126,6 @@ class BookRAGService:
                 "model_used": model,
                 "provider": provider
             }
-
         # Prepare context with strict book-only instructions
         context_text = "\n\n".join([
             f"Source {i+1} (Chapter: {doc.metadata.get('title', 'Unknown')}): {doc.content}"
@@ -166,15 +165,6 @@ Based only on the provided book content, please answer the question and cite rel
             )
 
             # Check if the response indicates it's not covered
-            response_text = llm_response["response"]
-            if "not covered in the book" in response_text.lower():
-                return {
-                    "response": "This is not covered in the book.",
-                    "sources": [],
-                    "model_used": llm_response["model_used"],
-                    "provider": llm_response["provider"],
-                    "usage": llm_response.get("usage", {})
-                }
 
             # Format sources from valid documents
             sources = [
@@ -259,15 +249,15 @@ Please answer the question based ONLY on the selected text above. Do not provide
             )
 
             # Check if the response indicates it's not covered
-            response_text = llm_response["response"]
-            if "not covered in the selected text" in response_text.lower():
-                return {
-                    "response": "This is not covered in the selected text.",
-                    "sources": [],
-                    "model_used": llm_response["model_used"],
-                    "provider": llm_response["provider"],
-                    "usage": llm_response.get("usage", {})
-                }
+            # response_text = llm_response["response"]
+            # if "not covered in the selected text" in response_text.lower():
+            #     return {
+            #         "response": "This is not covered in the selected text.",
+            #         "sources": [],
+            #         "model_used": llm_response["model_used"],
+            #         "provider": llm_response["provider"],
+            #         "usage": llm_response.get("usage", {})
+            #     }
 
             # Create a source reference for the selected text
             sources = [{
@@ -296,37 +286,86 @@ Please answer the question based ONLY on the selected text above. Do not provide
                 "model_used": model,
                 "provider": provider
             }
+        # method 3
+        # def _filter_book_documents(self, documents):
+        #     return documents
+        
 
-    def _filter_book_documents(self, documents: List[RetrievedDocument]) -> List[RetrievedDocument]:
+
+
+
+        # method 2
+    def _filter_book_documents(self, documents):
         """
         Filter documents to ensure they're from the Physical AI book
+        Be more permissive to avoid over-filtering when metadata is incomplete
         """
-        # In a real implementation, we'd have specific metadata to identify book documents
-        # For now, we'll assume all documents in the collection are book content
-        # But we could filter by specific metadata like:
-        # - document_type: "book_chapter", "book_section"
-        # - source: "physical_ai_book"
-        # - subject: "physical_ai", "humanoid_robotics"
+        if not documents:
+            return []
 
         valid_docs = []
-        for doc in documents:
-            # Check if document has book-specific metadata
-            doc_type = doc.metadata.get("document_type", "")
-            source = doc.metadata.get("source", "")
-            subject = doc.metadata.get("subject", "")
+        has_book_specific_docs = False
 
-            # Accept if it's clearly from the book
-            if ("book" in doc_type.lower() or
-                "physical_ai" in source.lower() or
-                "humanoid" in subject.lower() or
-                "physical ai" in doc.metadata.get("title", "").lower()):
+        for doc in documents:
+            doc_type = doc.metadata.get("document_type", "").lower()
+            source = doc.metadata.get("source", "").lower()
+            subject = doc.metadata.get("subject", "").lower()
+            title = doc.metadata.get("title", "").lower()
+
+            # Check if document has book-specific metadata
+            has_book_metadata = (
+                "book" in doc_type
+                or "physical_ai" in source
+                or "humanoid" in subject
+                or "physical ai" in title
+                or "physical-ai" in source  # Alternative format
+                or "physical ai" in source  # Alternative format
+            )
+
+            if has_book_metadata:
                 valid_docs.append(doc)
-            else:
-                # For now, include all documents since we're building the book content system
-                # In production, we'd be more strict about book content only
-                valid_docs.append(doc)
+                has_book_specific_docs = True
+
+        # If no documents matched the book-specific criteria, return all documents
+        # This handles cases where documents exist but don't have the expected metadata schema
+        if not has_book_specific_docs:
+            logger.warning(f"No book-specific documents found in filter, returning all {len(documents)} documents")
+            return documents
 
         return valid_docs
+
+# 1 method
+    # def _filter_book_documents(self, documents: List[RetrievedDocument]) -> List[RetrievedDocument]:
+    #     """
+    #     Filter documents to ensure they're from the Physical AI book
+    #     """
+    #     # In a real implementation, we'd have specific metadata to identify book documents
+    #     # For now, we'll assume all documents in the collection are book content
+    #     # But we could filter by specific metadata like:
+    #     # - document_type: "book_chapter", "book_section"
+    #     # - source: "physical_ai_book"
+    #     # - subject: "physical_ai", "humanoid_robotics"
+
+    #     valid_docs = []
+    #     for doc in documents:
+    #         # Check if document has book-specific metadata
+    #         doc_type = doc.metadata.get("document_type", "")
+    #         source = doc.metadata.get("source", "")
+    #         subject = doc.metadata.get("subject", "")
+
+    #         # Accept if it's clearly from the book
+    #         if ("book" in doc_type.lower() or
+    #             "physical_ai" in source.lower() or
+    #             "humanoid" in subject.lower() or
+    #             "physical ai" in doc.metadata.get("title", "").lower()):
+    #             valid_docs.append(doc)
+    #         else:
+    #             continue
+    #             # For now, include all documents since we're building the book content system
+    #             # In production, we'd be more strict about book content only
+    #             # valid_docs.append(doc)
+
+    #     return valid_docs
 
     async def validate_response_grounding(
         self,

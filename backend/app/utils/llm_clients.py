@@ -15,26 +15,41 @@ def get_cohere_client():
     """Lazy load and return Cohere client"""
     try:
         import cohere
-        logger.debug("Initializing Cohere client")
+        if not settings.COHERE_API_KEY:
+            raise ValueError("COHERE_API_KEY not set in environment")
         client = cohere.AsyncClient(
             api_key=settings.COHERE_API_KEY,
             base_url=settings.COHERE_BASE_URL
         )
-        logger.info("Cohere client initialized successfully")
         return client
     except ImportError:
-        logger.error("Cohere package not found. Install with: pip install cohere")
-        raise ImportError("cohere package is required for Cohere models. Install with: pip install cohere")
+        raise ImportError("cohere package is required. Install with: pip install cohere")
 
 
-def get_openai_client():
-    """Return OpenAI client"""
-    logger.debug("Initializing OpenAI client")
+# def get_cohere_client():
+#     """Lazy load and return Cohere client"""
+#     try:
+#         import cohere
+#         logger.debug("Initializing Cohere client")
+#         client = cohere.AsyncClient(
+#             api_key=settings.COHERE_API_KEY,
+#             base_url=settings.COHERE_BASE_URL
+#         )
+#         logger.info("Cohere client initialized successfully")
+#         return client
+#     except ImportError:
+#         logger.error("Cohere package not found. Install with: pip install cohere")
+#         raise ImportError("cohere package is required for Cohere models. Install with: pip install cohere")
+
+
+def get_openrouter_client():
+    """Return OpenRouter client"""
+    logger.debug("Initializing OpenRouter client")
     client = openai.AsyncOpenAI(
-        api_key=settings.OPENAI_API_KEY,
-        base_url=settings.OPENAI_BASE_URL
+        api_key=settings.OPENROUTER_API_KEY,
+        base_url=settings.OPENROUTER_BASE_URL
     )
-    logger.info("OpenAI client initialized successfully")
+    logger.info("OpenRouter client initialized successfully")
     return client
 
 
@@ -78,9 +93,8 @@ class LLMManager:
         
         # Set max tokens based on provider/model
         max_tokens_map = {
-            "openai": {
-                "gpt-4o-mini": 128000,
-                "gpt-4o": 128000
+            "openrouter": {
+                "mistralai/devstral-2512:free": 128000,
             },
             "cohere": {
                 "command-r": 128000,
@@ -127,8 +141,8 @@ class LLMManager:
             raise ValueError(f"Unsupported provider/model combination: {provider}/{model}")
         
         try:
-            if provider == "openai":
-                return await self._generate_with_openai(
+            if provider == "openrouter":
+                return await self._generate_with_openrouter(
                     messages=messages,
                     model=model,
                     temperature=temperature,
@@ -146,12 +160,12 @@ class LLMManager:
                 )
             else:
                 raise ValueError(f"Unsupported provider: {provider}")
-                
+
         except Exception as e:
             logger.error(f"Error generating response with {provider}/{model}: {str(e)}")
             raise
     
-    async def _generate_with_openai(
+    async def _generate_with_openrouter(
         self,
         messages: List[Dict[str, str]],
         model: str,
@@ -160,9 +174,9 @@ class LLMManager:
         stream: bool = False,
         **kwargs
     ) -> Dict[str, Any]:
-        """Generate response using OpenAI"""
-        client = get_openai_client()
-        
+        """Generate response using OpenRouter"""
+        client = get_openrouter_client()
+
         try:
             response = await client.chat.completions.create(
                 model=model,
@@ -171,11 +185,11 @@ class LLMManager:
                 max_tokens=max_tokens,
                 **kwargs
             )
-            
+
             # Extract the response content
             content = response.choices[0].message.content
             usage = response.usage
-            
+
             return {
                 "response": content,
                 "usage": {
@@ -184,11 +198,11 @@ class LLMManager:
                     "total_tokens": usage.total_tokens if usage else 0
                 },
                 "model_used": model,
-                "provider": "openai"
+                "provider": "openrouter"
             }
-            
+
         except Exception as e:
-            logger.error(f"OpenAI API error: {str(e)}")
+            logger.error(f"OpenRouter API error: {str(e)}")
             raise
     
     async def _generate_with_cohere(

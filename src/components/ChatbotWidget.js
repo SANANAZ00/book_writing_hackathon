@@ -1,3 +1,4 @@
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import React, { useState, useRef, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './ChatbotWidget.module.css';
@@ -14,6 +15,14 @@ function ChatbotWidget({ selectedText }) {
   const [currentModule, setCurrentModule] = useState(null);
   const [isBookMode, setIsBookMode] = useState(false);
   const [showModuleButtons, setShowModuleButtons] = useState(false);
+
+  const { siteConfig } = useDocusaurusContext();
+  const BACKEND_URL = "http://localhost:8000";
+
+  // const BACKEND_URL =
+  //   siteConfig.customFields?.BACKEND_URL ||
+  //   'https://snazyaseen-book-publish.hf.space';
+
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -52,12 +61,8 @@ function ChatbotWidget({ selectedText }) {
     setConnectionStatus('checking');
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL ||
-                        process.env.NEXT_PUBLIC_BACKEND_URL ||
-                        'https://your-huggingface-space-name.hf.space';
-
       // Check the main backend health endpoint first
-      const response = await fetch(`${backendUrl}/health`, {
+      const response = await fetch(`${BACKEND_URL}/health`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -91,13 +96,17 @@ function ChatbotWidget({ selectedText }) {
     setIsLoading(true);
 
     try {
-      // Use environment variable for backend API URL, fallback to localhost for development
-      // For production, this should be set to the deployed backend URL on Hugging Face
-      const backendUrl = process.env.REACT_APP_BACKEND_URL ||
-                        process.env.NEXT_PUBLIC_BACKEND_URL ||
-                        'https://your-huggingface-space-name.hf.space'; // Replace with actual deployed URL
+      // Use the main backend URL variable that was already configured
+      const backendUrl = BACKEND_URL;
 
-      // Use the book chat endpoint which is more specific to the course content
+      // Log the backend URL for debugging (only in development)
+      const DEBUG = window.DEBUG_CHATBOT || false;
+      if (DEBUG) {
+        console.log('Attempting to connect to backend:', backendUrl);
+        console.log('Sending request to:', `${backendUrl}/api/book-chat/`);
+      }
+
+      // Use the book chat endpoint which supports history and book-specific features
       const response = await fetch(`${backendUrl}/api/book-chat/`, {
         method: 'POST',
         headers: {
@@ -107,28 +116,38 @@ function ChatbotWidget({ selectedText }) {
         body: JSON.stringify({
           message: inputValue,
           selected_text: selectedText || null,
-          mode: isBookMode ? 'full_book' : 'selected_text', // Use appropriate mode based on context
-          session_id: conversationId || null,
+          mode: selectedText ? 'selected_text' : 'full_book', // Use appropriate mode based on selected text
+          history: messages.filter(msg => msg.role !== 'assistant' || msg.id !== 'welcome-message').map(msg => ({
+            role: msg.role,
+            content: msg.content
+          })),
           provider: 'cohere', // Use Cohere as default provider
           model: 'command-r-plus-08-2024', // Use the available model
           temperature: 0.7,
           max_tokens: 500,
           search_limit: 5,
-          score_threshold: 0.3,
-          // Include conversation history for context
-          history: messages.filter(msg => msg.role !== 'assistant' || msg.id !== 'welcome-message').map(msg => ({
-            role: msg.role,
-            content: msg.content
-          }))
+          score_threshold: 0.3
         })
       });
 
+
+     if (DEBUG) {
+       console.log('Response status:', response.status);
+       console.log('Response ok:', response.ok);
+      }
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.detail || 'Unknown error'}`);
+        console.error('Backend error response:', errorData);
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.detail || errorData.message || 'Unknown error'}`);
       }
 
       const data = await response.json();
+
+      if (DEBUG) {
+        console.log('Backend response data:', data);
+      }
+
 
       // Create the AI message with proper response structure
       const aiMessage = {
@@ -143,10 +162,20 @@ function ChatbotWidget({ selectedText }) {
       setConversationId(data.session_id || data.conversation_id || conversationId);
     } catch (error) {
       console.error('Error sending message:', error);
+
+      // Check if it's a network error vs API error
+      let errorMessageContent = "I'm having trouble connecting to my brain right now. Please try again in a moment! The backend might be temporarily unavailable or still starting up.";
+
+      if (error.message.includes('fetch')) {
+        errorMessageContent = "Network error: Unable to connect to the backend. Please check your internet connection and make sure the backend URL is correct.";
+      } else if (error.message.includes('HTTP error')) {
+        errorMessageContent = `API error: ${error.message}. Please check if your backend is running and accessible.`;
+      }
+
       // Add error message to chat
       const errorMessage = {
         role: 'assistant',
-        content: "I'm having trouble connecting to my brain right now. Please try again in a moment! The backend might be temporarily unavailable or still starting up.",
+        content: errorMessageContent,
         sources: [],
         timestamp: new Date().toISOString(),
         id: Date.now() + 1

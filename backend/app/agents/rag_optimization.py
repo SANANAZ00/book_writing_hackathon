@@ -33,7 +33,7 @@ class RAGOptimizationSubagent(BaseSubagent):
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model=settings.OPENROUTER_MODEL,
                 messages=messages,
                 temperature=self.config.temperature,
                 max_tokens=self.config.max_tokens
@@ -52,7 +52,7 @@ class RAGOptimizationSubagent(BaseSubagent):
                 },
                 metadata={
                     "tokens_used": response.usage.total_tokens if response.usage else 0,
-                    "model_used": "gpt-4"
+                    "model_used": settings.OPENROUTER_MODEL
                 }
             )
 
