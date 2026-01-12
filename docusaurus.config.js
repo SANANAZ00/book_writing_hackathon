@@ -11,8 +11,8 @@ const config = {
 
   // SITE URL (GitHub Pages)
   url: 'https://sananaz00.github.io',
-  baseUrl: '/book_writing_hackathon/',
-
+  baseUrl: '/',
+// /book_writing_hackathon
   organizationName: 'SANANAZ00',
   projectName: 'book_writing_hackathon',
 
