@@ -11,8 +11,8 @@ const config = {
 
   // SITE URL (GitHub Pages)
   url: 'https://sananaz00.github.io',
-  baseUrl: '/',
-// /book_writing_hackathon
+  baseUrl: "/",
+// book_writing_hackathon/
   organizationName: 'SANANAZ00',
   projectName: 'book_writing_hackathon',
 
@@ -20,14 +20,14 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
 
   // ✅ SAFE & CORRECT way to expose backend URL
-   customFields: {
-    BACKEND_URL: 'http://localhost:8000',
-  },
-
-
-  // customFields: {
-  //   BACKEND_URL: 'https://snazyaseen-book-publish.hf.space',
+  //  customFields: {
+  //   BACKEND_URL: 'http://localhost:8000',
   // },
+
+
+  customFields: {
+    BACKEND_URL: 'https://snazyaseen-book-publish.hf.space',
+  },
 
   i18n: {
     defaultLocale: 'en',
