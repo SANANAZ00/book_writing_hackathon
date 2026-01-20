@@ -46,18 +46,16 @@ class Settings(BaseSettings):
 
     # Application Settings
     ALLOWED_ORIGINS: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:8080",
-        "http://localhost:8081",  # Additional common React dev port
-        "https://book-writing-hackathon.vercel.app/",
-        "https://*.vercel.app",   # Vercel deployments
-    ]
+    "http://localhost:3000",  # Local development frontend
+    "http://localhost:8080",
+    "http://localhost:8081",
+    "https://snazyaseen-book-publish.hf.space",  # Hugging Face deployed frontend
+    "https://*.hf.space",                         # Hugging Face wildcard
+    "https://book-writing-hackathon.vercel.app/", # Vercel deployment
+    "https://*.vercel.app",                        # Vercel wildcard
+]
 
-     # HF URLs for production / deployed frontend
-        # "https://*.hf.space",     # Hugging Face Spaces wildcard
-        # "https://snazyaseen-book-publish.hf.space",  # Hugging Face Spaces alternative domain
 
-        
     # Allow all origins in development mode only
     CORS_ALLOW_ALL_ORIGINS: bool = False  # Set to True in development.env
     CORS_ALLOW_CREDENTIALS: bool = True

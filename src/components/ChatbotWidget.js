@@ -17,11 +17,10 @@ function ChatbotWidget({ selectedText }) {
   const [showModuleButtons, setShowModuleButtons] = useState(false);
 
   const { siteConfig } = useDocusaurusContext();
-  const BACKEND_URL = "http://localhost:8000";
 
-  // const BACKEND_URL =
-  //   siteConfig.customFields?.BACKEND_URL ||
-  //   'https://snazyaseen-book-publish.hf.space';
+  const BACKEND_URL =
+    siteConfig.customFields?.BACKEND_URL ||
+    'https://snazyaseen-book-publish.hf.space';
 
 
   const scrollToBottom = () => {
